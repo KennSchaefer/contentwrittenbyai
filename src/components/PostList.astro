@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '../lib/posts';
+
+interface Props {
+  posts: CollectionEntry<'posts'>[];
+}
+
+const { posts } = Astro.props;
+---
+
+<ul>
+  {posts.map((post) => (
+    <li>
+      <p class="eyebrow">
+        {post.data.category} · <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+        {post.data.draft && ' · DRAFT'}
+      </p>
+      <h3><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3>
+      <p class="muted">{post.data.description}</p>
+    </li>
+  ))}
+</ul>
+
+<style>
+  ul { list-style: none; padding: 0; margin: 0; max-width: 44rem; }
+  li { padding: 1.25rem 0; border-top: 1px solid var(--border); }
+  li p { margin: 0; }
+  h3 { margin: 0.3rem 0 0.4rem; font-size: 1.3rem; }
+  h3 a { color: var(--text); text-decoration: none; }
+  h3 a:hover { color: var(--accent); }
+</style>

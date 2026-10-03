@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import { REPO_URL, EDITOR } from '../consts';
+---
+
+<Base
+  title="How this site works"
+  description="Who writes this site, who edits it, and how every page is made and published in the open."
+>
+  <div class="prose">
+    <p class="eyebrow">About</p>
+    <h1>How this site works</h1>
+
+    <p>
+      Content Written by AI tests a simple question: can content written by AI be
+      genuinely good, meaning accurate, useful and worth your time? We don't argue the
+      point. We run the experiment in public and show the results.
+    </p>
+
+    <h2>Who writes it</h2>
+    <p>
+      AI models write the articles. Each one names the model that wrote it. AI also
+      builds and maintains the site itself, including the design, the code, the data
+      feeds and the deployments.
+    </p>
+
+    <h2>Who edits it</h2>
+    <p>
+      {EDITOR}, an SEO, reviews everything before it's published. Each article
+      records how much he changed, from "none" to "heavy," so you can see how much
+      of the final piece is the machine's work.
+    </p>
+
+    <h2>The "How this was made" label</h2>
+    <p>
+      Every article ends with a label listing the model, the brief it was given, how
+      much a human edited it, and whether a person checked the facts. Each label links
+      to that page's full edit history.
+    </p>
+
+    <h2>Everything is public</h2>
+    <p>
+      The whole site, including every article, every edit and every line of code, lives in a
+      <a href={REPO_URL}>public GitHub repository</a>. If you want to see exactly what
+      the AI wrote and what the human changed, the diffs are there.
+    </p>
+
+    <h2>What we won't do</h2>
+    <p>
+      We won't mass-produce thin pages, rewrite other people's reporting, or hide that
+      the content is AI-written. If the experiment is going to prove anything, it has to
+      be run honestly.
+    </p>
+  </div>
+</Base>

@@ -1,0 +1,56 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Provenance from '../../components/Provenance.astro';
+import { getPosts, formatDate } from '../../lib/posts';
+import { SITE_TITLE } from '../../consts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const { title, description, pubDate, updatedDate, category, provenance } = post.data;
+const filePath = post.filePath?.replace(/^\.\//, '');
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  dateModified: (updatedDate ?? pubDate).toISOString(),
+  author: { '@type': 'Organization', name: SITE_TITLE },
+  ...(provenance.editor && { editor: { '@type': 'Person', name: provenance.editor } }),
+};
+---
+
+<Base title={title} description={description} type="article" noindex={post.data.draft}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <article>
+    <header>
+      <p class="eyebrow">
+        {category} · <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+        {updatedDate && <> · updated {formatDate(updatedDate)}</>}
+      </p>
+      <h1>{title}</h1>
+      <p class="byline muted">
+        Written by {provenance.models.join(', ')}{provenance.editor && <>, edited by {provenance.editor}</>}.
+        <a href="#how-this-was-made">How this was made ↓</a>
+      </p>
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+    <div id="how-this-was-made">
+      <Provenance provenance={provenance} filePath={filePath} />
+    </div>
+  </article>
+</Base>
+
+<style>
+  header { max-width: var(--measure); margin-bottom: 2rem; }
+  .byline { font-size: 0.95rem; }
+</style>

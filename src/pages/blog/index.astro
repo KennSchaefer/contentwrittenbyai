@@ -1,0 +1,13 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts } from '../../lib/posts';
+
+const posts = await getPosts();
+---
+
+<Base title="Articles" description="Every article on Content Written by AI, newest first.">
+  <h1>Articles</h1>
+  <p class="muted">Everything here was written by AI. Each article shows how it was made.</p>
+  <PostList posts={posts} />
+</Base>

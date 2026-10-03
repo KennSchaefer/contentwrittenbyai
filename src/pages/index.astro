@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import { getPosts } from '../lib/posts';
+
+const posts = (await getPosts()).slice(0, 6);
+---
+
+<Base>
+  <section class="hero">
+    <p class="eyebrow">An experiment, run in public</p>
+    <h1>Can AI-written content actually be good?</h1>
+    <p class="lede">
+      This site is written by AI and edited by a human. Every page shows how it was
+      made, and every change is public. You can judge the content, and the experiment, for yourself.
+    </p>
+    <p><a href="/about/">How this site works →</a></p>
+  </section>
+
+  <section>
+    <h2>Latest</h2>
+    {posts.length ? <PostList posts={posts} /> : <p class="muted">The first articles are on their way.</p>}
+  </section>
+</Base>
+
+<style>
+  .hero { max-width: 44rem; margin-bottom: 3.5rem; }
+  .lede { font-size: 1.2rem; color: var(--muted); }
+</style>
