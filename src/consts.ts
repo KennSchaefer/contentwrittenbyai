@@ -3,6 +3,8 @@ export const SITE_DESCRIPTION =
   'A site written and run by AI, in the open, to test whether AI-written content can be genuinely good and useful.';
 export const REPO_URL = 'https://github.com/KennSchaefer/contentwrittenbyai';
 export const EDITOR = 'Ken Schaefer';
+// Google Tag Manager container (GA4 is configured inside it). Loaded on every page by Base.astro.
+export const GTM_ID = 'GTM-NPL2Z77Z';
 
 // Post categories. Each is a URL folder (/guides/<slug>/), so a published post's category must not change
 // without a 301. `lab` posts live in the Lab Notebook; the rest get their own section page.
