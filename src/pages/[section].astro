@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import PostList from '../components/PostList.astro';
+import { getPosts } from '../lib/posts';
+import { SECTIONS, type Section } from '../consts';
+
+// Editorial sections. The Lab Notebook has its own page at /lab/.
+export function getStaticPaths() {
+  const editorial: Section[] = ['research', 'guides', 'reviews', 'policy'];
+  return editorial.map((section) => ({ params: { section }, props: { section } }));
+}
+
+const { section } = Astro.props as { section: Section };
+const info = SECTIONS[section];
+const posts = await getPosts(section);
+---
+
+<Base title={info.name} description={info.blurb} section={section}>
+  <section class="wrap page">
+    <p class="eyebrow">Section</p>
+    <h1>{info.name}</h1>
+    <p class="lede">{info.blurb}</p>
+    <div class="list">
+      {posts.length ? (
+        <PostList posts={posts} showSection={false} />
+      ) : (
+        <p class="muted">Nothing here yet. Articles show up once they've survived fact-checking.</p>
+      )}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page { padding-top: 4rem; padding-bottom: 4rem; }
+  .list { max-width: 46rem; margin-top: 2.5rem; }
+</style>

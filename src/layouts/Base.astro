@@ -1,15 +1,17 @@
 ---
 import '../styles/global.css';
-import { SITE_TITLE, SITE_DESCRIPTION, REPO_URL } from '../consts';
+import { SITE_TITLE, SITE_DESCRIPTION, REPO_URL, SECTIONS, NAV_SECTIONS, type Section } from '../consts';
 
 interface Props {
   title?: string;
   description?: string;
   type?: 'website' | 'article';
   noindex?: boolean;
+  // Highlights the matching nav item
+  section?: Section | 'methodology';
 }
 
-const { title, description = SITE_DESCRIPTION, type = 'website', noindex = false } = Astro.props;
+const { title, description = SITE_DESCRIPTION, type = 'website', noindex = false, section } = Astro.props;
 const fullTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -26,6 +28,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/rss.xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Public+Sans:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;600&family=Caveat:wght@600&display=swap"
+    />
     <meta property="og:type" content={type} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
@@ -37,57 +45,88 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <body>
     <header class="site-header">
       <div class="wrap bar">
-        <a class="brand" href="/">Content Written <span>by AI</span></a>
-        <nav>
-          <a href="/blog/">Articles</a>
-          <a href="/methodology/">Methodology</a>
-          <a href="/about/">About</a>
+        <a class="wordmark" href="/" aria-label={SITE_TITLE}>
+          Content Written by <span class="fix"><s>a Human</s><span class="ai" aria-hidden="true">AI</span></span>
+        </a>
+        <nav aria-label="Main">
+          {NAV_SECTIONS.map((key) => (
+            <a
+              href={SECTIONS[key].path}
+              class:list={[{ lab: key === 'lab' }]}
+              aria-current={section === key ? 'page' : undefined}
+            >
+              {SECTIONS[key].name}
+            </a>
+          ))}
+          <a href="/methodology/" class="method" aria-current={section === 'methodology' ? 'page' : undefined}>Methodology</a>
         </nav>
       </div>
     </header>
-    <main class="wrap">
+    <main>
       <slot />
     </main>
     <footer class="site-footer">
-      <div class="wrap">
-        <p>
-          Written by AI, reviewed by a human, built in the open.
-          Every change is in <a href={REPO_URL}>the public repo</a>.
-        </p>
+      <div class="wrap foot">
+        <p>Written by AI, reviewed by a human, built in the open. Complaints may be filed in the <a href={REPO_URL}>public repo</a>, where we will read them and probably agree.</p>
+        <nav aria-label="Footer">
+          <a href="/about/">About</a>
+          <a href={REPO_URL}>GitHub</a>
+          <a href="/rss.xml">RSS</a>
+        </nav>
       </div>
     </footer>
   </body>
 </html>
 
 <style>
-  .site-header {
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
-  }
+  .site-header { border-bottom: 1px solid var(--border); }
   .bar {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
     align-items: center;
     justify-content: space-between;
-    padding-top: 0.9rem;
-    padding-bottom: 0.9rem;
+    gap: 1rem 2rem;
+    padding-top: 1.4rem;
+    padding-bottom: 1.1rem;
   }
-  .brand {
-    font-weight: 700;
+  .wordmark {
+    font: 600 1.5rem/1.1 var(--serif);
     color: var(--text);
     text-decoration: none;
-    letter-spacing: -0.01em;
+    white-space: nowrap;
   }
-  .brand span { color: var(--accent); }
-  nav { display: flex; gap: 1.25rem; font-size: 0.95rem; }
-  nav a { color: var(--muted); text-decoration: none; }
-  nav a:hover { color: var(--text); }
-  main { padding-top: 2.5rem; padding-bottom: 4rem; }
-  .site-footer {
-    border-top: 1px solid var(--border);
+  .fix { position: relative; display: inline-block; }
+  .fix s {
     color: var(--muted);
-    font-size: 0.9rem;
-    padding: 1.5rem 0;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
   }
+  .ai {
+    position: absolute;
+    left: 0.9rem;
+    top: -1.2rem;
+    font: 600 1.6rem var(--hand);
+    color: var(--accent);
+    transform: rotate(-6deg);
+  }
+  nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: 0.9375rem; font-weight: 600; }
+  nav a { color: var(--text); text-decoration: none; }
+  nav a:hover { color: var(--accent); }
+  nav a.lab { font-family: var(--mono); color: var(--lab); }
+  nav a.method { color: var(--accent); }
+  nav a[aria-current='page'] { text-decoration: underline 2px; text-underline-offset: 6px; }
+
+  .site-footer { background: var(--ink); color: var(--ink-text); margin-top: 2rem; }
+  .foot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    font-size: 0.875rem;
+  }
+  .foot p { margin: 0; max-width: 36rem; }
+  .foot a { color: #fff; }
+  .foot nav { font-weight: 400; font-size: 0.875rem; }
 </style>

@@ -1,0 +1,77 @@
+---
+import { render, getEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ContentFacts from '../../components/ContentFacts.astro';
+import Ledger from '../../components/Ledger.astro';
+import { getPosts, formatDate, readingMinutes, linkClaims } from '../../lib/posts';
+import { SITE_TITLE, SECTIONS } from '../../consts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const { title, description, pubDate, updatedDate, category, provenance } = post.data;
+const ledger = await getEntry('ledgers', post.id.split('/').pop()!);
+const minutes = readingMinutes(post);
+const section = SECTIONS[category];
+// Markdown posts render through linkClaims so claim marks become tagged links; MDX renders as-is
+const html = post.rendered?.html ? linkClaims(post.rendered.html) : null;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  dateModified: (updatedDate ?? pubDate).toISOString(),
+  author: { '@type': 'Organization', name: SITE_TITLE },
+  ...(provenance.editor && { editor: { '@type': 'Person', name: provenance.editor } }),
+};
+---
+
+<Base title={title} description={description} type="article" noindex={post.data.draft} section={category}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <article class="wrap">
+    <header>
+      <p class="eyebrow"><a href={section.path}>{section.name}</a></p>
+      <h1>{title}</h1>
+      <p class="lede">{description}</p>
+      <ul class="byline">
+        <li>Written by <strong>{provenance.models.join(', ')}</strong></li>
+        {provenance.editor && <li>Edited by <strong>{provenance.editor}</strong></li>}
+        <li><time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time></li>
+        {updatedDate && <li>Updated {formatDate(updatedDate)}</li>}
+        <li>{minutes} min read</li>
+      </ul>
+    </header>
+    <div class="row">
+      <div class="main">
+        <div class="prose">
+          {html ? <Fragment set:html={html} /> : <Content />}
+        </div>
+        {ledger && <Ledger ledger={ledger} />}
+      </div>
+      <div class="side">
+        <ContentFacts post={post} ledger={ledger} minutes={minutes} />
+      </div>
+    </div>
+  </article>
+</Base>
+
+<style>
+  article { padding-top: 4rem; padding-bottom: 5rem; }
+  header { max-width: 49rem; }
+  .eyebrow a { color: inherit; text-decoration: none; }
+  h1 { font-size: clamp(2.3rem, 5vw, 3.25rem); }
+  .lede { margin: 1.25rem 0 0; font-size: 1.3125rem; }
+  .byline { display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 1.5rem 0 0; font-size: 0.875rem; color: var(--muted); }
+  .byline li + li::before { content: '·'; margin: 0 0.5rem; }
+  .byline strong { color: var(--text); }
+  .row { display: flex; flex-wrap: wrap; gap: 2.5rem 3.5rem; align-items: flex-start; margin-top: 2.75rem; }
+  .main { flex: 999 1 36rem; min-width: 0; max-width: var(--measure); }
+  .side { flex: 1 1 17rem; max-width: 21rem; position: sticky; top: 1.5rem; }
+  @media (max-width: 900px) { .side { position: static; max-width: none; } }
+</style>

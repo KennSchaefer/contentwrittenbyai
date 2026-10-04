@@ -1,6 +1,7 @@
 import { defineCollection } from 'astro:content';
-import { glob } from 'astro/loaders';
+import { glob, file } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { SECTIONS, type Section } from './consts';
 
 // Every post carries a provenance record: the "how this was made" label.
 const provenance = z.object({
@@ -25,7 +26,12 @@ const posts = defineCollection({
     description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
-    category: z.enum(['experiments', 'research', 'guides', 'reviews', 'news', 'policy', 'meta']),
+    category: z.enum(Object.keys(SECTIONS) as [Section, ...Section[]]),
+    // Lab Notebook experiments only: an ID like EXP-001 and where the experiment stands
+    experiment: z.string().regex(/^EXP-\d{3}$/).optional(),
+    status: z.enum(['planned', 'running', 'done']).optional(),
+    // Lab Notebook experiments only: one-line result, or where things stand
+    result: z.string().max(120).optional(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     provenance,
@@ -63,4 +69,13 @@ const ledgers = defineCollection({
   }),
 });
 
-export const collections = { posts, ledgers };
+// Site log: dated changes to the site and what prompted them, shown in the Lab Notebook
+const sitelog = defineCollection({
+  loader: file('src/content/sitelog.json'),
+  schema: z.object({
+    date: z.coerce.date(),
+    text: z.string().max(240),
+  }),
+});
+
+export const collections = { posts, ledgers, sitelog };

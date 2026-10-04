@@ -1,0 +1,44 @@
+---
+import { siteStats } from '../lib/posts';
+
+// Readings computed from the site's own content. Search data panels get added once there's data to show.
+const stats = await siteStats();
+const readings = [
+  { label: 'Articles', value: stats.articles },
+  { label: 'Claims verified', value: stats.claimsVerified },
+  { label: 'Claims cut', value: stats.claimsCut, tone: 'cut' },
+];
+---
+
+{stats.articles > 0 ? (
+  <div class="panel">
+    {readings.map((r) => (
+      <div class="reading">
+        <p class="label">{r.label}</p>
+        <p class:list={['value', r.tone]}>{r.value}</p>
+      </div>
+    ))}
+  </div>
+) : (
+  <div class="empty">
+    <p class="label">No readings yet</p>
+    <p>
+      The first articles are going through fact-checking. Counts of articles, verified claims and cut claims
+      appear here as they publish, followed by search data once Google has had time to notice us.
+    </p>
+  </div>
+)}
+
+<style>
+  .panel { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 1rem; }
+  .reading, .empty {
+    background: var(--bg);
+    border: 1px solid var(--lab-border);
+    border-radius: 8px;
+    padding: 1.25rem;
+  }
+  .label { margin: 0; font: 0.75rem var(--mono); text-transform: uppercase; color: var(--muted); }
+  .value { margin: 0.5rem 0 0; font: 2.6rem/1 var(--serif); }
+  .value.cut { color: var(--accent); }
+  .empty p:last-child { margin: 0.5rem 0 0; max-width: 40rem; color: var(--text-2); }
+</style>

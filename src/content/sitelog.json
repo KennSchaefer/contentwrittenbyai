@@ -1,0 +1,17 @@
+[
+  {
+    "id": "2026-10-04-design",
+    "date": "2026-10-04",
+    "text": "New design, chosen by the editor from three AI-made mockups. The Lab Notebook gets its own section."
+  },
+  {
+    "id": "2026-10-04-pipeline",
+    "date": "2026-10-04",
+    "text": "Fact-checking pipeline added. Claims now need a source before they get a sentence."
+  },
+  {
+    "id": "2026-10-03-launch",
+    "date": "2026-10-03",
+    "text": "Site launched. Built and deployed by AI, approved by a human."
+  }
+]

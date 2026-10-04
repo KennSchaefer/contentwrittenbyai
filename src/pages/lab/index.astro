@@ -1,0 +1,103 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import LabPanel from '../../components/LabPanel.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts, postUrl, isoDay } from '../../lib/posts';
+
+const labPosts = await getPosts('lab');
+const experiments = labPosts
+  .filter((p) => p.data.experiment)
+  .sort((a, b) => a.data.experiment!.localeCompare(b.data.experiment!));
+const notes = labPosts.filter((p) => !p.data.experiment);
+const log = (await getCollection('sitelog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const lastEntry = log[0]?.data.date;
+---
+
+<Base
+  title="Lab Notebook"
+  description="This site's own data: how its AI-written pages perform, what our experiments found, and every change we made because of it."
+  section="lab"
+>
+  <section class="graph-paper hero">
+    <div class="wrap">
+      <p class="stamp">Lab Notebook{lastEntry && <> · Last entry {isoDay(lastEntry)}</>}</p>
+      <h1>Our own data, <span class="hl">including the unflattering parts</span>.</h1>
+      <p class="lede">
+        How this site's AI-written pages actually perform, what our experiments found, and what we changed because
+        of it. If something isn't working, it goes here first.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap block">
+    <h2 class="lab-mono">Instrument panel</h2>
+    <LabPanel />
+  </section>
+
+  <section class="wrap block">
+    <h2 class="lab-mono">Experiments</h2>
+    {experiments.length ? (
+      <div class="table-box">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Experiment</th><th>Status</th><th>Result</th></tr>
+          </thead>
+          <tbody>
+            {experiments.map((p) => (
+              <tr>
+                <td class="mono">{p.data.experiment}</td>
+                <td><a href={postUrl(p)}>{p.data.title}</a></td>
+                <td>{p.data.status && <span class:list={['badge', p.data.status]}>{p.data.status}</span>}</td>
+                <td class="muted">{p.data.result ?? 'Pending'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ) : (
+      <p class="empty">No experiments logged yet. The first one starts with the first published article.</p>
+    )}
+  </section>
+
+  <section class="wrap block two">
+    <div class="card">
+      <h2 class="lab-mono">Site log</h2>
+      <ul class="log">
+        {log.map((entry) => (
+          <li><time datetime={isoDay(entry.data.date)}>{isoDay(entry.data.date)}</time>{entry.data.text}</li>
+        ))}
+      </ul>
+    </div>
+    <div class="card">
+      <h2 class="lab-mono">Field notes</h2>
+      {notes.length ? <PostList posts={notes} showSection={false} /> : <p class="empty-inline">Monthly reports start after the first full month of data.</p>}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { border-bottom: 1px solid var(--lab-border); padding: 4.5rem 0 3.75rem; }
+  .stamp { margin: 0 0 1.1rem; font: 0.8125rem var(--mono); text-transform: uppercase; color: var(--muted); }
+  .hero h1 { max-width: 54rem; }
+  .hl { background: linear-gradient(transparent 60%, #ffd84d 60%); }
+  @media (prefers-color-scheme: dark) { .hl { background: linear-gradient(transparent 60%, #6b5a12 60%); } }
+  .block { padding-top: 3rem; }
+  .block > h2 { margin-bottom: 1.1rem; }
+  .table-box { overflow-x: auto; border: 1px solid var(--lab-border); border-radius: 8px; }
+  table { width: 100%; min-width: 40rem; border-collapse: collapse; font-size: 0.9375rem; }
+  th, td { text-align: left; padding: 0.85rem 1rem; border-bottom: 1px solid var(--lab-border); vertical-align: top; }
+  tr:last-child td { border-bottom: 0; }
+  th { font: 0.75rem var(--mono); text-transform: uppercase; color: var(--muted); }
+  td a { font-weight: 600; color: var(--text); }
+  .mono { font-family: var(--mono); }
+  .empty { margin: 0; padding: 1.25rem; border: 1px dashed var(--lab-border); border-radius: 8px; color: var(--text-2); }
+  .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 1.25rem; padding-bottom: 4rem; }
+  .card { border: 1px solid var(--lab-border); border-radius: 8px; padding: 1.5rem; }
+  .card h2 { margin-bottom: 0.75rem; }
+  .log { list-style: none; margin: 0; padding: 0; font-size: 0.9375rem; }
+  .log li { padding: 0.65rem 0; border-bottom: 1px solid var(--lab-grid); }
+  .log li:last-child { border-bottom: 0; }
+  .log time { display: block; font: 0.8125rem var(--mono); color: var(--muted); }
+  .empty-inline { margin: 0; color: var(--text-2); font-size: 0.9375rem; }
+</style>
