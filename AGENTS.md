@@ -22,7 +22,7 @@ Every article follows the ten-stage pipeline in `.claude/skills/new-article/SKIL
 ## Stack
 
 - Astro 7, static output (`dist/`), MDX, sitemap and RSS. Posts live in `src/content/posts/*.md(x)`.
-- Articles live at `/articles/<slug>/`. Section pages are `/research/`, `/guides/`, `/reviews/` and `/policy/`, and the Lab Notebook is at `/lab/`. Sections are defined in `src/consts.ts`.
+- Posts live in their section folder (`/guides/<slug>/`, `/lab/<slug>/`) for topical clustering and per-folder reporting. `/articles/` is the archive of everything. Sections are defined in `src/consts.ts`. **Once a post is published, never change its category without a 301 in `public/.htaccess`.**
 - `src/components/ContentFacts.astro` is the per-article provenance label. `Ledger.astro` is the source list. `linkClaims()` in `src/lib/posts.ts` turns `<mark data-claim>` into claim tags.
 - The Lab Notebook shows only real data, computed from ledgers and `src/content/sitelog.json`. Never put placeholder or invented numbers on the live site. Add a site log entry for each notable change to the site.
 

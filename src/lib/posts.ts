@@ -1,5 +1,5 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
-import type { Section } from '../consts';
+import { SECTIONS, type Section } from '../consts';
 
 type Post = CollectionEntry<'posts'>;
 
@@ -12,7 +12,8 @@ export async function getPosts(section?: Section) {
   return posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 }
 
-export const postUrl = (post: Post) => `/articles/${post.id}/`;
+// Posts live in their section's folder, e.g. /guides/<slug>/
+export const postUrl = (post: Post) => `${SECTIONS[post.data.category].path}${post.id}/`;
 
 export function formatDate(date: Date) {
   return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });

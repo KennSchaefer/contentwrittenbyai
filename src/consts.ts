@@ -4,7 +4,8 @@ export const SITE_DESCRIPTION =
 export const REPO_URL = 'https://github.com/KennSchaefer/contentwrittenbyai';
 export const EDITOR = 'Ken Schaefer';
 
-// Post categories. `lab` posts live in the Lab Notebook; the rest get their own section page.
+// Post categories. Each is a URL folder (/guides/<slug>/), so a published post's category must not change
+// without a 301. `lab` posts live in the Lab Notebook; the rest get their own section page.
 export const SECTIONS = {
   lab: { name: 'Lab Notebook', path: '/lab/', blurb: '' },
   research: {
@@ -27,7 +28,6 @@ export const SECTIONS = {
     path: '/policy/',
     blurb: 'What Google and others actually say about AI content, and what changed since last time.',
   },
-  meta: { name: 'About this site', path: '/about/', blurb: '' },
 } as const;
 
 export type Section = keyof typeof SECTIONS;
