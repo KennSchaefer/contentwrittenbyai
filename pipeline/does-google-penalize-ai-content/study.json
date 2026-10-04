@@ -188,7 +188,8 @@
           "extractionError": false
         }
       ],
-      "verifierNote": "Verifier note: the displayed date (2026-06-23) is later than first publication. Internet Archive has this URL from 2025-11-08 titled '(2025)', with the same 487/83% figures attributed to Originality.ai. Text still says SGE is rolling out 'any day now'. Field kept as displayed."
+      "verifierNote": "Verifier note: the displayed date (2026-06-23) is later than first publication. Internet Archive has this URL from 2025-11-08 titled '(2025)', with the same 487/83% figures attributed to Originality.ai. Text still says SGE is rolling out 'any day now'. Field kept as displayed.",
+      "editorNote": "Report only verifiable facts: identical figures in archived copies with different attribution, no published data. No characterization."
     },
     {
       "rank": 5,
@@ -232,7 +233,7 @@
           "claim": "Google's February 2023 blog post says using AI mainly to manipulate rankings violates its spam policies, and that not all use of automation is spam.",
           "quote": "\"Not all use of automation, including AI generation, is spam.\" Both quotes come directly from Google's February 2023 blog post",
           "citedSource": "https://developers.google.com/search/blog/2023/02/google-search-and-ai-content",
-          "outcome": "contradicted",
+          "outcome": "misquote-meaning-unchanged",
           "primarySource": "https://developers.google.com/search/blog/2023/02/google-search-and-ai-content",
           "reason": "Page quotes Google as 'violates our spam policies'; the post says 'is a violation of our spam policies'. Meaning unchanged, but the quoted wording is altered.",
           "extractionError": false
@@ -371,12 +372,17 @@
     "claimsChecked": 22,
     "byOutcome": {
       "supported-current": 17,
-      "true-but-outdated": 0,
       "unsupported": 4,
-      "contradicted": 1,
-      "opinion": 0
+      "misquote-meaning-unchanged": 1
     },
     "extractionErrors": 0,
     "pagesMentioningUpdate": 0
+  },
+  "editorRulings": {
+    "date": "2026-10-04",
+    "notes": [
+      "r6-c2 relabeled from contradicted to misquote-meaning-unchanged",
+      "Unreadable pages (Reddit, eMarketer, Quora) reported as could not be checked automatically; archived copies not substituted"
+    ]
   }
 }

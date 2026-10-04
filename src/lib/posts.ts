@@ -37,7 +37,7 @@ export async function siteStats() {
   return {
     articles: posts.length,
     claimsVerified: claims.filter((c) => c.used).length,
-    claimsCut: claims.filter((c) => !c.used).length,
+    claimsCut: claims.filter((c) => !c.used && c.decision === 'rejected').length,
   };
 }
 

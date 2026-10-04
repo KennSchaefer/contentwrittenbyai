@@ -6,32 +6,32 @@
       "id": "c1",
       "claim": "Google's AI content guidance (updated 2026-10-01) says it is critical to manually factcheck and review all AI-generated content for accuracy and trustworthiness before publishing.",
       "sourceUrl": "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content",
-      "sourceName": "Google Search Central: Google Search's guidance on using generative AI content on your website",
+      "sourceName": "Google Search Central: Using generative AI content",
       "tier": "official",
       "verdict": "supported",
       "reason": "Last updated 2026-10-01 UTC. \"It is critical to manually factcheck and review all AI-generated content for accuracy and trustworthiness before publishing.\"",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c2",
       "claim": "Google says this review also applies to metadata that can appear in Search results: <title> elements, meta description elements, structured data, and alternate text for images.",
       "sourceUrl": "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content",
-      "sourceName": "Google Search Central: Google Search's guidance on using generative AI content on your website",
+      "sourceName": "Google Search Central: Using generative AI content",
       "tier": "official",
       "verdict": "supported",
-      "reason": "\"This review also applies to metadata like <title> elements, meta description elements, structured data, and alternate texts for images, which can appear in Search results.\"",
+      "reason": "\"This review also applies to metadata like <title> elements, meta description elements, structured data, and alternate texts for images...\"",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c3",
       "claim": "Google says using generative AI tools to generate many pages without adding value for users may violate its spam policy on scaled content abuse.",
       "sourceUrl": "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content",
-      "sourceName": "Google Search Central: Google Search's guidance on using generative AI content on your website",
+      "sourceName": "Google Search Central: Using generative AI content",
       "tier": "official",
       "verdict": "supported",
-      "reason": "\"using generative AI tools or other similar tools to generate many pages without adding value for users may violate Google's spam policy on scaled content abuse.\"",
+      "reason": "\"using generative AI tools... to generate many pages without adding value for users may violate Google's spam policy on scaled content abuse.\"",
       "decision": "auto",
       "used": false
     },
@@ -39,7 +39,7 @@
       "id": "c4",
       "claim": "Google's guidance says Search Quality Rater ratings don't directly influence ranking; raters help evaluate the performance of its ranking systems.",
       "sourceUrl": "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content",
-      "sourceName": "Google Search Central: Google Search's guidance on using generative AI content on your website",
+      "sourceName": "Google Search Central: Using generative AI content",
       "tier": "official",
       "verdict": "supported",
       "reason": "Raters help \"evaluate the performance of our various search ranking systems\"; \"their ratings don't directly influence ranking.\"",
@@ -48,80 +48,80 @@
     },
     {
       "id": "c5",
-      "claim": "In a Feb 8, 2023 post, Google said its ranking systems reward original, high-quality content and that it focuses on the quality of content rather than how content is produced.",
+      "claim": "In a Feb 8, 2023 post, Google said its ranking systems aim to reward original, high-quality content and that it focuses on the quality of content rather than how content is produced.",
       "sourceUrl": "https://developers.google.com/search/blog/2023/02/google-search-and-ai-content",
-      "sourceName": "Google Search Central Blog: Google Search's guidance about AI-generated content (Feb 8, 2023)",
+      "sourceName": "Google Search Central Blog, Feb 8, 2023",
       "tier": "official",
-      "verdict": "partial",
-      "reason": "Post dated Feb 8, 2023 says ranking systems \"aim to reward original, high-quality content\"; claim drops \"aim to\". Quality-over-production line matches.",
-      "decision": "pending",
-      "used": false
+      "verdict": "supported",
+      "reason": "Reworded to the source's 'aim to reward' at editor's direction. Post dated Feb 8, 2023; quality-over-production line matches.",
+      "decision": "approved",
+      "used": true
     },
     {
       "id": "c6",
       "claim": "Google's 2023 FAQ says appropriate use of AI or automation is not against its guidelines; using it to generate content primarily to manipulate rankings violates its spam policies.",
       "sourceUrl": "https://developers.google.com/search/blog/2023/02/google-search-and-ai-content",
-      "sourceName": "Google Search Central Blog: Google Search's guidance about AI-generated content (Feb 8, 2023)",
+      "sourceName": "Google Search Central Blog, Feb 8, 2023",
       "tier": "official",
       "verdict": "supported",
-      "reason": "FAQ: \"Appropriate use of AI or automation is not against our guidelines\"; use \"to generate content primarily to manipulate search rankings\" is against spam policies.",
+      "reason": "FAQ: \"Appropriate use of AI or automation is not against our guidelines\"; using it \"primarily to manipulate search rankings\" violates spam policies.",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c7",
       "claim": "Google says using AI doesn't give content any special gains: \"It's just content.\" If it is useful, helpful, original, and satisfies aspects of E-E-A-T, it might do well.",
       "sourceUrl": "https://developers.google.com/search/blog/2023/02/google-search-and-ai-content",
-      "sourceName": "Google Search Central Blog: Google Search's guidance about AI-generated content (Feb 8, 2023)",
+      "sourceName": "Google Search Central Blog, Feb 8, 2023",
       "tier": "official",
       "verdict": "supported",
       "reason": "\"Using AI doesn't give content any special gains. It's just content. If it is useful, helpful, original, and satisfies aspects of E-E-A-T, it might do well\"",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c8",
       "claim": "Google defines scaled content abuse as many pages generated primarily to manipulate search rankings and not help users, typically unoriginal and low-value, no matter how it's created.",
       "sourceUrl": "https://developers.google.com/search/docs/essentials/spam-policies#scaled-content",
-      "sourceName": "Google Search Central: Spam policies for Google web search",
+      "sourceName": "Google Search Central: Spam policies",
       "tier": "official",
       "verdict": "supported",
-      "reason": "\"many pages are generated for the primary purpose of manipulating search rankings and not helping users... unoriginal content... little to no value... no matter how it's created.\"",
+      "reason": "\"many pages are generated for the primary purpose of manipulating search rankings and not helping users... no matter how it's created.\"",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c9",
       "claim": "Google's spam policies list using generative AI tools or similar tools to generate many pages without adding value for users as an example of scaled content abuse.",
       "sourceUrl": "https://developers.google.com/search/docs/essentials/spam-policies#scaled-content",
-      "sourceName": "Google Search Central: Spam policies for Google web search",
+      "sourceName": "Google Search Central: Spam policies",
       "tier": "official",
       "verdict": "supported",
       "reason": "First listed example: \"Using generative AI tools or other similar tools to generate many pages without adding value for users\".",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c10",
       "claim": "Google announced the scaled content abuse policy on March 5, 2024, saying it applies whether content is produced through automation, human efforts, or a combination.",
       "sourceUrl": "https://developers.google.com/search/blog/2024/03/core-update-spam-policies",
-      "sourceName": "Google Search Central Blog: March 2024 core update and new spam policies",
+      "sourceName": "Google Search Central Blog, Mar 5, 2024",
       "tier": "official",
       "verdict": "supported",
       "reason": "Dated Tuesday, March 5, 2024. Policy applies \"no matter whether content is produced through automation, human efforts, or some combination\" of the two.",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c11",
       "claim": "Google's Search Status Dashboard says the August 2026 spam update was released Aug 18, 2026, applies globally and to all languages, and finished rolling out Aug 21, 2026.",
       "sourceUrl": "https://status.search.google.com/incidents/LEubPCm2octf2uMqCFKE",
-      "sourceName": "Google Search Status Dashboard: August 2026 spam update",
+      "sourceName": "Google Search Status Dashboard",
       "tier": "official",
       "verdict": "supported",
       "reason": "Aug 18: \"Released the August 2026 spam update, which applies globally and to all languages.\" Aug 21: \"The rollout was complete as of August 21, 2026.\"",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c12",
@@ -130,75 +130,119 @@
       "sourceName": "Search Engine Journal",
       "tier": "reputable",
       "verdict": "supported",
-      "reason": "\"Google didn't announce any new spam policy types with this rollout.\" \"Google didn't post a blog article to go with either the release note or the completion note.\"",
-      "decision": "pending",
-      "used": false
+      "reason": "SEJ: \"Google didn't announce any new spam policy types with this rollout\" and didn't post a blog article with the release or completion note.",
+      "decision": "approved",
+      "used": true
     },
     {
       "id": "c13",
-      "claim": "Rater guidelines section 4.6.5 (Scaled Content Abuse) tells raters to rate such pages Lowest no matter how they are created, even if unsure whether generative AI tools were used.",
+      "claim": "Rater guidelines 4.6.5: scaled content abuse pages are rated Lowest no matter how they're created; if unsure about AI use, raters rate Lowest when they strongly suspect abuse.",
       "sourceUrl": "https://static.googleusercontent.com/media/guidelines.raterhub.com/en//searchqualityevaluatorguidelines.pdf",
-      "sourceName": "Google Search Quality Rater Guidelines (General Guidelines, September 11, 2025)",
+      "sourceName": "Google Search Quality Rater Guidelines (Sep 2025)",
       "tier": "official",
-      "verdict": "partial",
-      "reason": "4.6.5 says Lowest \"no matter how they are created\", but if unsure of AI use, Lowest applies \"when you strongly suspect\" abuse after several pages. Claim omits that.",
-      "decision": "pending",
-      "used": false
+      "verdict": "supported",
+      "reason": "Reworded to include the 'strongly suspect' condition at editor's direction. Matches 4.6.5.",
+      "decision": "approved",
+      "used": true
     },
     {
       "id": "c14",
-      "claim": "Rater guidelines section 4.6.6 applies Lowest when almost all main content is copied, paraphrased, embedded, auto or AI generated, or reposted with little effort, originality, or value.",
+      "claim": "Rater guidelines 4.6.6: Lowest when all or almost all main content is copied, paraphrased, or AI generated with little to no effort, originality, and added value.",
       "sourceUrl": "https://static.googleusercontent.com/media/guidelines.raterhub.com/en//searchqualityevaluatorguidelines.pdf",
-      "sourceName": "Google Search Quality Rater Guidelines (General Guidelines, September 11, 2025)",
+      "sourceName": "Google Search Quality Rater Guidelines (Sep 2025)",
       "tier": "official",
-      "verdict": "partial",
-      "reason": "4.6.6: \"all or almost all\" MC with \"little to no effort, little to no originality, and little to no added value\". Claim's \"or\" loosens the all-three test.",
-      "decision": "pending",
-      "used": false
+      "verdict": "supported",
+      "reason": "Reworded to the 'all or almost all' and three-part test at editor's direction. Matches 4.6.6.",
+      "decision": "approved",
+      "used": true
     },
     {
       "id": "c15",
       "claim": "Google says AI or automation disclosures are useful where someone might think \"How was this created?\" and to consider adding them when it would be reasonably expected.",
       "sourceUrl": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content#how-the-content-was-created",
-      "sourceName": "Google Search Central: Creating helpful, reliable, people-first content",
+      "sourceName": "Google Search Central: Creating helpful content",
       "tier": "official",
       "verdict": "supported",
-      "reason": "\"AI or automation disclosures are useful for content where someone might think 'How was this created?' Consider adding these when it would be reasonably expected.\"",
+      "reason": "\"AI or automation disclosures are useful for content where someone might think 'How was this created?'\" Consider adding when reasonably expected.",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c16",
       "claim": "Google says Merchant Center requires AI-generated images to carry IPTC TrainedAlgorithmicMedia metadata, and AI-generated product titles and descriptions to be labeled as AI-generated.",
       "sourceUrl": "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content",
-      "sourceName": "Google Search Central: Google Search's guidance on using generative AI content on your website",
+      "sourceName": "Google Search Central: Using generative AI content",
       "tier": "official",
       "verdict": "supported",
-      "reason": "\"AI-generated images must contain... IPTC DigitalSourceType TrainedAlgorithmicMedia metadata. AI-generated product data such as title and description... labeled as AI-generated.\"",
+      "reason": "AI images \"must contain... IPTC DigitalSourceType TrainedAlgorithmicMedia metadata\"; AI product titles and descriptions must be labeled.",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c17",
       "claim": "Google says it uses a variety of systems, including SpamBrain, that analyze patterns and signals to help identify spam content, however it is produced.",
       "sourceUrl": "https://developers.google.com/search/blog/2023/02/google-search-and-ai-content",
-      "sourceName": "Google Search Central Blog: Google Search's guidance about AI-generated content (Feb 8, 2023)",
+      "sourceName": "Google Search Central Blog, Feb 8, 2023",
       "tier": "official",
       "verdict": "supported",
       "reason": "FAQ: \"We have a variety of systems, including SpamBrain, that analyze patterns and signals to help us identify spam content, however it is produced.\"",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c18",
       "claim": "Google's John Mueller said what matters is the overall quality published; using AI tools to get started is not a problem on its own, nor a sign content is automatically high quality.",
       "sourceUrl": "https://developers.google.com/search/help/office-hours/2024/june",
-      "sourceName": "Google Search Central: June 2024 SEO Office Hours transcript",
+      "sourceName": "Google Search Central Office Hours, June 2024",
       "tier": "official",
       "verdict": "supported",
       "reason": "Mueller: \"what matters for us is the overall quality that you end up publishing\"; tools \"not a problem on its own\" but \"not a sign\" of automatic high quality.",
       "decision": "auto",
-      "used": false
+      "used": true
+    },
+    {
+      "id": "c19",
+      "claim": "Google's helpful content page, updated October 1, 2026, says using generative AI to produce large amounts of text without manual oversight or curation represents little to no effort.",
+      "sourceUrl": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "sourceName": "Google Search Central: Creating helpful content",
+      "tier": "official",
+      "verdict": "supported",
+      "reason": "Absent before; Effort: \"using generative AI to produce large amounts of text without manual oversight or curation represents little to no effort.\"",
+      "decision": "auto",
+      "used": true
+    },
+    {
+      "id": "c20",
+      "claim": "The same update says attribution or giving credit to other sources doesn't replace the need for original effort.",
+      "sourceUrl": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "sourceName": "Google Search Central: Creating helpful content",
+      "tier": "official",
+      "verdict": "supported",
+      "reason": "Absent before; new under Effort: \"Attribution or giving credit to other sources doesn't replace the need for original effort.\"",
+      "decision": "auto",
+      "used": true
+    },
+    {
+      "id": "c21",
+      "claim": "The update calls fabricated creator profiles, such as AI-generated headshots, made-up names or false credentials, a form of deception and a signal of a low-quality page.",
+      "sourceUrl": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "sourceName": "Google Search Central: Creating helpful content",
+      "tier": "official",
+      "verdict": "supported",
+      "reason": "Absent before; new: fabricating creator profiles \"is a form of deception\"; any deception \"is a signal of a low-quality page.\"",
+      "decision": "auto",
+      "used": true
+    },
+    {
+      "id": "c22",
+      "claim": "The update says informational content should be factually accurate, and content on YMYL topics must be highly accurate and consistent with expert consensus.",
+      "sourceUrl": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "sourceName": "Google Search Central: Creating helpful content",
+      "tier": "official",
+      "verdict": "supported",
+      "reason": "Absent before; new Accuracy: info pages \"should be factually accurate\"; YMYL \"must be highly accurate and consistent with established expert consensus.\"",
+      "decision": "auto",
+      "used": true
     }
   ]
 }

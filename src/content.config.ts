@@ -23,6 +23,8 @@ const posts = defineCollection({
   loader: glob({ base: './src/content/posts', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     title: z.string(),
+    // Title tag, when it should differ from the on-page H1 (title)
+    seoTitle: z.string().optional(),
     description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),

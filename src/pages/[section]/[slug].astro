@@ -50,7 +50,7 @@ const jsonLd = {
 };
 ---
 
-<Base title={title} description={description} type="article" noindex={post.data.draft} section={category}>
+<Base title={post.data.seoTitle ?? title} description={description} type="article" noindex={post.data.draft} section={category}>
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <article class="wrap">
     <header>
@@ -70,7 +70,7 @@ const jsonLd = {
         {irl?.data.pullQuote && (
           <blockquote class="pull">
             <p>{irl.data.pullQuote}</p>
-            <footer>{irl.data.author}, <a href="#irl-heading">in real life</a></footer>
+            <footer>{irl.data.author}, <a href="#irl-heading">in real life</a>{irl.data.sample && <span class="sample-tag"> (AI-written sample)</span>}</footer>
           </blockquote>
         )}
         <div class="prose">
@@ -102,6 +102,7 @@ const jsonLd = {
   .pull p { margin: 0; font: italic 1.5rem/1.35 var(--serif); }
   .pull footer { margin-top: 0.5rem; font: 600 1.35rem var(--hand); color: var(--accent); }
   .pull footer a { color: inherit; }
+  .sample-tag { font: 600 0.8125rem var(--sans); }
   .side { flex: 1 1 17rem; max-width: 21rem; position: sticky; top: 1.5rem; }
   @media (max-width: 900px) { .side { position: static; max-width: none; } }
 </style>

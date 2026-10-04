@@ -124,5 +124,33 @@
     "sourceUrl": "https://developers.google.com/search/help/office-hours/2024/june",
     "sourceName": "Google Search Central: June 2024 SEO Office Hours transcript",
     "tier": "official"
+  },
+  {
+    "id": "c19",
+    "claim": "Google's helpful content page, updated October 1, 2026, says using generative AI to produce large amounts of text without manual oversight or curation represents little to no effort.",
+    "sourceUrl": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+    "sourceName": "Google Search Central: Creating helpful, reliable, people-first content (updated 2026-10-01)",
+    "tier": "official"
+  },
+  {
+    "id": "c20",
+    "claim": "The same update says attribution or giving credit to other sources doesn't replace the need for original effort.",
+    "sourceUrl": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+    "sourceName": "Google Search Central: Creating helpful, reliable, people-first content (updated 2026-10-01)",
+    "tier": "official"
+  },
+  {
+    "id": "c21",
+    "claim": "The update calls fabricated creator profiles, such as AI-generated headshots, made-up names or false credentials, a form of deception and a signal of a low-quality page.",
+    "sourceUrl": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+    "sourceName": "Google Search Central: Creating helpful, reliable, people-first content (updated 2026-10-01)",
+    "tier": "official"
+  },
+  {
+    "id": "c22",
+    "claim": "The update says informational content should be factually accurate, and content on YMYL topics must be highly accurate and consistent with expert consensus.",
+    "sourceUrl": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+    "sourceName": "Google Search Central: Creating helpful, reliable, people-first content (updated 2026-10-01)",
+    "tier": "official"
   }
 ]

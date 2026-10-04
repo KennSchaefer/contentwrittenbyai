@@ -29,7 +29,7 @@ const factLabel = { 'not-needed': 'Not needed', pending: 'Pending', checked: 'Hu
     <div><dt>Human editing</dt><dd>{editLabel}</dd></div>
     {humanWords > 0 && <div><dt>Written by a human</dt><dd>{humanWords} words</dd></div>}
     {ledger && <div><dt>Claims checked</dt><dd>{claims.length}</dd></div>}
-    {ledger && <div><dt>Claims cut</dt><dd class="cut">{claims.filter((c) => !c.used).length}</dd></div>}
+    {ledger && <div><dt>Claims cut</dt><dd class="cut">{claims.filter((c) => !c.used && c.decision === 'rejected').length}</dd></div>}
     <div class="last"><dt>Fact check</dt><dd>{factLabel}</dd></div>
   </dl>
   <p class="small"><strong>Brief:</strong> {p.brief}</p>

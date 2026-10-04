@@ -12,7 +12,9 @@ interface Props {
 }
 
 const { title, description = SITE_DESCRIPTION, type = 'website', noindex = false, section } = Astro.props;
-const fullTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
+// Add the site name only when it fits; Google truncates title tags past roughly 60 to 70 characters
+const withSite = `${title} | ${SITE_TITLE}`;
+const fullTitle = !title ? SITE_TITLE : withSite.length <= 65 ? withSite : title;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 
 // Google Tag Manager's standard snippet, as Google provides it
