@@ -1,6 +1,8 @@
-# Brief: Does Google penalize AI content?
+# Brief: Does Google penalize AI content? We fact-checked the top 10 answers.
 
-**Section:** Policy · **URL:** `/policy/does-google-penalize-ai-content/` · **Target length:** 1,600 to 2,000 words
+**Section:** Research · **URL:** `/research/does-google-penalize-ai-content/` · **Target length:** 2,000 to 2,600 words plus the study table
+
+*Version 2. Version 1 was a straight explainer, and the editor and AI agreed it would be commodity content: every ranking page gives the same answer from the same 2023 statement. This version adds original research, a primary-source redline, and first-hand experience.*
 
 ## Keywords
 - **Primary:** does google penalize ai content (170/mo, KD 50)
@@ -10,39 +12,46 @@
 Full set with volumes: `keywords.json`.
 
 ## What currently ranks
-1. Google's own Search Central blog post from **February 2023**
-2. A Google support forum thread
-3. Reddit r/SEO
-4. Rankability (data study)
-5. YouTube
-6. SEO Sherpa, Semrush blog, eMarketer (study coverage), Quora
+Google's Search Central blog post from February 2023 (#1), a Google support forum thread, Reddit, Rankability, YouTube, SEO Sherpa, Semrush, eMarketer and Quora. They mostly give the same answer, built on the same 2023 statement, and predate Google's October 1, 2026 guidance update.
 
-**The gap:** the top result is three and a half years old. Most of the others answer from that same 2023 statement and predate both the August 2026 spam enforcement and Google's October 1, 2026 guidance update. None show how a claim was actually checked.
+## What this piece adds that nothing ranking does
+1. **Original study:** we put the top 10 answers to this exact question through our verification process and report what holds up.
+2. **Primary-source redline:** a word-level comparison of Google's guidance page before (Internet Archive, September 27, 2026) and after the October 1 update.
+3. **First-hand experience:** a section written by the editor, not the AI, from running AI-assisted content through verification at scale.
 
-## Angle
-Answer the question directly ("no, not for being AI"), then show what Google *does* act on as of October 2026, using primary sources only. Then demonstrate what Google's new "manually fact-check" instruction looks like in practice, with this article as the specimen: its own ledger, including a claim we cut. Every competitor tells you to fact-check. This one shows the receipts.
-
-## H1
-Does Google penalize AI content? Not for being AI. For being wrong.
+## Title and H1
+- **Title tag:** Does Google Penalize AI Content? We Fact-Checked the Top 10 Answers
+- **H1:** We fact-checked the top 10 answers to "Does Google penalize AI content?"
 
 ## Sections
-1. **The short answer** (40 to 60 words, answer-first for snippets and AI Overviews): no penalty for production method; quality, accuracy and scaled abuse are what count; as of October 1, 2026 Google calls fact-checking "critical."
-2. **What Google changed on October 1, 2026:** the new language, the extension to titles, meta descriptions, structured data and alt text, and the pointers to rater guidelines 4.6.5 and 4.6.6.
-3. **What Google actually penalizes:** the scaled content abuse policy, what it covers, and the August 2026 spam update enforcement. Separate the official policy from the industry's interpretation of it.
-4. **Can Google detect AI content? (And does it need to?)** What Google has said about production method versus quality. Avoid speculating about detection capability unless a primary source supports it.
-5. **What "manually fact-check" looks like in practice:** our process in four steps, demonstrated on this article (claims, independent re-check, human ruling, cut claims). Link to /methodology/.
-6. **The parts everyone forgets:** metadata, alt text and structured data, with a short checklist.
-7. **FAQ** (below)
+1. **The short answer** (40 to 60 words, answer-first for snippets and AI Overviews): no penalty for production method. Google acts on unhelpful, inaccurate and scaled content, and as of October 1, 2026 it calls manual fact-checking "critical."
+2. **What we checked, and how:** the SERP snapshot date, which 10 URLs, how claims were extracted (up to 5 key factual claims per page about how Google treats AI content), and how each was verified against primary sources. Link to /methodology/.
+3. **What we found:** a summary table, one row per page: claims checked, supported and current, true but outdated, unsupported, contradicted; whether the page mentions the October 2026 update; and whether it links a primary source. Then the patterns. Report findings neutrally. No dunking.
+4. **What Google actually changed on October 1, 2026:** the redline, showing the words added and removed, then what it means in plain English, including the extension to titles, descriptions, structured data and alt text.
+5. **What Google actually penalizes:** the scaled content abuse policy and the August 2026 enforcement, separating official policy from industry interpretation.
+6. **In real life · by a real human:** the editor's section (see below), with its own descriptive H2.
+7. **FAQ:** below.
 
 ## FAQ
 - Does Google penalize AI content in 2026?
 - Can AI-generated content rank on Google?
-- Is AI content bad for SEO?
+- Can Google detect AI content?
 - Does Google require you to disclose AI-generated content?
 - What is scaled content abuse?
 
+## Study rules
+- Snapshot the top 10 organic results on one date, and record it. Record UGC results (Reddit, Quora, forums, YouTube) as such. Check claims from the top answer or the video's own description only, and report them separately from editorial pages.
+- Claim outcomes: **supported and current**, **true but outdated** (accurate before October 2026, missing the update), **unsupported** (no source, can't confirm), **contradicted** (a primary source says otherwise).
+- The dataset (`study.json`) is published in this folder. Its findings also go into the Lab Notebook as the first study.
+- Each competitor page gets a fair reading: its published or updated date is noted, so "outdated" is about timing, not quality.
+
+## In real life · by a real human: questions for the editor
+Answer in your own words, any length or format. This section is published as written, apart from typo fixes you approve.
+1. From running AI-assisted content through verification at scale, what did Google reward, and what did it ignore? A specific, anonymized example is ideal.
+2. What's the most convincing-but-wrong thing an AI draft ever told you, and how was it caught?
+3. If an SEO asked you "does Google penalize AI content?" over coffee, what would you actually tell them?
+
 ## Notes
-- Tone: professional, dry. One or two jokes, no more.
-- FAQ as normal H2/H3 content. FAQ rich results are limited to authoritative government and health sites, so don't count on that markup. The structure still helps AI answers.
-- Every factual claim needs an official or primary source where one exists (Google Search Central, Google's spam policies, the rater guidelines PDF). Industry studies (Rankability, Semrush, eMarketer) are optional and need editor review if used.
+- Tone: professional, dry, and fair to the sites we checked.
+- FAQ as normal content. FAQ rich results are limited to government and health sites, but the structure helps AI answers.
 - Internal links: /methodology/, /lab/.
