@@ -30,6 +30,7 @@ Every article follows the ten-stage pipeline in `.claude/skills/new-article/SKIL
 
 The "Red Pen" editorial design: Newsreader serif for reading, Public Sans for UI, a red-pen accent and handwritten Caveat margin notes, used sparingly. The Lab Notebook has its own sub-style: teal, graph paper, IBM Plex Mono. Colors are tokens in `src/styles/global.css`, with dark mode. The tone is professional with dry wit, and the wit lives in specific spots (margin notes, empty states, footer), not everywhere.
 - `.github/workflows/deploy.yml` builds on every PR and push. On `main` it rsyncs to SiteGround over SSH, gated by the `DEPLOY_ENABLED` repo variable. Secrets: `SG_HOST`, `SG_PORT`, `SG_USER`, `SG_PATH`, `SG_SSH_KEY`.
+- Analytics: Google Tag Manager (`GTM_ID` in `src/consts.ts`; GA4 is configured inside the container) loads on every page from `src/layouts/Base.astro`. Every page must render through `Base.astro` so tracking stays complete. Add tags and events in GTM, not in site code, unless a page needs to push a `dataLayer` event.
 - `public/.htaccess` handles the 404 page, HTTPS and www redirects, and asset caching on SiteGround's Apache.
 
 ## Development
