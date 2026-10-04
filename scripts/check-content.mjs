@@ -105,6 +105,21 @@ for (const rel of postFiles) {
   }
 }
 
+// "In real life" sections are human-written, so the AI writing rules don't apply to them.
+// What does apply: an AI-written sample must never publish, and each section needs a matching post.
+const IRL_DIR = 'src/content/irl';
+const irlFiles = existsSync(IRL_DIR) ? readdirSync(IRL_DIR).filter((f) => f.endsWith('.md')) : [];
+for (const f of irlFiles) {
+  const slug = basename(f, '.md');
+  const file = join(IRL_DIR, f);
+  const { data } = splitFrontmatter(readFileSync(file, 'utf8'));
+  const postRel = postFiles.find((p) => p.replace(/\\/g, '/').replace(/(\/index)?\.mdx?$/, '').split('/').pop() === slug);
+  if (!postRel) { err(file, 'no post matches this section'); continue; }
+  const post = splitFrontmatter(readFileSync(join(POSTS_DIR, postRel), 'utf8')).data;
+  if (data.sample === true && post.draft !== true) err(file, 'is an AI-written sample; the editor must replace it before the post publishes');
+  else if (data.sample === true) warn(file, 'is an AI-written sample and must be replaced before publishing');
+}
+
 for (const f of ledgerFiles) {
   const slug = basename(f, extname(f));
   if (![...postSlugs].some((s) => s.split('/').pop() === slug)) err(join(LEDGERS_DIR, f), `no post matches this ledger`);

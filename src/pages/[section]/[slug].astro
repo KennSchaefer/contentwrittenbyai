@@ -3,6 +3,7 @@ import { render, getEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import ContentFacts from '../../components/ContentFacts.astro';
 import Ledger from '../../components/Ledger.astro';
+import InRealLife from '../../components/InRealLife.astro';
 import { getPosts, formatDate, readingMinutes, linkClaims } from '../../lib/posts';
 import { SITE_TITLE, SECTIONS } from '../../consts';
 
@@ -17,8 +18,12 @@ const { title, description, pubDate, updatedDate, category, provenance } = post.
 const ledger = await getEntry('ledgers', post.id.split('/').pop()!);
 const minutes = readingMinutes(post);
 const section = SECTIONS[category];
-// Markdown posts render through linkClaims so claim marks become tagged links; MDX renders as-is
+const irl = await getEntry('irl', post.id.split('/').pop()!);
+const irlWords = irl ? (irl.body ?? '').split(/\s+/).filter(Boolean).length : 0;
+// Markdown posts render through linkClaims so claim marks become tagged links; MDX renders as-is.
+// A <div data-irl></div> line in the post places the editor's section; without it the section follows the body.
 const html = post.rendered?.html ? linkClaims(post.rendered.html) : null;
+const [beforeIrl, afterIrl] = html ? html.split(/<div data-irl=""?><\/div>/) : [null, undefined];
 
 const abs = (path: string) => new URL(path, Astro.site).href;
 const jsonLd = {
@@ -62,13 +67,21 @@ const jsonLd = {
     </header>
     <div class="row">
       <div class="main">
+        {irl?.data.pullQuote && (
+          <blockquote class="pull">
+            <p>{irl.data.pullQuote}</p>
+            <footer>{irl.data.author}, <a href="#irl-heading">in real life</a></footer>
+          </blockquote>
+        )}
         <div class="prose">
-          {html ? <Fragment set:html={html} /> : <Content />}
+          {beforeIrl !== null ? <Fragment set:html={beforeIrl} /> : <Content />}
+          {irl && <InRealLife entry={irl} />}
+          {afterIrl && <Fragment set:html={afterIrl} />}
         </div>
         {ledger && <Ledger ledger={ledger} />}
       </div>
       <div class="side">
-        <ContentFacts post={post} ledger={ledger} minutes={minutes} />
+        <ContentFacts post={post} ledger={ledger} minutes={minutes} humanWords={irl && !irl.data.sample ? irlWords : 0} />
       </div>
     </div>
   </article>
@@ -85,6 +98,10 @@ const jsonLd = {
   .byline strong { color: var(--text); }
   .row { display: flex; flex-wrap: wrap; gap: 2.5rem 3.5rem; align-items: flex-start; margin-top: 2.75rem; }
   .main { flex: 999 1 36rem; min-width: 0; max-width: var(--measure); }
+  .pull { margin: 0 0 2.5rem; padding-left: 1.25rem; border-left: 3px solid var(--accent); max-width: var(--measure); }
+  .pull p { margin: 0; font: italic 1.5rem/1.35 var(--serif); }
+  .pull footer { margin-top: 0.5rem; font: 600 1.35rem var(--hand); color: var(--accent); }
+  .pull footer a { color: inherit; }
   .side { flex: 1 1 17rem; max-width: 21rem; position: sticky; top: 1.5rem; }
   @media (max-width: 900px) { .side { position: static; max-width: none; } }
 </style>
