@@ -1,0 +1,55 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { REPO_URL } from '../consts';
+
+interface Props {
+  ledger: CollectionEntry<'ledgers'>;
+}
+
+const { ledger } = Astro.props;
+const claims = ledger.data.claims;
+const used = claims.filter((c) => c.used);
+const auto = used.filter((c) => c.decision === 'auto').length;
+const approved = used.filter((c) => c.decision === 'approved').length;
+const excluded = claims.length - used.length;
+const sources = new Set(used.map((c) => new URL(c.sourceUrl).hostname)).size;
+const ledgerUrl = `${REPO_URL}/blob/main/src/content/ledgers/${ledger.id}.json`;
+
+const label = { auto: 'Confirmed', approved: 'Confirmed by editor' } as const;
+const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
+const summary = [
+  `${plural(used.length, 'claim', 'claims')} in this article, checked against ${plural(sources, 'source', 'sources')}.`,
+  `A separate AI re-read each source: ${auto} confirmed by official or primary sources, ${approved} confirmed after review by the editor.`,
+  excluded > 0 ? `${plural(excluded, 'more claim was', 'more claims were')} cut because the sources didn't hold up.` : '',
+].join(' ');
+---
+
+<section class="ledger" id="sources" aria-labelledby="sources-heading">
+  <h2 id="sources-heading">Sources and fact check</h2>
+  <p>{summary}</p>
+  <details>
+    <summary>Show every claim</summary>
+    <ol>
+      {used.map((c) => (
+        <li>
+          <span class="claim">{c.claim}</span>
+          <span class="meta">
+            <a href={c.sourceUrl} rel="nofollow noopener">{c.sourceName}</a> · {label[c.decision as 'auto' | 'approved']}
+          </span>
+        </li>
+      ))}
+    </ol>
+    <p class="muted full"><a href={ledgerUrl}>Full ledger with the verifier's reasoning, including cut claims →</a></p>
+  </details>
+</section>
+
+<style>
+  .ledger { max-width: var(--measure); margin-top: 3rem; font-size: 0.95rem; }
+  h2 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+  summary { cursor: pointer; color: var(--accent); }
+  ol { padding-left: 1.25rem; }
+  li { margin: 0.6rem 0; }
+  .claim { display: block; }
+  .meta { color: var(--muted); font-size: 0.875rem; }
+  .full { font-size: 0.875rem; }
+</style>

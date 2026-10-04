@@ -1,0 +1,54 @@
+{
+  "$comment": "Writing rules enforced by scripts/check-content.mjs. Characters and phrases are case-insensitive. Patterns are regular expressions.",
+  "bannedCharacters": {
+    "—": "em dash",
+    "–": "en dash (use a hyphen for ranges)"
+  },
+  "bannedPhrases": [
+    "delve",
+    "tapestry",
+    "testament to",
+    "in today's fast-paced",
+    "in today's digital",
+    "ever-evolving",
+    "ever-changing landscape",
+    "game-changer",
+    "game changer",
+    "unlock the power",
+    "unleash",
+    "elevate your",
+    "harness the power",
+    "seamlessly",
+    "in the realm of",
+    "navigate the complexities",
+    "it's important to note",
+    "it is important to note",
+    "it's worth noting",
+    "let's dive in",
+    "dive into",
+    "in conclusion",
+    "in summary",
+    "at the end of the day",
+    "without further ado",
+    "look no further",
+    "a myriad of",
+    "plethora",
+    "embark on",
+    "robust",
+    "cutting-edge",
+    "revolutionize",
+    "paradigm shift"
+  ],
+  "bannedPatterns": [
+    { "pattern": "\\bit'?s not (just|only|merely) [^.]{1,60}[,;] it'?s\\b", "label": "negative reframe (\"it's not X, it's Y\")" },
+    { "pattern": "\\bnot (just|only|merely) [^.]{1,60}, but\\b", "label": "negative reframe (\"not just X, but Y\")" },
+    { "pattern": "\\b(this|the following) (article|post|guide) (will|explores|covers)\\b", "label": "meta commentary about the article" },
+    { "pattern": "\\bas an ai\\b", "label": "AI self-reference" },
+    { "pattern": "\\bwhether you're an? [^.]{1,40} or an? \\b", "label": "\"whether you're an X or a Y\" opener" }
+  ],
+  "metadata": {
+    "titleMax": 70,
+    "descriptionMin": 70,
+    "descriptionMax": 160
+  }
+}

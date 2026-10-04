@@ -10,6 +10,15 @@ A site written and run by AI, in the open, to test whether AI-written content ca
 - **No scaled-content patterns.** No thin or programmatic pages, no rewritten news from other outlets, no keyword-stuffed filler. The site must not look like the spam it argues against.
 - Facts and statistics need a source link in the text. Set `factCheck: pending` until a human has checked them.
 
+## Content methodology
+
+Every article follows the ten-stage pipeline in `.claude/skills/new-article/SKILL.md`, with three editor gates: brief, flagged claims, and final edit. It's explained publicly at `/methodology/`.
+
+- Verification is done by the `claim-verifier` agent (`.claude/agents/`) in a fresh context, never by the agent that did the research.
+- Source ledgers (`src/content/ledgers/<slug>.json`) render as a short, collapsed source list on each post. Keep them short: record only the claims the article relies on.
+- `npm run check` (`scripts/check-content.mjs`, rules in `content-rules.json`) enforces the writing rules and ledger gates in code, and CI runs it before every build.
+- Never mention the agency or the internal name of the process this methodology was adapted from. The repo is public.
+
 ## Stack
 
 - Astro 7, static output (`dist/`), MDX, sitemap and RSS. Posts live in `src/content/posts/*.md(x)`.

@@ -1,0 +1,109 @@
+---
+import Base from '../layouts/Base.astro';
+import { REPO_URL } from '../consts';
+
+const stages = [
+  ['Keyword research', 'Real search demand data shapes the topic. Not a model\'s guess about what people search for.'],
+  ['Brief', 'An outline with the angle, headings and questions to answer, based on what already ranks. The editor approves it before anything is written.', true],
+  ['Research', 'AI searches the live web and pulls out factual claims. Every claim is stored with the URL it came from.'],
+  ['Verification', 'A separate AI, which didn\'t do the research, re-reads every source and rules on whether it actually supports the claim. Anything it can\'t confirm goes to the editor.', true],
+  ['Writing', 'The article is drafted from the approved brief and the confirmed claims only. Rejected claims never reach the writer.'],
+  ['Linking', 'Links are checked against live pages so they point where they say they do.'],
+  ['Editing', 'The editor reads, rewrites and approves the final piece. Their changes are saved separately from the AI draft.', true],
+  ['Quality checks', 'Code, not the model, checks the text for the habits of machine writing and for missing or unresolved sources. A failed check blocks publishing.'],
+  ['Metadata', 'The title, description and structured data are written from the finished article and get the same checks as the body.'],
+  ['Publishing', 'Approving the final edit publishes the article, together with its sources and its history.'],
+] as const;
+---
+
+<Base
+  title="Our content methodology"
+  description="How every article on this site is researched, fact-checked, written by AI and approved by a human editor before it's published."
+>
+  <div class="prose">
+    <p class="eyebrow">Methodology</p>
+    <h1>How we make content</h1>
+
+    <p>
+      AI models are good at writing sentences that sound right, whether or not they are. So
+      on this site, nothing the AI writes is treated as true until a source confirms it.
+      Every article goes through the same ten steps, and a human editor signs off at three of them.
+    </p>
+    <p>
+      Google's own guidance agrees with this approach. It calls it
+      "<a href="https://developers.google.com/search/docs/fundamentals/using-gen-ai-content">critical
+      to manually factcheck and review all AI-generated content</a>" before publishing, including
+      titles, descriptions and structured data.
+    </p>
+
+    <h2>The ten steps</h2>
+  </div>
+
+  <ol class="stages">
+    {stages.map(([name, text, gate]) => (
+      <li class={gate ? 'gate' : undefined}>
+        <h3>{name}{gate && <span class="tag">Editor sign-off</span>}</h3>
+        <p>{text}</p>
+      </li>
+    ))}
+  </ol>
+
+  <div class="prose">
+    <h2>What you can check yourself</h2>
+    <p>
+      Every article ends with two things. The <strong>source list</strong> shows each factual claim
+      the article relies on and where it was confirmed. The <strong>How this was made</strong> label
+      names the model that wrote it, the brief it was given and how much the editor changed it.
+    </p>
+    <p>
+      Every brief, source ledger, draft and edit is public in the
+      <a href={REPO_URL}>site's GitHub repository</a>. That includes the claims we cut.
+    </p>
+
+    <h2>What this doesn't guarantee</h2>
+    <p>
+      Checking claims against sources catches invented facts. It doesn't make a source correct.
+      Sources are ranked by authority for that reason, and weak ones always go to a person.
+      The verifying AI is independent of the writing AI, but they're from the same model family,
+      which is why a human makes the final call. If you find an error, tell us and we'll correct it
+      in public.
+    </p>
+  </div>
+</Base>
+
+<style>
+  .stages {
+    max-width: var(--measure);
+    list-style: none;
+    counter-reset: step;
+    padding: 0;
+    margin: 1rem 0 2rem;
+  }
+  .stages li {
+    counter-increment: step;
+    position: relative;
+    padding: 0.75rem 0 0.75rem 3rem;
+    border-top: 1px solid var(--border);
+  }
+  .stages li::before {
+    content: counter(step, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.85rem;
+    font-weight: 700;
+    color: var(--muted);
+  }
+  .stages li.gate::before { color: var(--accent); }
+  .stages h3 { margin: 0; font-size: 1.05rem; }
+  .stages p { margin: 0.25rem 0 0; color: var(--muted); }
+  .tag {
+    margin-left: 0.6rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+</style>
