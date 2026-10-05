@@ -5,7 +5,7 @@ import ContentFacts from '../../components/ContentFacts.astro';
 import Ledger from '../../components/Ledger.astro';
 import InRealLife from '../../components/InRealLife.astro';
 import { getPosts, formatDate, readingMinutes, linkClaims } from '../../lib/posts';
-import { SITE_TITLE, SECTIONS, EDITOR_PROFILE, REPO_URL } from '../../consts';
+import { SITE_TITLE, SECTIONS, EDITOR_PROFILE, REPO_URL, DATA_LICENSE } from '../../consts';
 import { abs, ids, organization, editorPerson, faqFromHtml } from '../../lib/schema';
 import { ogKey } from '../../lib/og';
 
@@ -69,6 +69,7 @@ const dataset = post.data.dataset && {
   sameAs: `${REPO_URL}/blob/main/${post.data.dataset.file}`,
   creator: { '@id': ids.organization },
   isAccessibleForFree: true,
+  license: DATA_LICENSE,
   ...(post.data.dataset.temporalCoverage && { temporalCoverage: post.data.dataset.temporalCoverage }),
   ...(post.data.tags.length && { keywords: post.data.tags }),
   distribution: {

@@ -12,6 +12,8 @@ export const EDITOR_PROFILE = {
   employer: { name: 'BCM (Beeby Clark+Meyler)', url: 'https://www.beebyclarkmeyler.com/' },
   photo: { src: '/images/ken-schaefer-and-boris-800.webp', fallback: '/images/ken-schaefer-and-boris-800.jpg', small: '/images/ken-schaefer-and-boris-400.webp', width: 800, height: 931, alt: 'Ken Schaefer on the couch with his dog Boris resting on his shoulder' },
 };
+// License for published research datasets (pipeline/<slug>/study.json and similar). Chosen by the editor, 2026-10-05.
+export const DATA_LICENSE = 'https://creativecommons.org/licenses/by/4.0/';
 // Google Tag Manager container (GA4 is configured inside it). Loaded on every page by Base.astro.
 export const GTM_ID = 'GTM-NPL2Z77Z';
 
