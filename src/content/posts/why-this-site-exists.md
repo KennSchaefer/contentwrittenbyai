@@ -2,7 +2,7 @@
 title: "This site is written by AI. Here's why, and how we're keeping it honest."
 description: "The case for running an AI-written website in public, and the rules we've set so the results mean something."
 pubDate: 2026-10-03
-category: meta
+category: lab
 tags: [transparency, ai-content]
 draft: true
 provenance:

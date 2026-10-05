@@ -1,32 +1,37 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { formatDate } from '../lib/posts';
+import { SECTIONS } from '../consts';
+import { formatDate, postUrl } from '../lib/posts';
 
 interface Props {
   posts: CollectionEntry<'posts'>[];
+  showSection?: boolean;
 }
 
-const { posts } = Astro.props;
+const { posts, showSection = true } = Astro.props;
 ---
 
-<ul>
+<ul class="post-list">
   {posts.map((post) => (
     <li>
-      <p class="eyebrow">
-        {post.data.category} · <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
-        {post.data.draft && ' · DRAFT'}
+      <p class="eyebrow quiet">
+        {showSection && <>{SECTIONS[post.data.category].name} · </>}
+        <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+        {post.data.draft && ' · Draft'}
       </p>
-      <h3><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3>
-      <p class="muted">{post.data.description}</p>
+      <h3><a href={postUrl(post)}>{post.data.title}</a></h3>
+      <p class="dek">{post.data.description}</p>
     </li>
   ))}
 </ul>
 
 <style>
-  ul { list-style: none; padding: 0; margin: 0; max-width: 44rem; }
-  li { padding: 1.25rem 0; border-top: 1px solid var(--border); }
-  li p { margin: 0; }
-  h3 { margin: 0.3rem 0 0.4rem; font-size: 1.3rem; }
+  .post-list { list-style: none; padding: 0; margin: 0; }
+  li { padding: 1.25rem 0; border-bottom: 1px solid var(--border); }
+  li:last-child { border-bottom: 0; }
+  .eyebrow { margin: 0; font-size: 0.75rem; }
+  h3 { margin: 0.4rem 0 0.3rem; font: 600 1.375rem/1.25 var(--serif); }
   h3 a { color: var(--text); text-decoration: none; }
   h3 a:hover { color: var(--accent); }
+  .dek { margin: 0; color: var(--muted); font-size: 0.9375rem; }
 </style>

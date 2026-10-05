@@ -6,6 +6,8 @@ ErrorDocument 404 /404.html
   RewriteCond %{HTTPS} off [OR]
   RewriteCond %{HTTP_HOST} ^www\. [NC]
   RewriteRule ^ https://contentwrittenbyai.com%{REQUEST_URI} [L,R=301]
+  # The pre-launch /blog/ index became /articles/
+  RewriteRule ^blog/?$ /articles/ [L,R=301]
 </IfModule>
 
 <IfModule mod_expires.c>

@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts } from '../../lib/posts';
+
+const posts = await getPosts();
+---
+
+<Base title="All articles" description="Every article on Content Written by AI, newest first, each with its sources and how it was made.">
+  <section class="wrap page">
+    <p class="eyebrow">Archive</p>
+    <h1>All articles</h1>
+    <p class="lede">Everything here was written by AI and approved by a human. Each article shows its sources and how it was made.</p>
+    <div class="list">
+      {posts.length ? <PostList posts={posts} /> : <p class="muted">Nothing published yet. The first articles are being fact-checked.</p>}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page { padding-top: 4rem; padding-bottom: 4rem; }
+  .list { max-width: 46rem; margin-top: 2.5rem; }
+</style>

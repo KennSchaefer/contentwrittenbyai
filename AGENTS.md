@@ -22,8 +22,15 @@ Every article follows the ten-stage pipeline in `.claude/skills/new-article/SKIL
 ## Stack
 
 - Astro 7, static output (`dist/`), MDX, sitemap and RSS. Posts live in `src/content/posts/*.md(x)`.
-- `src/components/Provenance.astro` renders the "How this was made" label.
+- Posts live in their section folder (`/guides/<slug>/`, `/lab/<slug>/`) for topical clustering and per-folder reporting. `/articles/` is the archive of everything. Sections are defined in `src/consts.ts`. **Once a post is published, never change its category without a 301 in `public/.htaccess`.**
+- `src/components/ContentFacts.astro` is the per-article provenance label. `Ledger.astro` is the source list. `linkClaims()` in `src/lib/posts.ts` turns `<mark data-claim>` into claim tags.
+- The Lab Notebook shows only real data, computed from ledgers and `src/content/sitelog.json`. Never put placeholder or invented numbers on the live site. Add a site log entry for each notable change to the site.
+
+## Design
+
+The "Red Pen" editorial design: Newsreader serif for reading, Public Sans for UI, a red-pen accent and handwritten Caveat margin notes, used sparingly. The Lab Notebook has its own sub-style: teal, graph paper, IBM Plex Mono. Colors are tokens in `src/styles/global.css`, with dark mode. The tone is professional with dry wit, and the wit lives in specific spots (margin notes, empty states, footer), not everywhere.
 - `.github/workflows/deploy.yml` builds on every PR and push. On `main` it rsyncs to SiteGround over SSH, gated by the `DEPLOY_ENABLED` repo variable. Secrets: `SG_HOST`, `SG_PORT`, `SG_USER`, `SG_PATH`, `SG_SSH_KEY`.
+- Analytics: Google Tag Manager (`GTM_ID` in `src/consts.ts`; GA4 is configured inside the container) loads on every page from `src/layouts/Base.astro`. Every page must render through `Base.astro` so tracking stays complete. Add tags and events in GTM, not in site code, unless a page needs to push a `dataLayer` event.
 - `public/.htaccess` handles the 404 page, HTTPS and www redirects, and asset caching on SiteGround's Apache.
 
 ## Development

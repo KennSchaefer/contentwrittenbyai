@@ -1,29 +1,99 @@
 ---
 import Base from '../layouts/Base.astro';
 import PostList from '../components/PostList.astro';
-import { getPosts } from '../lib/posts';
+import LabPanel from '../components/LabPanel.astro';
+import { getPosts, postUrl } from '../lib/posts';
 
-const posts = (await getPosts()).slice(0, 6);
+const posts = await getPosts();
+const latest = posts.filter((p) => p.data.category !== 'lab').slice(0, 4);
+const experiment = posts.find((p) => p.data.experiment && p.data.status !== 'done');
 ---
 
 <Base>
-  <section class="hero">
-    <p class="eyebrow">An experiment, run in public</p>
-    <h1>Can AI-written content actually be good?</h1>
+  <section class="wrap hero">
+    <p class="eyebrow">An experiment, conducted in public</p>
+    <h1>Written by AI. Checked by a human. Judged by you.</h1>
     <p class="lede">
-      This site is written by AI and edited by a human. Every page shows how it was
-      made, and every change is public. You can judge the content, and the experiment, for yourself.
+      Every article here was written by a machine, checked against real sources, and signed off by an
+      editor who has opinions. We show our work, including the parts we cut.
     </p>
-    <p><a href="/about/">How this site works →</a></p>
+    <p class="margin-note hero-note">Yes, this paragraph too. It survived two drafts.</p>
+    <div class="actions">
+      <a class="button solid" href="/articles/">Read the latest</a>
+      <a class="button" href="/methodology/">See how it's made</a>
+    </div>
   </section>
 
-  <section>
-    <h2>Latest</h2>
-    {posts.length ? <PostList posts={posts} /> : <p class="muted">The first articles are on their way.</p>}
+  <section class="graph-paper band">
+    <div class="wrap">
+      <div class="band-head">
+        <h2 class="lab-mono">From the Lab Notebook</h2>
+        <a href="/lab/" class="lab-link">All readings</a>
+      </div>
+      <LabPanel />
+      <p class="band-foot">Updated as we publish. Unflattering numbers stay up too.</p>
+    </div>
+  </section>
+
+  <section class="wrap split">
+    {experiment && (
+      <article class="feature">
+        <p class="exp-id">{experiment.data.experiment} ·<span class:list={['badge', experiment.data.status]}>{experiment.data.status}</span></p>
+        <h3><a href={postUrl(experiment)}>{experiment.data.title}</a></h3>
+        <p>{experiment.data.description}</p>
+      </article>
+    )}
+    <div class="latest">
+      <h2>Latest</h2>
+      {latest.length ? <PostList posts={latest} /> : <p class="muted">The first articles are in the fact-checking stage. It takes as long as it takes.</p>}
+    </div>
+  </section>
+
+  <section class="wrap method">
+    <h2>10 steps. 3 human sign-offs. 0 claims taken on faith.</h2>
+    <div>
+      <p>
+        Every claim gets a source. A second AI, with no stake in the first one's feelings, checks each source.
+        Anything shaky goes to the editor or gets cut.
+      </p>
+      <p><a href="/methodology/" class="method-link">Read the methodology</a></p>
+    </div>
   </section>
 </Base>
 
 <style>
-  .hero { max-width: 44rem; margin-bottom: 3.5rem; }
-  .lede { font-size: 1.2rem; color: var(--muted); }
+  .hero { position: relative; padding-top: 5.5rem; padding-bottom: 4.5rem; }
+  .hero h1 { max-width: 52rem; font-size: clamp(2.6rem, 6vw, 4rem); }
+  .hero-note { position: absolute; right: 2.5rem; top: 9.5rem; max-width: 14rem; margin: 0; }
+  .actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.25rem; }
+  @media (max-width: 860px) { .hero-note { position: static; margin-top: 1rem; } }
+
+  .band { border-top: 1px solid var(--lab-border); border-bottom: 1px solid var(--lab-border); padding: 3rem 0; }
+  .band-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.5rem; margin-bottom: 1.25rem; }
+  .lab-link { font: 600 0.875rem var(--mono); color: var(--lab); }
+  .band-foot { margin: 1rem 0 0; font: 0.8125rem var(--mono); color: var(--muted); }
+
+  .split { display: flex; flex-wrap: wrap; gap: 3rem; padding-top: 4.5rem; padding-bottom: 1.5rem; }
+  .split > * { flex: 1 1 22rem; min-width: 0; }
+  .feature { border: 1px solid var(--lab-border); border-radius: 10px; padding: 2rem; align-self: flex-start; }
+  .exp-id { margin: 0 0 0.75rem; font: 0.8125rem var(--mono); color: var(--muted); }
+  .feature h3 { margin: 0; font: 600 2rem/1.15 var(--serif); }
+  .feature h3 a { color: var(--text); text-decoration: none; }
+  .feature p:last-child { margin: 0.9rem 0 0; font: 1.2rem/1.5 var(--serif); color: var(--text-2); }
+  .latest h2 { margin: 0 0 0.25rem; font-size: 1.75rem; }
+
+  .method {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 4rem;
+    margin-top: 3.5rem;
+    margin-bottom: 5rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--text);
+  }
+  .method h2 { flex: 1 1 20rem; margin: 0; font: 400 2.5rem/1.1 var(--serif); }
+  .method div { flex: 1 1 22rem; }
+  .method p { margin: 0; font: 1.2rem/1.55 var(--serif); color: var(--text-2); }
+  .method p + p { margin-top: 1rem; }
+  .method-link { font: 600 1rem var(--sans); color: var(--accent); }
 </style>

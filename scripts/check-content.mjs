@@ -92,7 +92,17 @@ for (const rel of postFiles) {
   const factCheck = data.provenance?.factCheck ?? 'pending';
   if (!draft && factCheck === 'pending') err(file, 'published posts need a completed fact check (provenance.factCheck)');
   if (factCheck === 'checked' && !existsSync(ledgerPath)) err(file, `factCheck is "checked" but there's no ledger at ${ledgerPath}`);
-  if (existsSync(ledgerPath)) checkLedger(ledgerPath, JSON.parse(readFileSync(ledgerPath, 'utf8')), { draft });
+  // Claim tags in the text (<mark data-claim="c1">) must point at used ledger claims
+  const tagged = new Set([...body.matchAll(/<mark data-claim="([^"]+)">/g)].map((m) => m[1]));
+  if (existsSync(ledgerPath)) {
+    const ledger = JSON.parse(readFileSync(ledgerPath, 'utf8'));
+    checkLedger(ledgerPath, ledger, { draft });
+    const used = new Set(ledger.claims.filter((c) => c.used).map((c) => c.id));
+    for (const id of tagged) if (!used.has(id)) err(file, `claim tag "${id}" doesn't match a used claim in the ledger`);
+    for (const id of used) if (!tagged.has(id)) warn(file, `ledger claim ${id} is marked used but isn't tagged in the text`);
+  } else if (tagged.size) {
+    err(file, `has claim tags but no ledger at ${ledgerPath}`);
+  }
 }
 
 for (const f of ledgerFiles) {

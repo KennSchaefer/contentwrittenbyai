@@ -17,9 +17,13 @@ const ledgerUrl = `${REPO_URL}/blob/main/src/content/ledgers/${ledger.id}.json`;
 
 const label = { auto: 'Confirmed', approved: 'Confirmed by editor' } as const;
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
+const confirmed = [
+  auto && `${auto} confirmed by official or primary sources`,
+  approved && `${approved} confirmed after review by the editor`,
+].filter(Boolean).join(', ');
 const summary = [
   `${plural(used.length, 'claim', 'claims')} in this article, checked against ${plural(sources, 'source', 'sources')}.`,
-  `A separate AI re-read each source: ${auto} confirmed by official or primary sources, ${approved} confirmed after review by the editor.`,
+  `A separate AI re-read each source: ${confirmed}.`,
   excluded > 0 ? `${plural(excluded, 'more claim was', 'more claims were')} cut because the sources didn't hold up.` : '',
 ].join(' ');
 ---
@@ -31,25 +35,42 @@ const summary = [
     <summary>Show every claim</summary>
     <ol>
       {used.map((c) => (
-        <li>
-          <span class="claim">{c.claim}</span>
-          <span class="meta">
-            <a href={c.sourceUrl} rel="nofollow noopener">{c.sourceName}</a> · {label[c.decision as 'auto' | 'approved']}
+        <li id={`claim-${c.id}`}>
+          <span class="id">{c.id.toUpperCase()}</span>
+          <span>
+            {c.claim}
+            <span class="meta"><a href={c.sourceUrl} rel="nofollow noopener">{c.sourceName}</a> · {label[c.decision as 'auto' | 'approved']}</span>
           </span>
         </li>
       ))}
     </ol>
-    <p class="muted full"><a href={ledgerUrl}>Full ledger with the verifier's reasoning, including cut claims →</a></p>
+    <p class="full"><a href={ledgerUrl}>Full ledger with the verifier's reasoning, including cut claims</a></p>
   </details>
 </section>
 
+<script>
+  // Following a claim tag opens the source list so the claim is visible
+  function reveal() {
+    const target = location.hash ? document.querySelector(location.hash) : null;
+    const details = target?.closest('details');
+    if (details) {
+      details.open = true;
+      target.scrollIntoView({ block: 'center' });
+    }
+  }
+  addEventListener('hashchange', reveal);
+  reveal();
+</script>
+
 <style>
-  .ledger { max-width: var(--measure); margin-top: 3rem; font-size: 0.95rem; }
-  h2 { font-size: 1.25rem; margin-bottom: 0.5rem; }
-  summary { cursor: pointer; color: var(--accent); }
-  ol { padding-left: 1.25rem; }
-  li { margin: 0.6rem 0; }
-  .claim { display: block; }
-  .meta { color: var(--muted); font-size: 0.875rem; }
+  .ledger { margin-top: 3rem; padding-top: 1.5rem; border-top: 2px solid var(--text); font: 1rem/1.6 var(--sans); }
+  h2 { margin: 0 0 0.5rem; font-size: 1.625rem; }
+  p { margin: 0 0 1rem; color: var(--text-2); }
+  summary { cursor: pointer; color: var(--link); font-weight: 600; }
+  ol { list-style: none; padding: 0; margin: 1rem 0 0; }
+  li { display: flex; gap: 0.75rem; margin-bottom: 0.9rem; font-size: 0.9375rem; line-height: 1.5; scroll-margin-top: 6rem; }
+  li:target { background: var(--accent-soft); outline: 6px solid var(--accent-soft); }
+  .id { font: 600 0.8125rem/1.8 var(--mono); color: var(--accent); }
+  .meta { display: block; color: var(--muted); font-size: 0.875rem; }
   .full { font-size: 0.875rem; }
 </style>
