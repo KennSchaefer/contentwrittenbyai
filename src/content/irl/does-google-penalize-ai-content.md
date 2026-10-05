@@ -10,7 +10,7 @@ Since day one of AI, any content I've created has gone through at least one if n
 
 Varied results?  Well yes as is always the case with SEO and content.  Award winning results?  Absolutely!
 
-Clients have often found "facts" by AI to be wrong and on occasion, my quadrupal checks on what clients have found shows the client is wrong.  There are many sources for citation on any given topic, and they all don't have info that aligns with each other. It happens.  The NY Times retracts statements daily.  AI can make mistakes.  It tells you so and proves it, often.  You don't need any further warning.
+Clients have often found "facts" by AI to be wrong and on occasion, my quadrupal checks on what clients have found shows the client is wrong.  There are many sources for citation on any given topic, and they all don't have info that aligns with each other. It happens.  The NY Times retracts statements all the time...  AI can make mistakes.  It tells you so and proves it, often.  You don't need any further warning.
 
 I recently created an FAQ section for a travel booking page.  AI wrote and fact checked.  I skimmed.  Client approved.  I had the same AI do another fact-checking pass and behold... it found another site with more recent data that was different than the original details.  So, even humans may not always find the best, most accurate source of data, but we can do our damnedest to get it right.
 
