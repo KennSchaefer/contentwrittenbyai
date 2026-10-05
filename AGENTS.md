@@ -19,6 +19,12 @@ Every article follows the ten-stage pipeline in `.claude/skills/new-article/SKIL
 - `npm run check` (`scripts/check-content.mjs`, rules in `content-rules.json`) enforces the writing rules and ledger gates in code, and CI runs it before every build.
 - Never mention the agency or the internal name of the process this methodology was adapted from. The repo is public.
 
+## Git and deploys
+
+- **Merge PRs with merge commits, never squash or rebase-merge.** The separate AI-draft and human-edit commits are the public audit trail that each article's "Every edit, on GitHub" link points to.
+- Every PR push deploys to https://preview.contentwrittenbyai.com/ (`preview` job in `deploy.yml`, `PUBLIC_PREVIEW=true`). It includes drafts, uses `preview/.htaccess` (X-Robots-Tag noindex on everything) and `preview/robots.txt` (crawling allowed so the noindex is seen), has no sitemap, and loads no GTM. Never link to the preview site from the live site.
+- Pages with noindex are pruned from the live sitemap after every build (`scripts/prune-sitemap.mjs`).
+
 ## Stack
 
 - Astro 7, static output (`dist/`), MDX, sitemap and RSS. Posts live in `src/content/posts/*.md(x)`.

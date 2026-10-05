@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { SITE_TITLE, SITE_DESCRIPTION, REPO_URL, SECTIONS, NAV_SECTIONS, GTM_ID, type Section } from '../consts';
+import { IS_PREVIEW } from '../lib/posts';
 
 interface Props {
   title?: string;
@@ -25,14 +26,18 @@ const gtmSnippet = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':ne
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <!-- Google Tag Manager -->
-    <script is:inline set:html={gtmSnippet}></script>
-    <!-- End Google Tag Manager -->
+    {!IS_PREVIEW && (
+      <>
+        <!-- Google Tag Manager -->
+        <script is:inline set:html={gtmSnippet}></script>
+        <!-- End Google Tag Manager -->
+      </>
+    )}
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    {noindex && <meta name="robots" content="noindex" />}
+    {(noindex || IS_PREVIEW) && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/rss.xml" />
@@ -51,9 +56,14 @@ const gtmSnippet = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':ne
     <slot name="head" />
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`} height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    {!IS_PREVIEW && (
+      <>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`} height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+      </>
+    )}
+    {IS_PREVIEW && <p class="preview-bar">Preview site: drafts included, not indexed, no analytics. The live site is <a href="https://contentwrittenbyai.com/">contentwrittenbyai.com</a>.</p>}
     <header class="site-header">
       <div class="wrap bar">
         <a class="wordmark" href="/" aria-label={SITE_TITLE}>
@@ -90,6 +100,15 @@ const gtmSnippet = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':ne
 </html>
 
 <style>
+  .preview-bar {
+    margin: 0;
+    padding: 0.5rem 1.5rem;
+    background: var(--amber-soft);
+    color: var(--amber);
+    font: 600 0.8125rem var(--sans);
+    text-align: center;
+  }
+  .preview-bar a { color: inherit; }
   .site-header { border-bottom: 1px solid var(--border); }
   .bar {
     display: flex;

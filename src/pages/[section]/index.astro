@@ -15,7 +15,8 @@ const info = SECTIONS[section];
 const posts = await getPosts(section);
 ---
 
-<Base title={info.name} description={info.blurb} section={section}>
+<!-- An empty section is thin content: keep it out of the index (and the sitemap) until it has an article -->
+<Base title={info.name} description={info.blurb} section={section} noindex={posts.length === 0}>
   <section class="wrap page">
     <p class="eyebrow">Section</p>
     <h1>{info.name}</h1>

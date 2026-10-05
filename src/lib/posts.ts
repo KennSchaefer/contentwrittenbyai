@@ -3,11 +3,14 @@ import { SECTIONS, type Section } from '../consts';
 
 type Post = CollectionEntry<'posts'>;
 
-// Published posts, newest first. Drafts show only in `astro dev`.
+// Preview builds (preview.contentwrittenbyai.com) include drafts, are noindexed and load no analytics
+export const IS_PREVIEW = import.meta.env.PUBLIC_PREVIEW === 'true';
+
+// Published posts, newest first. Drafts show only in `astro dev` and preview builds.
 export async function getPosts(section?: Section) {
   const posts = await getCollection(
     'posts',
-    ({ data }) => (import.meta.env.DEV || !data.draft) && (!section || data.category === section),
+    ({ data }) => (import.meta.env.DEV || IS_PREVIEW || !data.draft) && (!section || data.category === section),
   );
   return posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 }
