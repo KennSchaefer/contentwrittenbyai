@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import PostList from '../../components/PostList.astro';
 import { getPosts } from '../../lib/posts';
 import { SECTIONS, type Section } from '../../consts';
+import { itemList } from '../../lib/schema';
 
 // Editorial sections. The Lab Notebook has its own page at /lab/.
 export function getStaticPaths() {
@@ -16,7 +17,8 @@ const posts = await getPosts(section);
 ---
 
 <!-- An empty section is thin content: keep it out of the index (and the sitemap) until it has an article -->
-<Base title={info.name} description={info.blurb} section={section} noindex={posts.length === 0}>
+<Base title={info.name} description={info.blurb} section={section} noindex={posts.length === 0}
+  pageType="CollectionPage" pageProps={{ mainEntity: itemList(posts) }} breadcrumbs={[]}>
   <section class="wrap page">
     <p class="eyebrow">Section</p>
     <h1>{info.name}</h1>

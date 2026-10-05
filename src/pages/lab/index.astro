@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import LabPanel from '../../components/LabPanel.astro';
 import PostList from '../../components/PostList.astro';
 import { getPosts, postUrl, isoDay } from '../../lib/posts';
+import { itemList } from '../../lib/schema';
 
 const labPosts = await getPosts('lab');
 const experiments = labPosts
@@ -18,6 +19,9 @@ const lastEntry = log[0]?.data.date;
   title="Lab Notebook"
   description="This site's own data: how its AI-written pages perform, what our experiments found, and every change we made because of it."
   section="lab"
+  pageType="CollectionPage"
+  pageProps={{ mainEntity: itemList(labPosts) }}
+  breadcrumbs={[]}
 >
   <section class="graph-paper hero">
     <div class="wrap">

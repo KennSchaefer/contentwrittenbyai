@@ -35,6 +35,16 @@ const posts = defineCollection({
     // Lab Notebook experiments only: one-line result, or where things stand
     result: z.string().max(120).optional(),
     tags: z.array(z.string()).default([]),
+    // Original research only: the published dataset behind the article, marked up as a schema.org Dataset
+    dataset: z
+      .object({
+        name: z.string(),
+        description: z.string().min(50).max(5000),
+        // Repo-relative path, e.g. pipeline/<slug>/study.json
+        file: z.string(),
+        temporalCoverage: z.string().optional(),
+      })
+      .optional(),
     draft: z.boolean().default(false),
     provenance,
   }),

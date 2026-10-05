@@ -4,7 +4,8 @@ import Base from '../layouts/Base.astro';
 import PostList from '../components/PostList.astro';
 import LabPanel from '../components/LabPanel.astro';
 import { getPosts, postUrl } from '../lib/posts';
-import { SITE_TITLE, SITE_DESCRIPTION, SECTIONS, NAV_SECTIONS, EDITOR_PROFILE as ken } from '../consts';
+import { SECTIONS, NAV_SECTIONS, EDITOR_PROFILE as ken } from '../consts';
+import { website, organization, editorPerson } from '../lib/schema';
 
 const posts = await getPosts();
 const experiment = posts.find((p) => p.data.experiment && p.data.status !== 'done');
@@ -18,43 +19,14 @@ const sections = await Promise.all(
 );
 const labBlurb = 'Our own data: how these pages perform, what our experiments found, and what we changed because of it.';
 
-const abs = (path: string) => new URL(path, Astro.site).href;
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'WebSite',
-      '@id': abs('/#website'),
-      url: abs('/'),
-      name: SITE_TITLE,
-      description: SITE_DESCRIPTION,
-      publisher: { '@id': abs('/#organization') },
-    },
-    {
-      '@type': 'Organization',
-      '@id': abs('/#organization'),
-      name: SITE_TITLE,
-      url: abs('/'),
-      founder: { '@id': abs(`${ken.path}#person`) },
-    },
-    {
-      '@type': 'Person',
-      '@id': abs(`${ken.path}#person`),
-      name: ken.name,
-      url: abs(ken.path),
-      sameAs: [ken.linkedin],
-    },
-  ],
-};
 ---
 
 <Base
   title="Content Written by AI: AI-Generated Content, Fact-Checked"
   exactTitle
+  schema={[website(), organization(), editorPerson(true)]}
   description="AI-generated content, written by AI, fact-checked against real sources and approved by a human editor. Every claim, source and edit is public."
 >
-  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-
   <section class="wrap hero">
     <p class="eyebrow">AI-generated content, fact-checked in public</p>
     <h1>Written by AI. Checked by a human. Judged by you.</h1>

@@ -5,6 +5,11 @@ description: "The top answers are mostly right, and none mention Google's latest
 pubDate: 2026-10-05
 category: research
 tags: [google, ai-content, fact-checking, study]
+dataset:
+  name: "Fact-check of the top Google results for 'does google penalize ai content' (October 2026)"
+  description: "Factual claims extracted from the top 10 US organic results for 'does google penalize ai content' on October 4, 2026, each independently re-checked against primary sources. Includes per-page dates, claim text and quotes, outcomes (supported and current, unsupported, misquote), the primary source used and the verifier's reasoning."
+  file: pipeline/does-google-penalize-ai-content/study.json
+  temporalCoverage: "2026-10-04"
 draft: false
 provenance:
   models: ["Claude Opus 5.5"]

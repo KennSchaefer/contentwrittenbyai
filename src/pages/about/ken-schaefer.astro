@@ -3,31 +3,18 @@ import Base from '../../layouts/Base.astro';
 import PostList from '../../components/PostList.astro';
 import { getPosts } from '../../lib/posts';
 import { EDITOR_PROFILE as ken, SITE_TITLE } from '../../consts';
+import { editorPerson } from '../../lib/schema';
 
 const edited = (await getPosts()).filter((p) => p.data.provenance.editor === ken.name);
-const abs = (path: string) => new URL(path, Astro.site).href;
-
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfilePage',
-  mainEntity: {
-    '@type': 'Person',
-    '@id': abs(`${ken.path}#person`),
-    name: ken.name,
-    jobTitle: ken.jobTitle,
-    url: abs(ken.path),
-    image: abs(ken.photo.fallback),
-    sameAs: [ken.linkedin],
-    worksFor: { '@type': 'Organization', name: ken.employer.name, url: ken.employer.url },
-  },
-};
 ---
 
 <Base
   title="Ken Schaefer, editor"
+  pageType="ProfilePage"
+  pageProps={{ mainEntity: editorPerson(true) }}
+  breadcrumbs={[{ name: 'About', path: '/about/' }]}
   description="Ken Schaefer is the human editor of Content Written by AI: an SEO-AEO and content strategy leader who approves every brief, every flagged claim and every article."
 >
-  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <div class="wrap page">
     <div class="profile">
       <figure>
