@@ -13,7 +13,7 @@ const edited = (await getPosts()).filter((p) => p.data.provenance.editor === ken
   pageType="ProfilePage"
   pageProps={{ mainEntity: editorPerson(true) }}
   breadcrumbs={[{ name: 'About', path: '/about/' }]}
-  description="Ken Schaefer is the human editor of Content Written by AI: an SEO-AEO and content strategy leader who approves every brief, every flagged claim and every article."
+  description="Ken Schaefer edits Content Written by AI. An SEO-AEO and content strategy leader with 20+ years in SEO, he approves every brief, flagged claim and article."
 >
   <div class="wrap page">
     <div class="profile">
@@ -22,7 +22,10 @@ const edited = (await getPosts()).filter((p) => p.data.provenance.editor === ken
           <source srcset={ken.photo.src} type="image/webp" />
           <img src={ken.photo.fallback} width={ken.photo.width} height={ken.photo.height} alt={ken.photo.alt} />
         </picture>
-        <figcaption class="margin-note">Ken, and Boris, who has not been fact-checked.</figcaption>
+        <figcaption>
+          <span class="margin-note">"Boris is my new Australian Cattle Dog(mutt) puppy and protege. He's not so good on the fact checking, but very good when I've been staring at the screen for too long and reminding me it's break time."</span>
+          <span class="credit">Ken</span>
+        </figcaption>
       </figure>
       <div class="bio">
         <p class="eyebrow">The human in the loop</p>
@@ -40,6 +43,14 @@ const edited = (await getPosts()).filter((p) => p.data.provenance.editor === ken
           </p>
         </div>
 
+        <h2>At a glance</h2>
+        <dl class="glance">
+          <div><dt>Experience</dt><dd>{ken.experience}, 20 of them at BCM</dd></div>
+          <div><dt>Recognition</dt><dd>Digiday recognition and multiple speaking engagements</dd></div>
+          <div><dt>Industries</dt><dd>{ken.industries.join(', ')}</dd></div>
+          <div><dt>Certifications</dt><dd>{ken.certifications.join(', ')}</dd></div>
+        </dl>
+
         <h2>What Ken does here</h2>
         <p>
           The AI writes; Ken decides what gets published. He approves every brief before research starts, rules on
@@ -48,7 +59,7 @@ const edited = (await getPosts()).filter((p) => p.data.provenance.editor === ken
           How that works is in <a href="/methodology/">our methodology</a>.
         </p>
 
-        <p class="links"><a href={ken.linkedin} rel="me">Ken on LinkedIn</a></p>
+        <p class="links"><a href={ken.linkedin} rel="me">Ken on LinkedIn</a> · <a href={ken.bcmBlog} rel="me">Ken on the BCM blog</a></p>
         <p class="disclaimer">
           {SITE_TITLE} is Ken's personal project. Views expressed here are Ken's own, not those of BCM or its clients.
         </p>
@@ -68,7 +79,15 @@ const edited = (await getPosts()).filter((p) => p.data.provenance.editor === ken
   .profile { display: flex; flex-wrap: wrap; gap: 2.5rem 3.5rem; align-items: flex-start; }
   figure { flex: 1 1 16rem; max-width: 22rem; margin: 0; }
   img { display: block; width: 100%; height: auto; border-radius: 10px; }
-  figcaption { margin-top: 0.75rem; font-size: 1.4rem; }
+  figcaption { margin-top: 0.75rem; }
+  figcaption .margin-note { display: block; font-size: 1.3rem; transform: rotate(-1deg); }
+  .credit { display: block; margin-top: 0.3rem; font: 600 0.8125rem var(--sans); color: var(--muted); }
+  .credit::before { content: '- '; }
+  .glance { margin: 0; font-size: 0.9375rem; }
+  .glance div { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; padding: 0.55rem 0; border-bottom: 1px solid var(--border); }
+  .glance dt { font-weight: 700; }
+  .glance dd { margin: 0; color: var(--text-2); }
+  @media (max-width: 480px) { .glance div { grid-template-columns: 1fr; gap: 0.15rem; } }
   .bio { flex: 999 1 26rem; min-width: 0; max-width: var(--measure); }
   .role { margin: 0 0 1.5rem; color: var(--muted); font-weight: 600; }
   .bio .prose { font-size: 1.2rem; }

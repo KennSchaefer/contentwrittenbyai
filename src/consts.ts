@@ -9,8 +9,14 @@ export const EDITOR_PROFILE = {
   path: '/about/ken-schaefer/',
   jobTitle: 'SEO-AEO and content strategy leader',
   linkedin: 'https://www.linkedin.com/in/kennschaefer/',
+  bcmBlog: 'https://www.beebyclarkmeyler.com/what-we-think/author/ken-schaefer',
   employer: { name: 'BCM (Beeby Clark+Meyler)', url: 'https://www.beebyclarkmeyler.com/' },
-  photo: { src: '/images/ken-schaefer-and-boris-800.webp', fallback: '/images/ken-schaefer-and-boris-800.jpg', small: '/images/ken-schaefer-and-boris-400.webp', width: 800, height: 931, alt: 'Ken Schaefer on the couch with his dog Boris resting on his shoulder' },
+  // From Ken, 2026-10-05
+  experience: 'Over 20 years in SEO and content',
+  industries: ['Travel', 'CPG', 'B2B', 'Hospitality', 'Insurance', 'Housewares'],
+  certifications: ['Google AI', 'Semrush', 'Microsoft AI', 'LinkedIn AI', 'Google Analytics'],
+  knowsAbout: ['Search engine optimization', 'Answer engine optimization', 'Content strategy', 'Generative AI content', 'Technical SEO', 'Marketing automation', 'Performance measurement'],
+  photo: { src: '/images/ken-schaefer-and-boris-800.webp', fallback: '/images/ken-schaefer-and-boris-800.jpg', small: '/images/ken-schaefer-and-boris-400.webp', width: 800, height: 931, alt: 'Ken Schaefer on the couch with Boris, an Australian Cattle Dog mix puppy, resting on his shoulder' },
 };
 // License for published research datasets (pipeline/<slug>/study.json and similar). Chosen by the editor, 2026-10-05.
 export const DATA_LICENSE = 'https://creativecommons.org/licenses/by/4.0/';
