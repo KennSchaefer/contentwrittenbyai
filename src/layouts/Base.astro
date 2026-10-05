@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import { SITE_TITLE, SITE_DESCRIPTION, REPO_URL, SECTIONS, NAV_SECTIONS, GTM_ID, type Section } from '../consts';
 import { IS_PREVIEW } from '../lib/posts';
+import { ogPages, ogKey } from '../lib/og';
+import { abs, ids } from '../lib/schema';
 
 interface Props {
   title?: string;
@@ -12,13 +14,57 @@ interface Props {
   exactTitle?: boolean;
   // Highlights the matching nav item
   section?: Section | 'methodology';
+  // Structured data: the page's schema.org type, extra properties for it, breadcrumb trail
+  // (excluding Home and the current page), and any extra nodes for the page's @graph
+  pageType?: string;
+  pageProps?: Record<string, unknown>;
+  breadcrumbs?: { name: string; path: string }[];
+  schema?: Record<string, unknown>[];
 }
 
-const { title, description = SITE_DESCRIPTION, type = 'website', noindex = false, section, exactTitle = false } = Astro.props;
+const {
+  title, description = SITE_DESCRIPTION, type = 'website', noindex = false, section, exactTitle = false,
+  pageType = 'WebPage', pageProps = {}, breadcrumbs, schema = [],
+} = Astro.props;
 // Add the site name only when it fits; Google truncates title tags past roughly 60 to 70 characters
 const withSite = `${title} | ${SITE_TITLE}`;
 const fullTitle = !title ? SITE_TITLE : exactTitle || withSite.length > 65 ? title : withSite;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const url = canonical.href;
+
+// Every page has a generated share image; anything unexpected falls back to the homepage card
+const key = ogKey(Astro.url.pathname);
+const ogImage = abs(`/og/${(await ogPages()).some((p) => p.key === key) ? key : 'home'}.png`);
+const ogAlt = title ? `${title}: ${SITE_TITLE}` : SITE_TITLE;
+
+// One @graph per page: the page itself, its breadcrumb trail, and whatever the page adds
+const crumbs = breadcrumbs && [{ name: 'Home', path: '/' }, ...breadcrumbs, { name: title ?? SITE_TITLE, path: Astro.url.pathname }];
+const jsonLd = noindex
+  ? null
+  : {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': pageType,
+          '@id': `${url}#webpage`,
+          url,
+          name: fullTitle,
+          description,
+          isPartOf: { '@id': ids.website },
+          primaryImageOfPage: { '@type': 'ImageObject', url: ogImage, width: 1200, height: 630 },
+          ...(crumbs && { breadcrumb: { '@id': `${url}#breadcrumb` } }),
+          ...pageProps,
+        },
+        ...(crumbs
+          ? [{
+              '@type': 'BreadcrumbList',
+              '@id': `${url}#breadcrumb`,
+              itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: abs(c.path) })),
+            }]
+          : []),
+        ...schema,
+      ],
+    };
 
 // Google Tag Manager's standard snippet, as Google provides it
 const gtmSnippet = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`;
@@ -54,7 +100,13 @@ const gtmSnippet = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':ne
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={SITE_TITLE} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
     <slot name="head" />
   </head>
   <body>

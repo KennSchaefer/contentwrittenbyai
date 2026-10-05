@@ -5,7 +5,9 @@ import ContentFacts from '../../components/ContentFacts.astro';
 import Ledger from '../../components/Ledger.astro';
 import InRealLife from '../../components/InRealLife.astro';
 import { getPosts, formatDate, readingMinutes, linkClaims } from '../../lib/posts';
-import { SITE_TITLE, SECTIONS, EDITOR_PROFILE } from '../../consts';
+import { SITE_TITLE, SECTIONS, EDITOR_PROFILE, REPO_URL } from '../../consts';
+import { abs, ids, organization, editorPerson, faqFromHtml } from '../../lib/schema';
+import { ogKey } from '../../lib/og';
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -25,37 +27,68 @@ const irlWords = irl ? (irl.body ?? '').split(/\s+/).filter(Boolean).length : 0;
 const html = post.rendered?.html ? linkClaims(post.rendered.html) : null;
 const [beforeIrl, afterIrl] = html ? html.split(/<div data-irl=""?><\/div>/) : [null, undefined];
 
-const abs = (path: string) => new URL(path, Astro.site).href;
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'Article',
-      headline: title,
-      description,
-      datePublished: pubDate.toISOString(),
-      dateModified: (updatedDate ?? pubDate).toISOString(),
-      author: { '@type': 'Organization', name: SITE_TITLE },
-      ...(provenance.editor && {
-        editor: provenance.editor === EDITOR_PROFILE.name
-          ? { '@type': 'Person', '@id': abs(`${EDITOR_PROFILE.path}#person`), name: EDITOR_PROFILE.name, url: abs(EDITOR_PROFILE.path) }
-          : { '@type': 'Person', name: provenance.editor },
-      }),
-    },
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: abs('/') },
-        { '@type': 'ListItem', position: 2, name: section.name, item: abs(section.path) },
-        { '@type': 'ListItem', position: 3, name: title, item: abs(Astro.url.pathname) },
-      ],
-    },
-  ],
+const url = abs(Astro.url.pathname);
+const ogImage = abs(`/og/${ogKey(Astro.url.pathname)}.png`);
+const editorNode = provenance.editor === EDITOR_PROFILE.name ? editorPerson() : provenance.editor && { '@type': 'Person', name: provenance.editor };
+// Every verified source the article relies on, as schema.org citations
+const citations = ledger
+  ? [...new Map(ledger.data.claims.filter((c) => c.used).map((c) => [c.sourceUrl.split('#')[0], c])).values()].map((c) => ({
+      '@type': 'CreativeWork',
+      name: c.sourceName,
+      url: c.sourceUrl.split('#')[0],
+    }))
+  : [];
+const humanSection = irl && !irl.data.sample && irl.data.author === EDITOR_PROFILE.name;
+
+const article = {
+  '@type': 'Article',
+  '@id': `${url}#article`,
+  isPartOf: { '@id': `${url}#webpage` },
+  mainEntityOfPage: { '@id': `${url}#webpage` },
+  headline: title,
+  description,
+  image: [ogImage],
+  datePublished: pubDate.toISOString(),
+  dateModified: (updatedDate ?? pubDate).toISOString(),
+  author: { '@type': 'Organization', '@id': ids.organization, name: SITE_TITLE, url: abs('/') },
+  publisher: organization(),
+  ...(editorNode && { editor: editorNode }),
+  // The editor wrote the "In real life" section himself
+  ...(humanSection && { contributor: editorPerson() }),
+  ...(citations.length && { citation: citations }),
+  ...(post.data.tags.length && { keywords: post.data.tags.join(', ') }),
+  wordCount: (post.body ?? '').split(/\s+/).filter(Boolean).length + irlWords,
 };
+const faq = html ? faqFromHtml(html) : null;
+const dataset = post.data.dataset && {
+  '@type': 'Dataset',
+  '@id': `${url}#dataset`,
+  name: post.data.dataset.name,
+  description: post.data.dataset.description,
+  url,
+  sameAs: `${REPO_URL}/blob/main/${post.data.dataset.file}`,
+  creator: { '@id': ids.organization },
+  isAccessibleForFree: true,
+  ...(post.data.dataset.temporalCoverage && { temporalCoverage: post.data.dataset.temporalCoverage }),
+  ...(post.data.tags.length && { keywords: post.data.tags }),
+  distribution: {
+    '@type': 'DataDownload',
+    encodingFormat: 'application/json',
+    contentUrl: `https://raw.githubusercontent.com/${REPO_URL.split('github.com/')[1]}/main/${post.data.dataset.file}`,
+  },
+};
+const schema = [article, ...(faq ? [{ ...faq, '@id': `${url}#faq` }] : []), ...(dataset ? [dataset] : [])];
 ---
 
-<Base title={post.data.seoTitle ?? title} description={description} type="article" noindex={post.data.draft} section={category}>
-  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+<Base
+  title={post.data.seoTitle ?? title}
+  description={description}
+  type="article"
+  noindex={post.data.draft}
+  section={category}
+  breadcrumbs={[{ name: section.name, path: section.path }]}
+  schema={schema}
+>
   <article class="wrap">
     <header>
       <p class="eyebrow"><a href={section.path}>{section.name}</a></p>

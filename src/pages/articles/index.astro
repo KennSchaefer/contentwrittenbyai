@@ -2,11 +2,13 @@
 import Base from '../../layouts/Base.astro';
 import PostList from '../../components/PostList.astro';
 import { getPosts } from '../../lib/posts';
+import { itemList } from '../../lib/schema';
 
 const posts = await getPosts();
 ---
 
-<Base title="All articles" description="Every article on Content Written by AI, newest first, each with its sources and how it was made." noindex={posts.length === 0}>
+<Base title="All articles" description="Every article on Content Written by AI, newest first, each with its sources and how it was made." noindex={posts.length === 0}
+  pageType="CollectionPage" pageProps={{ mainEntity: itemList(posts) }} breadcrumbs={[]}>
   <section class="wrap page">
     <p class="eyebrow">Archive</p>
     <h1>All articles</h1>
