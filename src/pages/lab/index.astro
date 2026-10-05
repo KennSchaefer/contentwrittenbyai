@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import LabPanel from '../../components/LabPanel.astro';
+import SearchPerformance from '../../components/SearchPerformance.astro';
 import PostList from '../../components/PostList.astro';
 import { getPosts, postUrl, isoDay } from '../../lib/posts';
 import { itemList } from '../../lib/schema';
@@ -37,6 +38,7 @@ const lastEntry = log[0]?.data.date;
   <section class="wrap block">
     <h2 class="lab-mono">Instrument panel</h2>
     <LabPanel />
+    <SearchPerformance />
   </section>
 
   <section class="wrap block">
@@ -60,7 +62,7 @@ const lastEntry = log[0]?.data.date;
         </table>
       </div>
     ) : (
-      <p class="empty">No experiments logged yet. The first one starts with the first published article.</p>
+      <p class="empty">No experiments logged yet. When one starts, it's listed here with its status and, eventually, its result.</p>
     )}
   </section>
 

@@ -1,0 +1,70 @@
+name: Weekly metrics snapshot
+
+# Every Wednesday, after Search Console has finalized the previous Monday-to-Sunday week:
+# collect Search Console, GA4 and SEMrush numbers, commit the snapshot, and redeploy the site.
+# Raw numbers publish automatically (editor's decision, 2026-10-05); written analysis goes through review.
+on:
+  schedule:
+    - cron: '0 13 * * 3'
+  workflow_dispatch:
+    inputs:
+      week_end:
+        description: 'Sunday ending the week to collect (YYYY-MM-DD). Blank = last full week.'
+        required: false
+      overwrite:
+        description: 'Replace an existing snapshot for that week'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  actions: write
+  id-token: write
+
+concurrency:
+  group: metrics
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # Keyless: GitHub's OIDC token is exchanged for short-lived, read-only Google credentials.
+      # Only this repo's main branch is allowed (enforced on the Google side).
+      - uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+      - name: Collect
+        run: node scripts/collect-metrics.mjs
+        env:
+          GA4_PROPERTY_ID: ${{ vars.GA4_PROPERTY_ID }}
+          SEMRUSH_API_KEY: ${{ secrets.SEMRUSH_API_KEY }}
+          WEEK_END: ${{ inputs.week_end }}
+          OVERWRITE: ${{ inputs.overwrite && '1' || '' }}
+      - name: Make sure the site still builds with the new data
+        run: npm run build
+      - name: Commit the snapshot
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/content/metrics
+          if git diff --cached --quiet; then echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0; fi
+          git commit -m "Lab Notebook: weekly metrics snapshot ($(ls -t src/content/metrics/*.json | head -1 | xargs basename .json))"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      # Pushes made with GITHUB_TOKEN don't trigger other workflows, so start the deploy explicitly
+      - name: Deploy
+        if: steps.commit.outputs.changed == 'true'
+        run: gh workflow run deploy.yml --ref main
+        env:
+          GH_TOKEN: ${{ github.token }}

@@ -104,4 +104,36 @@ const irl = defineCollection({
   }),
 });
 
-export const collections = { posts, ledgers, sitelog, irl };
+// Weekly search and analytics snapshots, written by scripts/collect-metrics.mjs (one file per week, named by its Sunday)
+const num = z.number().optional();
+const metrics = defineCollection({
+  loader: glob({ base: './src/content/metrics', pattern: '*.json' }),
+  schema: z.object({
+    week: z.object({ start: z.string(), end: z.string() }),
+    collectedAt: z.coerce.date(),
+    sources: z.record(z.string(), z.object({ ok: z.boolean(), error: z.string().optional() }).passthrough()),
+    site: z.object({ clicks: num, impressions: num, ctr: num, position: num, views: num, sessions: num, keywords: num, top10: num }),
+    daily: z.array(z.object({ date: z.string(), clicks: z.number(), impressions: z.number() })),
+    pages: z.array(
+      z.object({
+        path: z.string(),
+        search: z
+          .object({
+            clicks: z.number(), impressions: z.number(), ctr: z.number(), position: z.number(),
+            topQuery: z.object({ query: z.string(), clicks: z.number(), impressions: z.number(), position: z.number() }).optional(),
+          })
+          .optional(),
+        analytics: z.object({ views: z.number(), sessions: z.number(), engagedSessions: z.number(), avgEngagementSeconds: z.number() }).optional(),
+        rankings: z
+          .object({
+            keywords: z.number(), top10: z.number(),
+            best: z.object({ keyword: z.string(), position: z.number(), volume: z.number() }).nullable(),
+            serpFeatures: z.array(z.string()),
+          })
+          .optional(),
+      }),
+    ),
+  }),
+});
+
+export const collections = { posts, ledgers, sitelog, irl, metrics };
