@@ -1,28 +1,88 @@
 ---
+import { getEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import PostList from '../components/PostList.astro';
 import LabPanel from '../components/LabPanel.astro';
 import { getPosts, postUrl } from '../lib/posts';
+import { SITE_TITLE, SITE_DESCRIPTION, SECTIONS, NAV_SECTIONS, EDITOR_PROFILE as ken } from '../consts';
 
 const posts = await getPosts();
-const latest = posts.filter((p) => p.data.category !== 'lab').slice(0, 4);
 const experiment = posts.find((p) => p.data.experiment && p.data.status !== 'done');
+// Feature the running experiment if there is one, otherwise the newest research piece
+const featured = experiment ?? posts.find((p) => p.data.category === 'research');
+const featuredLedger = featured ? await getEntry('ledgers', featured.id.split('/').pop()!) : undefined;
+const latest = posts.filter((p) => p !== featured && p.data.category !== 'lab').slice(0, 4);
+
+const sections = await Promise.all(
+  NAV_SECTIONS.map(async (key) => ({ key, ...SECTIONS[key], count: (await getPosts(key)).length })),
+);
+const labBlurb = 'Our own data: how these pages perform, what our experiments found, and what we changed because of it.';
+
+const abs = (path: string) => new URL(path, Astro.site).href;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': abs('/#website'),
+      url: abs('/'),
+      name: SITE_TITLE,
+      description: SITE_DESCRIPTION,
+      publisher: { '@id': abs('/#organization') },
+    },
+    {
+      '@type': 'Organization',
+      '@id': abs('/#organization'),
+      name: SITE_TITLE,
+      url: abs('/'),
+      founder: { '@id': abs(`${ken.path}#person`) },
+    },
+    {
+      '@type': 'Person',
+      '@id': abs(`${ken.path}#person`),
+      name: ken.name,
+      url: abs(ken.path),
+      sameAs: [ken.linkedin],
+    },
+  ],
+};
 ---
 
-<Base>
+<Base
+  title="Content Written by AI: AI-Generated Content, Fact-Checked"
+  exactTitle
+  description="AI-generated content, written by AI, fact-checked against real sources and approved by a human editor. Every claim, source and edit is public."
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
   <section class="wrap hero">
-    <p class="eyebrow">An experiment, conducted in public</p>
+    <p class="eyebrow">AI-generated content, fact-checked in public</p>
     <h1>Written by AI. Checked by a human. Judged by you.</h1>
     <p class="lede">
-      Every article here was written by a machine, checked against real sources, and signed off by an
-      editor who has opinions. We show our work, including the parts we cut.
+      Can AI-generated content actually be good? Every article here was written by a machine, checked against real
+      sources, and signed off by an editor who has opinions. We show our work, including the parts we cut.
     </p>
     <p class="margin-note hero-note">Yes, this paragraph too. It survived two drafts.</p>
     <div class="actions">
-      <a class="button solid" href="/articles/">Read the latest</a>
+      <a class="button solid" href="#start">Start here</a>
       <a class="button" href="/methodology/">See how it's made</a>
     </div>
   </section>
+
+  {featured && (
+    <section class="wrap featured">
+      <article>
+        <p class="eyebrow">
+          {experiment ? <>{experiment.data.experiment} · <span class:list={['badge', experiment.data.status]}>{experiment.data.status}</span></> : <>Featured {SECTIONS[featured.data.category].name.toLowerCase()}</>}
+        </p>
+        <h2><a href={postUrl(featured)}>{featured.data.title}</a></h2>
+        <p class="dek">{featured.data.description}</p>
+        {featuredLedger && (
+          <p class="meta">{featuredLedger.data.claims.filter((c) => c.used).length} sourced claims, each re-checked by a separate AI · <a href={`${postUrl(featured)}#sources`}>See the sources</a></p>
+        )}
+      </article>
+    </section>
+  )}
 
   <section class="graph-paper band">
     <div class="wrap">
@@ -35,17 +95,59 @@ const experiment = posts.find((p) => p.data.experiment && p.data.status !== 'don
     </div>
   </section>
 
-  <section class="wrap split">
-    {experiment && (
-      <article class="feature">
-        <p class="exp-id">{experiment.data.experiment} ·<span class:list={['badge', experiment.data.status]}>{experiment.data.status}</span></p>
-        <h3><a href={postUrl(experiment)}>{experiment.data.title}</a></h3>
-        <p>{experiment.data.description}</p>
-      </article>
-    )}
-    <div class="latest">
+  <section class="wrap start" id="start">
+    <h2>Start here</h2>
+    <ol class="steps">
+      <li>
+        <span class="n">1</span>
+        <div><h3><a href="/methodology/">How we make content</a></h3><p>Ten steps, three human sign-offs, and why nothing the AI writes counts as true until a source says so.</p></div>
+      </li>
+      {featured && (
+        <li>
+          <span class="n">2</span>
+          <div><h3><a href={postUrl(featured)}>Read the first study</a></h3><p>We put the top answers to a common SEO question through our own fact-check. Most held up. None of the pages we could read mentioned Google's latest update.</p></div>
+        </li>
+      )}
+      <li>
+        <span class="n">{featured ? 3 : 2}</span>
+        <div><h3><a href="/lab/">Check the Lab Notebook</a></h3><p>How this site is doing, what we've changed and why, in numbers we can't spin.</p></div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="wrap sections">
+    <h2>What's here</h2>
+    <div class="cards">
+      {sections.map((s) => (
+        <a class:list={['card', { lab: s.key === 'lab' }]} href={s.path}>
+          <span class="name">{s.name}</span>
+          <span class="blurb">{s.key === 'lab' ? labBlurb : s.blurb}</span>
+          <span class="count">{s.count ? `${s.count} ${s.count === 1 ? 'article' : 'articles'}` : 'First article in progress'}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  {latest.length > 0 && (
+    <section class="wrap latest">
       <h2>Latest</h2>
-      {latest.length ? <PostList posts={latest} /> : <p class="muted">The first articles are in the fact-checking stage. It takes as long as it takes.</p>}
+      <PostList posts={latest} />
+    </section>
+  )}
+
+  <section class="wrap editor">
+    <picture>
+      <source srcset={ken.photo.small} type="image/webp" />
+      <img src={ken.photo.fallback} width="200" height="233" alt={ken.photo.alt} loading="lazy" />
+    </picture>
+    <div>
+      <p class="eyebrow">The human in the loop</p>
+      <h2>Edited by {ken.name}</h2>
+      <p>
+        An SEO-AEO and content strategy leader who approves every brief, rules on every flagged claim and signs off on
+        every article. His first-hand experience appears in each article, written by him, not the AI.
+      </p>
+      <p><a href={ken.path}>About Ken</a> · <a href={ken.linkedin}>LinkedIn</a></p>
     </div>
   </section>
 
@@ -62,25 +164,51 @@ const experiment = posts.find((p) => p.data.experiment && p.data.status !== 'don
 </Base>
 
 <style>
-  .hero { position: relative; padding-top: 5.5rem; padding-bottom: 4.5rem; }
+  .hero { position: relative; padding-top: 5.5rem; padding-bottom: 3.5rem; }
   .hero h1 { max-width: 52rem; font-size: clamp(2.6rem, 6vw, 4rem); }
   .hero-note { position: absolute; right: 2.5rem; top: 9.5rem; max-width: 14rem; margin: 0; }
   .actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.25rem; }
   @media (max-width: 860px) { .hero-note { position: static; margin-top: 1rem; } }
+
+  .featured { padding-bottom: 3.5rem; }
+  .featured article { border: 1px solid var(--border); border-radius: 12px; padding: 2rem 2.25rem; background: var(--surface); }
+  .featured h2 { margin: 0; font: 400 clamp(1.8rem, 3.5vw, 2.4rem)/1.12 var(--serif); max-width: 46rem; }
+  .featured h2 a { color: var(--text); text-decoration: none; }
+  .featured h2 a:hover { color: var(--accent); }
+  .featured .dek { margin: 0.9rem 0 0; max-width: 42rem; font: 1.2rem/1.5 var(--serif); color: var(--text-2); }
+  .featured .meta { margin: 1rem 0 0; font-size: 0.875rem; color: var(--muted); }
 
   .band { border-top: 1px solid var(--lab-border); border-bottom: 1px solid var(--lab-border); padding: 3rem 0; }
   .band-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.5rem; margin-bottom: 1.25rem; }
   .lab-link { font: 600 0.875rem var(--mono); color: var(--lab); }
   .band-foot { margin: 1rem 0 0; font: 0.8125rem var(--mono); color: var(--muted); }
 
-  .split { display: flex; flex-wrap: wrap; gap: 3rem; padding-top: 4.5rem; padding-bottom: 1.5rem; }
-  .split > * { flex: 1 1 22rem; min-width: 0; }
-  .feature { border: 1px solid var(--lab-border); border-radius: 10px; padding: 2rem; align-self: flex-start; }
-  .exp-id { margin: 0 0 0.75rem; font: 0.8125rem var(--mono); color: var(--muted); }
-  .feature h3 { margin: 0; font: 600 2rem/1.15 var(--serif); }
-  .feature h3 a { color: var(--text); text-decoration: none; }
-  .feature p:last-child { margin: 0.9rem 0 0; font: 1.2rem/1.5 var(--serif); color: var(--text-2); }
-  .latest h2 { margin: 0 0 0.25rem; font-size: 1.75rem; }
+  .start, .sections, .latest { padding-top: 4rem; }
+  .start h2, .sections h2, .latest h2 { margin: 0 0 1.25rem; font-size: 1.75rem; }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.5rem; }
+  .steps li { display: flex; gap: 1rem; }
+  .n { flex: none; width: 2.2rem; height: 2.2rem; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font: 600 1rem var(--mono); }
+  .steps h3 { margin: 0.2rem 0 0.35rem; font: 600 1.25rem/1.25 var(--serif); }
+  .steps p { margin: 0; color: var(--text-2); font-size: 0.9375rem; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1rem; }
+  .card { display: flex; flex-direction: column; gap: 0.5rem; padding: 1.25rem; border: 1px solid var(--border); border-radius: 10px; color: var(--text); text-decoration: none; }
+  .card:hover { border-color: var(--accent); }
+  .card.lab { border-color: var(--lab-border); background: var(--lab-bg); }
+  .card.lab:hover { border-color: var(--lab); }
+  .name { font: 600 1.2rem var(--serif); }
+  .card.lab .name { font: 600 1rem var(--mono); color: var(--lab); }
+  .blurb { font-size: 0.9375rem; color: var(--text-2); flex: 1; }
+  .count { font: 0.75rem var(--mono); text-transform: uppercase; color: var(--muted); }
+
+  .latest { max-width: calc(46rem + 3rem); }
+
+  .editor { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; align-items: center; margin-top: 4.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
+  .editor img { width: 10rem; height: auto; border-radius: 10px; display: block; }
+  .editor div { flex: 1 1 22rem; max-width: 40rem; }
+  .editor h2 { margin: 0 0 0.6rem; font-size: 1.75rem; }
+  .editor p { margin: 0 0 0.75rem; color: var(--text-2); }
+  .editor .eyebrow { margin-bottom: 0.4rem; }
 
   .method {
     display: flex;

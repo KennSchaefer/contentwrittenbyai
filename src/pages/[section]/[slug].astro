@@ -5,7 +5,7 @@ import ContentFacts from '../../components/ContentFacts.astro';
 import Ledger from '../../components/Ledger.astro';
 import InRealLife from '../../components/InRealLife.astro';
 import { getPosts, formatDate, readingMinutes, linkClaims } from '../../lib/posts';
-import { SITE_TITLE, SECTIONS } from '../../consts';
+import { SITE_TITLE, SECTIONS, EDITOR_PROFILE } from '../../consts';
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -36,7 +36,11 @@ const jsonLd = {
       datePublished: pubDate.toISOString(),
       dateModified: (updatedDate ?? pubDate).toISOString(),
       author: { '@type': 'Organization', name: SITE_TITLE },
-      ...(provenance.editor && { editor: { '@type': 'Person', name: provenance.editor } }),
+      ...(provenance.editor && {
+        editor: provenance.editor === EDITOR_PROFILE.name
+          ? { '@type': 'Person', '@id': abs(`${EDITOR_PROFILE.path}#person`), name: EDITOR_PROFILE.name, url: abs(EDITOR_PROFILE.path) }
+          : { '@type': 'Person', name: provenance.editor },
+      }),
     },
     {
       '@type': 'BreadcrumbList',
@@ -59,7 +63,7 @@ const jsonLd = {
       <p class="lede">{description}</p>
       <ul class="byline">
         <li>Written by <strong>{provenance.models.join(', ')}</strong></li>
-        {provenance.editor && <li>Edited by <strong>{provenance.editor}</strong></li>}
+        {provenance.editor && <li>Edited by <strong>{provenance.editor === EDITOR_PROFILE.name ? <a href={EDITOR_PROFILE.path}>{provenance.editor}</a> : provenance.editor}</strong></li>}
         <li><time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time></li>
         {updatedDate && <li>Updated {formatDate(updatedDate)}</li>}
         <li>{minutes} min read</li>

@@ -1,11 +1,11 @@
 ---
 title: 'We fact-checked the top 10 answers to "Does Google penalize AI content?"'
 seoTitle: "Does Google Penalize AI Content? We Fact-Checked the Top 10 Answers"
-description: "The top answers are mostly right and all out of date. What Google changed on October 1, 2026, what it actually penalizes, and how the top 10 held up."
-pubDate: 2026-10-06
+description: "The top answers are mostly right, and none mention Google's latest update. What changed on October 1, 2026, and what Google actually penalizes."
+pubDate: 2026-10-05
 category: research
 tags: [google, ai-content, fact-checking, study]
-draft: true
+draft: false
 provenance:
   models: ["Claude Opus 5.5"]
   brief: "Answer 'does Google penalize AI content' with an original fact-check of the top 10 results, a redline of Google's October 2026 guidance change, and the editor's first-hand experience."

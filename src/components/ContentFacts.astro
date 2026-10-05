@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { REPO_URL } from '../consts';
+import { REPO_URL, EDITOR_PROFILE } from '../consts';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -25,7 +25,7 @@ const factLabel = { 'not-needed': 'Not needed', pending: 'Pending', checked: 'Hu
   <p class="serving">Serving size: 1 article ({minutes} min)</p>
   <dl>
     <div><dt>Written by</dt><dd>{p.models.join(', ')}</dd></div>
-    {p.editor && <div><dt>Edited by</dt><dd>{p.editor}</dd></div>}
+    {p.editor && <div><dt>Edited by</dt><dd>{p.editor === EDITOR_PROFILE.name ? <a href={EDITOR_PROFILE.path}>{p.editor}</a> : p.editor}</dd></div>}
     <div><dt>Human editing</dt><dd>{editLabel}</dd></div>
     {humanWords > 0 && <div><dt>Written by a human</dt><dd>{humanWords} words</dd></div>}
     {ledger && <div><dt>Claims checked</dt><dd>{claims.length}</dd></div>}

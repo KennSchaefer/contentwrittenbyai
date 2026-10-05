@@ -1,5 +1,6 @@
 ---
 import { render, type CollectionEntry } from 'astro:content';
+import { EDITOR_PROFILE } from '../consts';
 
 interface Props {
   entry: CollectionEntry<'irl'>;
@@ -19,7 +20,7 @@ const { author, heading, sample } = entry.data;
   <div class="body">
     <Content />
   </div>
-  <p class="sig">{author}, editor</p>
+  <p class="sig">{author === EDITOR_PROFILE.name ? <a href={EDITOR_PROFILE.path}>{author}</a> : author}, editor</p>
 </section>
 
 <style>

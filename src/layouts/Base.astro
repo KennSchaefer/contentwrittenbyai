@@ -8,14 +8,16 @@ interface Props {
   description?: string;
   type?: 'website' | 'article';
   noindex?: boolean;
+  // Use `title` as the whole title tag, without appending the site name
+  exactTitle?: boolean;
   // Highlights the matching nav item
   section?: Section | 'methodology';
 }
 
-const { title, description = SITE_DESCRIPTION, type = 'website', noindex = false, section } = Astro.props;
+const { title, description = SITE_DESCRIPTION, type = 'website', noindex = false, section, exactTitle = false } = Astro.props;
 // Add the site name only when it fits; Google truncates title tags past roughly 60 to 70 characters
 const withSite = `${title} | ${SITE_TITLE}`;
-const fullTitle = !title ? SITE_TITLE : withSite.length <= 65 ? withSite : title;
+const fullTitle = !title ? SITE_TITLE : exactTitle || withSite.length > 65 ? title : withSite;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 
 // Google Tag Manager's standard snippet, as Google provides it

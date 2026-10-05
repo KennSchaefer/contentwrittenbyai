@@ -1,0 +1,94 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts } from '../../lib/posts';
+import { EDITOR_PROFILE as ken, SITE_TITLE } from '../../consts';
+
+const edited = (await getPosts()).filter((p) => p.data.provenance.editor === ken.name);
+const abs = (path: string) => new URL(path, Astro.site).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: {
+    '@type': 'Person',
+    '@id': abs(`${ken.path}#person`),
+    name: ken.name,
+    jobTitle: ken.jobTitle,
+    url: abs(ken.path),
+    image: abs(ken.photo.fallback),
+    sameAs: [ken.linkedin],
+    worksFor: { '@type': 'Organization', name: ken.employer.name, url: ken.employer.url },
+  },
+};
+---
+
+<Base
+  title="Ken Schaefer, editor"
+  description="Ken Schaefer is the human editor of Content Written by AI: an SEO-AEO and content strategy leader who approves every brief, every flagged claim and every article."
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <div class="wrap page">
+    <div class="profile">
+      <figure>
+        <picture>
+          <source srcset={ken.photo.src} type="image/webp" />
+          <img src={ken.photo.fallback} width={ken.photo.width} height={ken.photo.height} alt={ken.photo.alt} />
+        </picture>
+        <figcaption class="margin-note">Ken, and Boris, who has not been fact-checked.</figcaption>
+      </figure>
+      <div class="bio">
+        <p class="eyebrow">The human in the loop</p>
+        <h1>Ken Schaefer</h1>
+        <p class="role">Editor, {SITE_TITLE}</p>
+
+        <div class="prose">
+          <p>
+            Ken Schaefer is an SEO-AEO and content strategy leader who helps brands turn audience demand into
+            discoverable, high-performing digital experiences. His expertise spans search and content strategy,
+            content enablement, technical optimization, AI technologies/RPA/automation, and performance
+            measurement, helping connect customer intent with scalable content programs that increase visibility,
+            engagement, and organic growth. Ken’s efforts have helped BCM clients beat numerous growth goals while
+            also winning industry recognition.
+          </p>
+        </div>
+
+        <h2>What Ken does here</h2>
+        <p>
+          The AI writes; Ken decides what gets published. He approves every brief before research starts, rules on
+          every claim the fact-checker flags, and signs off on every article before it goes live. His own
+          first-hand experience appears in each article's "In real life" section, written by him, never by the AI.
+          How that works is in <a href="/methodology/">our methodology</a>.
+        </p>
+
+        <p class="links"><a href={ken.linkedin} rel="me">Ken on LinkedIn</a></p>
+        <p class="disclaimer">
+          {SITE_TITLE} is Ken's personal project. Views expressed here are Ken's own, not those of BCM or its clients.
+        </p>
+      </div>
+    </div>
+
+    {edited.length > 0 && (
+      <section class="edited">
+        <h2>Articles Ken has edited</h2>
+        <PostList posts={edited} />
+      </section>
+    )}
+  </div>
+</Base>
+
+<style>
+  .profile { display: flex; flex-wrap: wrap; gap: 2.5rem 3.5rem; align-items: flex-start; }
+  figure { flex: 1 1 16rem; max-width: 22rem; margin: 0; }
+  img { display: block; width: 100%; height: auto; border-radius: 10px; }
+  figcaption { margin-top: 0.75rem; font-size: 1.4rem; }
+  .bio { flex: 999 1 26rem; min-width: 0; max-width: var(--measure); }
+  .role { margin: 0 0 1.5rem; color: var(--muted); font-weight: 600; }
+  .bio .prose { font-size: 1.2rem; }
+  .bio h2 { font-size: 1.5rem; margin: 2rem 0 0.75rem; }
+  .bio > p { font: 1.125rem/1.6 var(--serif); color: var(--text-2); }
+  .links a { font: 600 1rem var(--sans); }
+  .disclaimer { font: 0.875rem/1.5 var(--sans) !important; color: var(--muted) !important; border-top: 1px solid var(--border); padding-top: 1rem; }
+  .edited { margin-top: 3.5rem; max-width: 46rem; }
+  .edited h2 { font-size: 1.6rem; }
+</style>
