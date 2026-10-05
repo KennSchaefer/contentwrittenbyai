@@ -3,8 +3,9 @@ import { render, getEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import ContentFacts from '../../components/ContentFacts.astro';
 import Ledger from '../../components/Ledger.astro';
+import InRealLife from '../../components/InRealLife.astro';
 import { getPosts, formatDate, readingMinutes, linkClaims } from '../../lib/posts';
-import { SITE_TITLE, SECTIONS } from '../../consts';
+import { SITE_TITLE, SECTIONS, EDITOR_PROFILE } from '../../consts';
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -17,8 +18,12 @@ const { title, description, pubDate, updatedDate, category, provenance } = post.
 const ledger = await getEntry('ledgers', post.id.split('/').pop()!);
 const minutes = readingMinutes(post);
 const section = SECTIONS[category];
-// Markdown posts render through linkClaims so claim marks become tagged links; MDX renders as-is
+const irl = await getEntry('irl', post.id.split('/').pop()!);
+const irlWords = irl ? (irl.body ?? '').split(/\s+/).filter(Boolean).length : 0;
+// Markdown posts render through linkClaims so claim marks become tagged links; MDX renders as-is.
+// A <div data-irl></div> line in the post places the editor's section; without it the section follows the body.
 const html = post.rendered?.html ? linkClaims(post.rendered.html) : null;
+const [beforeIrl, afterIrl] = html ? html.split(/<div data-irl=""?><\/div>/) : [null, undefined];
 
 const abs = (path: string) => new URL(path, Astro.site).href;
 const jsonLd = {
@@ -31,7 +36,11 @@ const jsonLd = {
       datePublished: pubDate.toISOString(),
       dateModified: (updatedDate ?? pubDate).toISOString(),
       author: { '@type': 'Organization', name: SITE_TITLE },
-      ...(provenance.editor && { editor: { '@type': 'Person', name: provenance.editor } }),
+      ...(provenance.editor && {
+        editor: provenance.editor === EDITOR_PROFILE.name
+          ? { '@type': 'Person', '@id': abs(`${EDITOR_PROFILE.path}#person`), name: EDITOR_PROFILE.name, url: abs(EDITOR_PROFILE.path) }
+          : { '@type': 'Person', name: provenance.editor },
+      }),
     },
     {
       '@type': 'BreadcrumbList',
@@ -45,7 +54,7 @@ const jsonLd = {
 };
 ---
 
-<Base title={title} description={description} type="article" noindex={post.data.draft} section={category}>
+<Base title={post.data.seoTitle ?? title} description={description} type="article" noindex={post.data.draft} section={category}>
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <article class="wrap">
     <header>
@@ -54,7 +63,7 @@ const jsonLd = {
       <p class="lede">{description}</p>
       <ul class="byline">
         <li>Written by <strong>{provenance.models.join(', ')}</strong></li>
-        {provenance.editor && <li>Edited by <strong>{provenance.editor}</strong></li>}
+        {provenance.editor && <li>Edited by <strong>{provenance.editor === EDITOR_PROFILE.name ? <a href={EDITOR_PROFILE.path}>{provenance.editor}</a> : provenance.editor}</strong></li>}
         <li><time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time></li>
         {updatedDate && <li>Updated {formatDate(updatedDate)}</li>}
         <li>{minutes} min read</li>
@@ -62,13 +71,21 @@ const jsonLd = {
     </header>
     <div class="row">
       <div class="main">
+        {irl?.data.pullQuote && (
+          <blockquote class="pull">
+            <p>{irl.data.pullQuote}</p>
+            <footer>{irl.data.author}, <a href="#irl-heading">in real life</a>{irl.data.sample && <span class="sample-tag"> (AI-written sample)</span>}</footer>
+          </blockquote>
+        )}
         <div class="prose">
-          {html ? <Fragment set:html={html} /> : <Content />}
+          {beforeIrl !== null ? <Fragment set:html={beforeIrl} /> : <Content />}
+          {irl && <InRealLife entry={irl} />}
+          {afterIrl && <Fragment set:html={afterIrl} />}
         </div>
         {ledger && <Ledger ledger={ledger} />}
       </div>
       <div class="side">
-        <ContentFacts post={post} ledger={ledger} minutes={minutes} />
+        <ContentFacts post={post} ledger={ledger} minutes={minutes} humanWords={irl && !irl.data.sample ? irlWords : 0} />
       </div>
     </div>
   </article>
@@ -85,6 +102,11 @@ const jsonLd = {
   .byline strong { color: var(--text); }
   .row { display: flex; flex-wrap: wrap; gap: 2.5rem 3.5rem; align-items: flex-start; margin-top: 2.75rem; }
   .main { flex: 999 1 36rem; min-width: 0; max-width: var(--measure); }
+  .pull { margin: 0 0 2.5rem; padding-left: 1.25rem; border-left: 3px solid var(--accent); max-width: var(--measure); }
+  .pull p { margin: 0; font: italic 1.5rem/1.35 var(--serif); }
+  .pull footer { margin-top: 0.5rem; font: 600 1.35rem var(--hand); color: var(--accent); }
+  .pull footer a { color: inherit; }
+  .sample-tag { font: 600 0.8125rem var(--sans); }
   .side { flex: 1 1 17rem; max-width: 21rem; position: sticky; top: 1.5rem; }
   @media (max-width: 900px) { .side { position: static; max-width: none; } }
 </style>

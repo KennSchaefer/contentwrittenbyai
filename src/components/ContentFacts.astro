@@ -1,14 +1,16 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { REPO_URL } from '../consts';
+import { REPO_URL, EDITOR_PROFILE } from '../consts';
 
 interface Props {
   post: CollectionEntry<'posts'>;
   ledger?: CollectionEntry<'ledgers'>;
   minutes: number;
+  // Words in the editor's "In real life" section (0 when there isn't one, or it's still a sample)
+  humanWords?: number;
 }
 
-const { post, ledger, minutes } = Astro.props;
+const { post, ledger, minutes, humanWords = 0 } = Astro.props;
 const p = post.data.provenance;
 const filePath = post.filePath?.replace(/^\.\//, '');
 const historyUrl = filePath ? `${REPO_URL}/commits/main/${filePath}` : REPO_URL;
@@ -23,10 +25,11 @@ const factLabel = { 'not-needed': 'Not needed', pending: 'Pending', checked: 'Hu
   <p class="serving">Serving size: 1 article ({minutes} min)</p>
   <dl>
     <div><dt>Written by</dt><dd>{p.models.join(', ')}</dd></div>
-    {p.editor && <div><dt>Edited by</dt><dd>{p.editor}</dd></div>}
+    {p.editor && <div><dt>Edited by</dt><dd>{p.editor === EDITOR_PROFILE.name ? <a href={EDITOR_PROFILE.path}>{p.editor}</a> : p.editor}</dd></div>}
     <div><dt>Human editing</dt><dd>{editLabel}</dd></div>
+    {humanWords > 0 && <div><dt>Written by a human</dt><dd>{humanWords} words</dd></div>}
     {ledger && <div><dt>Claims checked</dt><dd>{claims.length}</dd></div>}
-    {ledger && <div><dt>Claims cut</dt><dd class="cut">{claims.filter((c) => !c.used).length}</dd></div>}
+    {ledger && <div><dt>Claims cut</dt><dd class="cut">{claims.filter((c) => !c.used && c.decision === 'rejected').length}</dd></div>}
     <div class="last"><dt>Fact check</dt><dd>{factLabel}</dd></div>
   </dl>
   <p class="small"><strong>Brief:</strong> {p.brief}</p>

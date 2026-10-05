@@ -1,6 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
-import { REPO_URL, EDITOR } from '../consts';
+import { REPO_URL, EDITOR, EDITOR_PROFILE } from '../consts';
 ---
 
 <Base
@@ -27,7 +27,7 @@ import { REPO_URL, EDITOR } from '../consts';
 
     <h2>Who edits it</h2>
     <p>
-      {EDITOR}, an SEO, reviews everything before it's published. Each article
+      <a href={EDITOR_PROFILE.path}>{EDITOR}</a>, an SEO, reviews everything before it's published. Each article
       records how much he changed, from "none" to "heavy," so you can see how much
       of the final piece is the machine's work.
     </p>

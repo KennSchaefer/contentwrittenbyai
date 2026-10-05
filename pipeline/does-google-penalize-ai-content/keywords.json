@@ -1,0 +1,25 @@
+{
+  "source": "SEMrush, US database",
+  "pulledAt": "2026-10-04",
+  "note": "Search volumes are monthly averages and lag by weeks. Queries about the October 1, 2026 guidance update have no measurable volume yet.",
+  "keywords": [
+    { "keyword": "does google penalize ai content", "volume": 170, "difficulty": 50, "intent": "informational", "group": "primary" },
+    { "keyword": "does ai content rank in google", "volume": 140, "difficulty": 47, "intent": "informational", "group": "core" },
+    { "keyword": "does google penalize ai generated content 2026", "volume": 50, "difficulty": 27, "intent": "informational", "group": "core" },
+    { "keyword": "does google penalize ai content 2026", "volume": 40, "difficulty": null, "intent": "informational", "group": "core" },
+    { "keyword": "does google rank ai content", "volume": 50, "difficulty": 48, "intent": "informational", "group": "core" },
+    { "keyword": "can ai content rank on google", "volume": 50, "difficulty": 37, "intent": "informational", "group": "core" },
+    { "keyword": "is google penalizing ai content", "volume": 30, "difficulty": null, "intent": "informational", "group": "core" },
+    { "keyword": "is ai content bad for seo", "volume": 260, "difficulty": 44, "intent": "informational", "group": "supporting" },
+    { "keyword": "ai content seo", "volume": 260, "difficulty": 60, "intent": "informational", "group": "supporting" },
+    { "keyword": "can google detect ai content", "volume": 50, "difficulty": 44, "intent": "informational", "group": "supporting" },
+    { "keyword": "google search ai generated content", "volume": 30, "difficulty": null, "intent": "informational", "group": "supporting" },
+    { "keyword": "scaled content abuse", "volume": 30, "difficulty": null, "intent": "informational", "group": "supporting" },
+    { "keyword": "google ai content guidelines", "volume": 20, "difficulty": null, "intent": "informational", "group": "supporting" },
+    { "keyword": "google ai content policy", "volume": 20, "difficulty": null, "intent": "informational", "group": "supporting" },
+    { "keyword": "how to fact check ai content", "volume": 20, "difficulty": null, "intent": "informational", "group": "supporting" },
+    { "keyword": "ai generated content", "volume": 1300, "difficulty": 48, "intent": "informational", "group": "adjacent" },
+    { "keyword": "ai hallucinations", "volume": 3600, "difficulty": 92, "intent": "informational", "group": "adjacent" },
+    { "keyword": "ai fact checking", "volume": 210, "difficulty": 29, "intent": "informational", "group": "excluded", "reason": "SERP is about using AI to fact-check misinformation, a different intent" }
+  ]
+}

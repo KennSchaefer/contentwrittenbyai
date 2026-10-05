@@ -1,0 +1,37 @@
+{
+  "before": {
+    "url": "http://web.archive.org/web/20260927014335/https://developers.google.com/search/docs/fundamentals/using-gen-ai-content",
+    "snapshot": "2026-09-27"
+  },
+  "after": {
+    "url": "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content",
+    "lastUpdated": "2026-10-01"
+  },
+  "changes": [
+    {
+      "type": "added",
+      "section": "Focus on accuracy, quality, and relevance",
+      "before": null,
+      "after": "Keep in mind that generative models don't retrieve facts, but predict a likely sequence of words based on their training data."
+    },
+    {
+      "type": "added",
+      "section": "Focus on accuracy, quality, and relevance",
+      "before": null,
+      "after": "Because of this, generative AI outputs may contain inaccuracies (also known as hallucinations)."
+    },
+    {
+      "type": "added",
+      "section": "Focus on accuracy, quality, and relevance",
+      "before": null,
+      "after": "It is critical to manually factcheck and review all AI-generated content for accuracy and trustworthiness before publishing."
+    },
+    {
+      "type": "reworded",
+      "section": "Focus on accuracy, quality, and relevance",
+      "before": "This includes metadata like <title> elements, meta description elements, structured data, and alternate texts for images, which can appear in Search results.",
+      "after": "This review also applies to metadata like <title> elements, meta description elements, structured data, and alternate texts for images, which can appear in Search results."
+    }
+  ],
+  "notes": "Both versions were downloaded as raw HTML with curl (not WebFetch) and the main body (devsite-article-body) was extracted programmatically, so all quoted text is verbatim. All four changes sit in one paragraph, the first paragraph under 'Focus on accuracy, quality, and relevance'. Every other paragraph, heading and in-body link (18 hrefs) is identical between the two versions. The archived snapshot's own footer reads 'Last updated 2025-12-10 UTC' (archive header x-archive-orig-date: Sun, 27 Sep 2026 01:43:35 GMT); the current page reads 'Last updated 2026-10-01 UTC'. The Wayback raw ('id_') URL redirected to a neighboring capture (20260927014811) whose body text is identical to the 20260927014335 capture. Side observation, not checked: the linked 'Creating helpful, reliable, people-first content' page also shows 'Last updated 2026-10-01 UTC' and was not compared against an archived version."
+}

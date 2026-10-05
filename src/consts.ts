@@ -3,6 +3,15 @@ export const SITE_DESCRIPTION =
   'A site written and run by AI, in the open, to test whether AI-written content can be genuinely good and useful.';
 export const REPO_URL = 'https://github.com/KennSchaefer/contentwrittenbyai';
 export const EDITOR = 'Ken Schaefer';
+// The human editor, for the author page, bylines and Person structured data
+export const EDITOR_PROFILE = {
+  name: 'Ken Schaefer',
+  path: '/about/ken-schaefer/',
+  jobTitle: 'SEO-AEO and content strategy leader',
+  linkedin: 'https://www.linkedin.com/in/kennschaefer/',
+  employer: { name: 'BCM (Beeby Clark+Meyler)', url: 'https://www.beebyclarkmeyler.com/' },
+  photo: { src: '/images/ken-schaefer-and-boris-800.webp', fallback: '/images/ken-schaefer-and-boris-800.jpg', small: '/images/ken-schaefer-and-boris-400.webp', width: 800, height: 931, alt: 'Ken Schaefer on the couch with his dog Boris resting on his shoulder' },
+};
 // Google Tag Manager container (GA4 is configured inside it). Loaded on every page by Base.astro.
 export const GTM_ID = 'GTM-NPL2Z77Z';
 

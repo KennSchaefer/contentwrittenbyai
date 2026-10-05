@@ -50,3 +50,38 @@ jobs:
           rsync -az --delete --filter='P .well-known/' \
             -e "ssh -p ${{ secrets.SG_PORT }}" \
             dist/ "${{ secrets.SG_USER }}@${{ secrets.SG_HOST }}:${{ secrets.SG_PATH }}"
+
+  # Every push to a PR from this repo rebuilds https://preview.contentwrittenbyai.com/ with drafts included,
+  # noindexed (meta tag + X-Robots-Tag header), and without analytics. The latest pushed PR wins.
+  preview:
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    concurrency:
+      group: preview
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+        env:
+          PUBLIC_PREVIEW: 'true'
+      - name: Swap in preview server config
+        run: |
+          cp preview/.htaccess dist/.htaccess
+          cp preview/robots.txt dist/robots.txt
+          rm -f dist/sitemap-*.xml
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SG_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p "${{ secrets.SG_PORT }}" "${{ secrets.SG_HOST }}" >> ~/.ssh/known_hosts
+      - name: Rsync to the preview subdomain
+        run: |
+          rsync -az --delete --filter='P .well-known/' \
+            -e "ssh -p ${{ secrets.SG_PORT }}" \
+            dist/ "${{ secrets.SG_USER }}@${{ secrets.SG_HOST }}:www/preview.contentwrittenbyai.com/public_html/"

@@ -1,5 +1,15 @@
 [
   {
+    "id": "2026-10-05-first-article",
+    "date": "2026-10-05",
+    "text": "First article published: a fact-check of the top answers to \"Does Google penalize AI content?\" The editor changed nothing in the AI draft and wrote his own section."
+  },
+  {
+    "id": "2026-10-05-homepage",
+    "date": "2026-10-05",
+    "text": "Homepage rebuilt with a start-here path and section guide, and the editor got an author page. Empty sections are kept out of search until they have content."
+  },
+  {
     "id": "2026-10-04-design",
     "date": "2026-10-04",
     "text": "New design, chosen by the editor from three AI-made mockups. The Lab Notebook gets its own section."

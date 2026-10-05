@@ -1,0 +1,51 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import { EDITOR_PROFILE } from '../consts';
+
+interface Props {
+  entry: CollectionEntry<'irl'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { author, heading, sample } = entry.data;
+---
+
+<section class="irl" aria-labelledby="irl-heading">
+  {sample && (
+    <p class="sample">Sample written by AI to show the format. {author} replaces it with a real first-hand account before this publishes.</p>
+  )}
+  <p class="label">In real life · by a real human</p>
+  <h2 id="irl-heading">{heading}</h2>
+  <div class="body">
+    <Content />
+  </div>
+  <p class="sig">{author === EDITOR_PROFILE.name ? <a href={EDITOR_PROFILE.path}>{author}</a> : author}, editor</p>
+</section>
+
+<style>
+  .irl {
+    margin: 3rem 0;
+    padding: 1.75rem 1.75rem 1.5rem;
+    background: var(--accent-soft);
+    border-radius: 10px;
+  }
+  .sample {
+    margin: 0 0 1.25rem;
+    padding: 0.6rem 0.8rem;
+    border: 2px dashed var(--accent);
+    border-radius: 6px;
+    font: 600 0.875rem/1.4 var(--sans);
+    color: var(--accent);
+  }
+  .label {
+    margin: 0;
+    font: 600 1.6rem/1 var(--hand);
+    color: var(--accent);
+    transform: rotate(-1.5deg);
+    transform-origin: left;
+  }
+  h2 { margin: 0.6rem 0 1rem; font: 600 1.75rem/1.2 var(--serif); }
+  .body :global(p) { margin: 0 0 1.1rem; }
+  .sig { margin: 0.5rem 0 0; font: 600 1.5rem var(--hand); color: var(--accent); }
+</style>

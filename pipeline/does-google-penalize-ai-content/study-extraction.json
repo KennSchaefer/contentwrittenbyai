@@ -1,0 +1,270 @@
+{
+  "query": "does google penalize ai content",
+  "snapshotDate": "2026-10-04",
+  "snapshotSource": "SEMrush US organic positions",
+  "pages": [
+    {
+      "rank": 1,
+      "url": "https://developers.google.com/search/blog/2023/02/google-search-and-ai-content",
+      "domain": "developers.google.com",
+      "type": "official",
+      "fetched": true,
+      "fetchNote": "WebFetch returned only the blog navigation/archive, so the full article text was retrieved with a plain HTTP GET of the same URL on 2026-10-04 and read from the HTML. No update note appears on the post. The blog archive sidebar lists posts through September 2026 and shows no October 2026 post.",
+      "title": "Google Search's guidance about AI-generated content",
+      "published": "2023-02-08",
+      "updated": null,
+      "mentionsOct2026Update": false,
+      "linksPrimarySource": true,
+      "claims": [
+        {
+          "id": "r1-c1",
+          "claim": "Using automation, including AI, to generate content with the primary purpose of manipulating search rankings is a violation of Google's spam policies.",
+          "quote": "to generate content with the primary purpose of manipulating ranking in search results is a violation of our spam policies.",
+          "citedSource": "https://developers.google.com/search/docs/essentials/spam-policies#scaled-content"
+        },
+        {
+          "id": "r1-c2",
+          "claim": "Appropriate use of AI or automation is not against Google's guidelines; not all use of automation, including AI generation, is spam.",
+          "quote": "Appropriate use of AI or automation is not against our guidelines.",
+          "citedSource": null
+        },
+        {
+          "id": "r1-c3",
+          "claim": "Using AI gives content no special ranking gains; content that is useful, helpful, original and satisfies aspects of E-E-A-T might do well in Search.",
+          "quote": "Using AI doesn't give content any special gains. It's just content.",
+          "citedSource": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+        },
+        {
+          "id": "r1-c4",
+          "claim": "Google uses a variety of systems, including SpamBrain, that analyze patterns and signals to identify spam content however it is produced.",
+          "quote": "We have a variety of systems, including SpamBrain, that analyze patterns and signals to help us identify spam content, however it is produced.",
+          "citedSource": "https://developers.google.com/search/blog/2022/04/webspam-report-2021"
+        },
+        {
+          "id": "r1-c5",
+          "claim": "Google says AI disclosures are useful where readers might ask how content was created, and that giving AI an author byline is probably not the best approach.",
+          "quote": "Giving AI an author byline is probably not the best way to follow our recommendation to make clear to readers when AI is part of the content creation process.",
+          "citedSource": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content#how-the-content-was-created"
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "url": "https://support.google.com/webmasters/thread/322708528/does-generating-blogs-with-ai-gets-penalized-in-the-search-ranking-system?hl=en",
+      "domain": "support.google.com",
+      "type": "ugc",
+      "fetched": true,
+      "fetchNote": "WebFetch returned only page chrome (thread is rendered client-side). Thread content was read from the data embedded in the page HTML via a plain HTTP GET. Original post by Emanuel B.Lefebvre; dates are from embedded timestamps (post and answer both 2025-02-04 UTC). Claims are from the reply by Aubrey Yung, which the page data indicates is the recommended answer (endorsed by a volunteer Product Expert). Other replies (Pepper., Bowman Lu, OptimistPrime) not used.",
+      "title": "Does generating blogs with AI gets penalized in the search ranking system?",
+      "published": "2025-02-04",
+      "updated": null,
+      "mentionsOct2026Update": false,
+      "linksPrimarySource": true,
+      "claims": [
+        {
+          "id": "r2-c1",
+          "claim": "Google's Search Quality Rater Guidelines state that the use of generative AI tools alone does not determine the level of effort or Page Quality rating.",
+          "quote": "the use of Generative AI tools alone does not determine the level of effort or Page Quality rating.",
+          "citedSource": "https://static.googleusercontent.com/media/guidelines.raterhub.com/en//searchqualityevaluatorguidelines.pdf"
+        },
+        {
+          "id": "r2-c2",
+          "claim": "Google does not necessarily penalize content created by generative AI, but the content should be helpful and add value for users to rank.",
+          "quote": "In other words, Google doesn't necessarily penalize content that is created by generative AI.",
+          "citedSource": null
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "url": "https://www.reddit.com/r/SEO/comments/1fn7ev7/is_google_penalizing_ai_content_how_much_ai_is/",
+      "domain": "reddit.com",
+      "type": "ugc",
+      "fetched": false,
+      "fetchNote": "WebFetch reports it is unable to fetch from www.reddit.com. A plain HTTP GET of the .json endpoint returned a 'You've been blocked by network security' page, and old.reddit.com returned only a 'Welcome to Reddit' interstitial. Content not recorded.",
+      "title": null,
+      "published": null,
+      "updated": null,
+      "mentionsOct2026Update": null,
+      "linksPrimarySource": null,
+      "claims": []
+    },
+    {
+      "rank": 4,
+      "url": "https://www.rankability.com/data/does-google-penalize-ai-content/",
+      "domain": "rankability.com",
+      "type": "editorial",
+      "fetched": true,
+      "fetchNote": "Fetched via WebFetch and a plain HTTP GET; quotes checked against the raw page text. Page metadata gives the same date for published and modified (2026-06-23); no separate updated date is shown.",
+      "title": "Does Google Penalize AI Content? An SEO Study (2026)",
+      "published": "2026-06-23",
+      "updated": null,
+      "mentionsOct2026Update": false,
+      "linksPrimarySource": true,
+      "claims": [
+        {
+          "id": "r4-c1",
+          "claim": "Google does not penalize AI content under its own policies.",
+          "quote": "Google does not penalize AI content under its own policies.",
+          "citedSource": null
+        },
+        {
+          "id": "r4-c2",
+          "claim": "Google has applied manual actions to spammy AI-generated content, and there is evidence its algorithms can detect low-quality machine-written text.",
+          "quote": "Google has applied manual actions to spammy AI-generated content, and there is evidence its algorithms can detect low-quality machine-written text.",
+          "citedSource": null
+        },
+        {
+          "id": "r4-c3",
+          "claim": "Rankability scored 487 top-ranking Google results with its in-house AI detector and found 83% of the pages it could score read as human-written.",
+          "quote": "83% of Top Google Search Results Are Not Using AI-Generated Content",
+          "citedSource": null
+        },
+        {
+          "id": "r4-c4",
+          "claim": "Google says using automation, including AI, mainly to manipulate rankings violates its spam policies, but not all use of automation, including AI generation, is spam.",
+          "quote": "not all use of automation, including AI generation, is spam. Automation has long been used to generate helpful content, such as sports scores, weather forecasts, and transcripts.",
+          "citedSource": "https://developers.google.com/search/blog/2023/02/google-search-and-ai-content"
+        },
+        {
+          "id": "r4-c5",
+          "claim": "Google's algorithm includes a \"Helpful Content System\" designed to reward high-quality content and punish the opposite.",
+          "quote": "This system is designed to reward high-quality content and punish the opposite.",
+          "citedSource": "https://developers.google.com/search/help/helpful-content-faq"
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "url": "https://www.youtube.com/watch?v=WAXmw1ImBj4",
+      "domain": "youtube.com",
+      "type": "ugc",
+      "fetched": true,
+      "fetchNote": "Title and description read from the page's embedded metadata (WebFetch returned a truncated page). Channel: Nathan Gotch. The description contains only a webinar promotion and makes no claims about Google and AI content, so no claims were extracted. Odd: the title says '(2026)' but the upload date is 2024-09-23.",
+      "title": "Does Google Penalize AI Content? New SEO Case Study (2026)",
+      "published": "2024-09-23",
+      "updated": null,
+      "mentionsOct2026Update": false,
+      "linksPrimarySource": false,
+      "claims": []
+    },
+    {
+      "rank": 6,
+      "url": "https://seosherpa.com/does-google-penalize-ai-content/",
+      "domain": "seosherpa.com",
+      "type": "editorial",
+      "fetched": true,
+      "fetchNote": "Fetched via plain HTTP GET; text read from the HTML. The page shows only 'Updated: May 20, 2026' (author: Jenny). Page metadata (not displayed) gives datePublished 2025-06-25. The page's quote of Google's spam-policy line reads 'violates our spam policies', which differs in wording from the Google post; recorded as the page shows it.",
+      "title": "Does Google Penalize AI Content? What You Need to Know",
+      "published": null,
+      "updated": "2026-05-20",
+      "mentionsOct2026Update": false,
+      "linksPrimarySource": true,
+      "claims": [
+        {
+          "id": "r6-c1",
+          "claim": "Google does not penalize content simply because it was created using AI tools; what matters is why it was made and how well it serves users.",
+          "quote": "Google does not penalize content simply because it was created using AI tools.",
+          "citedSource": null
+        },
+        {
+          "id": "r6-c2",
+          "claim": "Google's February 2023 blog post says using AI mainly to manipulate rankings violates its spam policies, and that not all use of automation is spam.",
+          "quote": "\"Not all use of automation, including AI generation, is spam.\" Both quotes come directly from Google's February 2023 blog post",
+          "citedSource": "https://developers.google.com/search/blog/2023/02/google-search-and-ai-content"
+        },
+        {
+          "id": "r6-c3",
+          "claim": "Google rolled out the Helpful Content System in 2022, rewarding content created for people.",
+          "quote": "In 2022, Google rolled out the Helpful Content System, and it sent shockwaves through content teams.",
+          "citedSource": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+        },
+        {
+          "id": "r6-c4",
+          "claim": "Sites like Bankrate and CNET have used AI tools to scale content creation while maintaining rankings.",
+          "quote": "sites like Bankrate and CNET have successfully used AI tools to scale content creation while maintaining rankings.",
+          "citedSource": null
+        },
+        {
+          "id": "r6-c5",
+          "claim": "Google does not have a \"ChatGPT detector\" but its algorithms and manual reviews flag patterns of low-quality, unoriginal or spammy content regardless of origin.",
+          "quote": "Google doesn't have a \"ChatGPT detector\"",
+          "citedSource": null
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "url": "https://www.semrush.com/blog/does-google-penalize-ai-content/",
+      "domain": "semrush.com",
+      "type": "editorial",
+      "fetched": true,
+      "fetchNote": "Fetched via plain HTTP GET; text read from the HTML. Visible date December 9, 2024; metadata datePublished and dateModified are identical. Page refers to data 'analyzed in October' without a year.",
+      "title": "Does Google Penalize AI Content? New Data Research",
+      "published": "2024-12-09",
+      "updated": null,
+      "mentionsOct2026Update": false,
+      "linksPrimarySource": true,
+      "claims": [
+        {
+          "id": "r7-c1",
+          "claim": "Semrush ran GPTZero on 20,000 blog articles from top-20 Google results for 20,000 random keywords; around 8% were identified as likely AI-generated.",
+          "quote": "Around 8% of the URLs we analyzed were identified as \"likely generated by AI.\"",
+          "citedSource": "https://www.semrush.com/contentshake/can-ai-content-rank-on-google/"
+        },
+        {
+          "id": "r7-c2",
+          "claim": "In Semrush's analysis, 57% of AI content and 58% of human content appeared in the top 10 results.",
+          "quote": "For example, 57% of AI content and 58% of human content appeared in the top 10.",
+          "citedSource": null
+        },
+        {
+          "id": "r7-c3",
+          "claim": "Google's official stance is that AI copy is not penalized, but low-quality content is.",
+          "quote": "Google's official stance: AI copy isn't penalized. But low-quality content is.",
+          "citedSource": "https://developers.google.com/search/blog/2023/02/google-search-and-ai-content"
+        },
+        {
+          "id": "r7-c4",
+          "claim": "Google introduced SynthID, a Google DeepMind technology that embeds invisible watermarks into AI content, including text from Gemini models.",
+          "quote": "It embeds invisible watermarks into AI content, including text from their Gemini models.",
+          "citedSource": "https://ai.google.dev/responsible/docs/safeguards/synthid"
+        },
+        {
+          "id": "r7-c5",
+          "claim": "In a survey of 700+ Semrush users, only 9% said AI content brings them worse SEO results.",
+          "quote": "Only 9% of our users said that AI content brings them worse SEO results.",
+          "citedSource": null
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "url": "https://www.emarketer.com/content/google-doesn-t-penalize-ai-content-86-5--of-top-pages-use-some-ai--study-finds",
+      "domain": "emarketer.com",
+      "type": "editorial",
+      "fetched": false,
+      "fetchNote": "HTTP 403 Forbidden via WebFetch; a plain HTTP GET returned a Cloudflare 'Just a moment...' challenge page. Content not recorded. The URL slug suggests a study figure ('86.5% of top pages use some AI') but this was not read on the page and is not recorded as a claim.",
+      "title": null,
+      "published": null,
+      "updated": null,
+      "mentionsOct2026Update": null,
+      "linksPrimarySource": null,
+      "claims": []
+    },
+    {
+      "rank": 10,
+      "url": "https://www.quora.com/Is-Google-penalizing-AI-content-in-2026-How-does-AI-content-SEO-actually-work",
+      "domain": "quora.com",
+      "type": "ugc",
+      "fetched": false,
+      "fetchNote": "HTTP 403 Forbidden via WebFetch; a plain HTTP GET returned a Cloudflare 'Just a moment...' challenge page. Content not recorded.",
+      "title": null,
+      "published": null,
+      "updated": null,
+      "mentionsOct2026Update": null,
+      "linksPrimarySource": null,
+      "claims": []
+    }
+  ]
+}

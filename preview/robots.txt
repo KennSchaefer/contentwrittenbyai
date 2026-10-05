@@ -1,0 +1,4 @@
+# Preview site. Crawling is allowed on purpose: every page and file sends noindex,
+# and a robots.txt block would stop search engines from seeing that.
+User-agent: *
+Allow: /

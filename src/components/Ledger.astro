@@ -11,8 +11,10 @@ const claims = ledger.data.claims;
 const used = claims.filter((c) => c.used);
 const auto = used.filter((c) => c.decision === 'auto').length;
 const approved = used.filter((c) => c.decision === 'approved').length;
-const excluded = claims.length - used.length;
-const sources = new Set(used.map((c) => new URL(c.sourceUrl).hostname)).size;
+// "Cut" means rejected because the source didn't hold up, not merely unused
+const excluded = claims.filter((c) => !c.used && c.decision === 'rejected').length;
+// Distinct source documents, not domains (several Google pages are separate sources)
+const sources = new Set(used.map((c) => c.sourceUrl.split('#')[0])).size;
 const ledgerUrl = `${REPO_URL}/blob/main/src/content/ledgers/${ledger.id}.json`;
 
 const label = { auto: 'Confirmed', approved: 'Confirmed by editor' } as const;

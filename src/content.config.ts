@@ -23,6 +23,8 @@ const posts = defineCollection({
   loader: glob({ base: './src/content/posts', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     title: z.string(),
+    // Title tag, when it should differ from the on-page H1 (title)
+    seoTitle: z.string().optional(),
     description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
@@ -78,4 +80,18 @@ const sitelog = defineCollection({
   }),
 });
 
-export const collections = { posts, ledgers, sitelog };
+// "In real life · by a real human": the editor's first-hand section for a post, one file per post slug.
+// Written by a person, never by AI. `sample: true` marks an AI-written placeholder and blocks publishing.
+const irl = defineCollection({
+  loader: glob({ base: './src/content/irl', pattern: '*.md' }),
+  schema: z.object({
+    author: z.string(),
+    // A descriptive H2 specific to this article, not a fixed label
+    heading: z.string(),
+    // Optional short excerpt shown near the top of the article
+    pullQuote: z.string().max(240).optional(),
+    sample: z.boolean().default(false),
+  }),
+});
+
+export const collections = { posts, ledgers, sitelog, irl };

@@ -1,0 +1,18 @@
+# preview.contentwrittenbyai.com: draft review site. Copied over the build's .htaccess by the preview deploy.
+ErrorDocument 404 /404.html
+
+# Never index anything on this host. A header covers every file type, not just HTML pages.
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://preview.contentwrittenbyai.com%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 0 seconds"
+</IfModule>

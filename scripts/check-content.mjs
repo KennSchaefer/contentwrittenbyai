@@ -53,6 +53,10 @@ function checkLedger(file, ledger, post) {
   const used = claims.filter((c) => c.used);
   for (const c of claims) {
     const id = `claim ${c.id}`;
+    // Mirror the ledger schema limits so problems show up here, not as a build failure
+    for (const [field, max] of [['claim', 200], ['reason', 160], ['sourceName', 80]]) {
+      if ((c[field] ?? '').length > max) err(file, `${id} ${field} is ${c[field].length} characters (max ${max})`);
+    }
     if (c.used && !['auto', 'approved'].includes(c.decision)) {
       err(file, `${id} is used in the text but its decision is "${c.decision}"`);
     }
@@ -84,7 +88,9 @@ for (const rel of postFiles) {
   lintText(file, proseOnly(body), 'body', bodyStartLine);
 
   const { titleMax, descriptionMin, descriptionMax } = rules.metadata;
-  if (data.title?.length > titleMax) warn(file, `title is ${data.title.length} characters (aim for ${titleMax} or fewer)`);
+  lintText(file, String(data.seoTitle ?? ''), 'seoTitle');
+  const tagTitle = data.seoTitle ?? data.title;
+  if (tagTitle?.length > titleMax) warn(file, `title tag is ${tagTitle.length} characters (aim for ${titleMax} or fewer)`);
   const dl = data.description?.length ?? 0;
   if (dl < descriptionMin || dl > descriptionMax) warn(file, `description is ${dl} characters (aim for ${descriptionMin}–${descriptionMax})`);
 
@@ -103,6 +109,21 @@ for (const rel of postFiles) {
   } else if (tagged.size) {
     err(file, `has claim tags but no ledger at ${ledgerPath}`);
   }
+}
+
+// "In real life" sections are human-written, so the AI writing rules don't apply to them.
+// What does apply: an AI-written sample must never publish, and each section needs a matching post.
+const IRL_DIR = 'src/content/irl';
+const irlFiles = existsSync(IRL_DIR) ? readdirSync(IRL_DIR).filter((f) => f.endsWith('.md')) : [];
+for (const f of irlFiles) {
+  const slug = basename(f, '.md');
+  const file = join(IRL_DIR, f);
+  const { data } = splitFrontmatter(readFileSync(file, 'utf8'));
+  const postRel = postFiles.find((p) => p.replace(/\\/g, '/').replace(/(\/index)?\.mdx?$/, '').split('/').pop() === slug);
+  if (!postRel) { err(file, 'no post matches this section'); continue; }
+  const post = splitFrontmatter(readFileSync(join(POSTS_DIR, postRel), 'utf8')).data;
+  if (data.sample === true && post.draft !== true) err(file, 'is an AI-written sample; the editor must replace it before the post publishes');
+  else if (data.sample === true) warn(file, 'is an AI-written sample and must be replaced before publishing');
 }
 
 for (const f of ledgerFiles) {

@@ -124,6 +124,25 @@ code { font-family: var(--mono); font-size: 0.9em; }
   color: var(--accent);
 }
 
+/* Redlines: what a source added and removed, marked up like an editor would */
+.redline {
+  margin: 1.5rem 0 2rem;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  font-size: 1.125rem;
+}
+.redline ins { text-decoration: none; background: var(--accent-soft); color: var(--accent); }
+.redline del { color: var(--muted); text-decoration-color: var(--accent); text-decoration-thickness: 2px; }
+.redline .src { display: block; margin-top: 0.75rem; font: 0.8125rem var(--sans); color: var(--muted); }
+
+/* Tables in articles */
+.prose table { width: 100%; border-collapse: collapse; font: 0.9375rem/1.45 var(--sans); }
+.prose th, .prose td { text-align: left; padding: 0.55rem 0.6rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+.prose th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.table-scroll { overflow-x: auto; margin: 0 0 1.5rem; }
+
 /* Claim tags: sourced sentences link to their line in the source list */
 mark.claim {
   background: none;

@@ -6,7 +6,7 @@ import { getPosts } from '../../lib/posts';
 const posts = await getPosts();
 ---
 
-<Base title="All articles" description="Every article on Content Written by AI, newest first, each with its sources and how it was made.">
+<Base title="All articles" description="Every article on Content Written by AI, newest first, each with its sources and how it was made." noindex={posts.length === 0}>
   <section class="wrap page">
     <p class="eyebrow">Archive</p>
     <h1>All articles</h1>
