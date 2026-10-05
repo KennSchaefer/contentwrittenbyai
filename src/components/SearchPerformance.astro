@@ -1,0 +1,152 @@
+---
+// Lab Notebook: weekly search and analytics numbers from src/content/metrics (see scripts/collect-metrics.mjs).
+// Shows only collected data; missing sources are named, never filled in.
+import { getCollection } from 'astro:content';
+import { getPosts, postUrl } from '../lib/posts';
+
+const snapshots = (await getCollection('metrics')).sort((a, b) => a.data.week.end.localeCompare(b.data.week.end));
+const latest = snapshots.at(-1)?.data;
+const posts = await getPosts();
+
+const fmt = (n?: number, digits = 0) => (n === undefined ? 'n/a' : n.toLocaleString('en-US', { maximumFractionDigits: digits, minimumFractionDigits: digits }));
+const day = (iso: string) => new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+const sourceNames: Record<string, string> = { searchConsole: 'Search Console', ga4: 'GA4', semrush: 'SEMrush (US)' };
+
+const tiles = latest
+  ? [
+      { label: 'Clicks', value: fmt(latest.site.clicks) },
+      { label: 'Impressions', value: fmt(latest.site.impressions) },
+      { label: 'Avg position', value: latest.site.impressions ? fmt(latest.site.position, 1) : 'n/a' },
+      { label: 'Keywords ranking', value: fmt(latest.site.keywords) },
+      { label: 'In the top 10', value: fmt(latest.site.top10) },
+    ]
+  : [];
+
+// Weekly clicks, last 26 weeks: one series, so no legend; the heading names it
+const weeks = snapshots.slice(-26).map((s) => ({ end: s.data.week.end, start: s.data.week.start, clicks: s.data.site.clicks ?? 0, impressions: s.data.site.impressions ?? 0, position: s.data.site.position }));
+const maxClicks = Math.max(1, ...weeks.map((w) => w.clicks));
+const niceMax = (() => { const p = 10 ** Math.floor(Math.log10(maxClicks)); return Math.ceil(maxClicks / p) * p; })();
+
+const rows = latest
+  ? posts
+      .map((p) => ({ post: p, m: latest.pages.find((x) => x.path === postUrl(p)) }))
+      .sort((a, b) => (b.m?.search?.clicks ?? 0) - (a.m?.search?.clicks ?? 0))
+  : [];
+---
+
+<section class="perf" aria-labelledby="perf-heading">
+  <h2 id="perf-heading" class="lab-mono">Search performance</h2>
+  {!latest ? (
+    <p class="empty">
+      Weekly numbers start with the first snapshot. Every Wednesday, Search Console, GA4 and SEMrush data for the previous
+      week is collected and published here automatically, unedited.
+    </p>
+  ) : (
+    <>
+      <p class="meta">
+        <span>Week of {day(latest.week.start)} to {day(latest.week.end)}</span>
+        <span class="sources">
+          {Object.entries(latest.sources).map(([k, s]) => (
+            <span class:list={['src', { down: !s.ok }]}>{`${sourceNames[k] ?? k}${s.ok ? '' : ' (unavailable this week)'}`}</span>
+          ))}
+        </span>
+      </p>
+      <div class="tiles">
+        {tiles.map((t) => (
+          <div class="tile"><p class="label">{t.label}</p><p class="value">{t.value}</p></div>
+        ))}
+      </div>
+
+      {weeks.length > 1 && (
+        <figure class="chart">
+          <figcaption class="label">Weekly clicks from Google Search</figcaption>
+          <div class="plot" role="img" aria-label={`Weekly clicks for the last ${weeks.length} weeks; latest ${fmt(weeks.at(-1)!.clicks)}`}>
+            <div class="axis"><span>{fmt(niceMax)}</span><span>0</span></div>
+            <div class="bars">
+              {weeks.map((w, i) => (
+                <div class="slot" tabindex="0">
+                  <div class="bar" style={`height:${Math.max((w.clicks / niceMax) * 100, w.clicks ? 2 : 0)}%`}></div>
+                  {i === weeks.length - 1 && <span class="end-label">{fmt(w.clicks)}</span>}
+                  <span class="tip">{day(w.start)} to {day(w.end)}: {fmt(w.clicks)} clicks, {fmt(w.impressions)} impressions</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <details>
+            <summary>Show as a table</summary>
+            <table>
+              <thead><tr><th>Week ending</th><th>Clicks</th><th>Impressions</th><th>Avg position</th></tr></thead>
+              <tbody>
+                {[...weeks].reverse().map((w) => (
+                  <tr><td>{day(w.end)}</td><td>{fmt(w.clicks)}</td><td>{fmt(w.impressions)}</td><td>{w.impressions ? fmt(w.position, 1) : 'n/a'}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </details>
+        </figure>
+      )}
+
+      <div class="table-box">
+        <table>
+          <thead>
+            <tr><th>Article</th><th>Clicks</th><th>Impressions</th><th>Avg position</th><th>Top query</th><th>Keywords (top 10)</th><th>Views</th></tr>
+          </thead>
+          <tbody>
+            {rows.map(({ post, m }) => (
+              <tr>
+                <td><a href={postUrl(post)}>{post.data.title}</a></td>
+                <td>{fmt(m?.search?.clicks ?? 0)}</td>
+                <td>{fmt(m?.search?.impressions ?? 0)}</td>
+                <td>{m?.search ? fmt(m.search.position, 1) : 'n/a'}</td>
+                <td class="q">{m?.search?.topQuery?.query ?? 'n/a'}</td>
+                <td>{m?.rankings ? `${m.rankings.keywords} (${m.rankings.top10})` : '0'}</td>
+                <td>{fmt(m?.analytics?.views ?? 0)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="foot">Raw numbers, published automatically every week and never edited. Every past snapshot is in the <a href="https://github.com/KennSchaefer/contentwrittenbyai/tree/main/src/content/metrics">repo</a>.</p>
+    </>
+  )}
+</section>
+
+<style>
+  .perf { margin-top: 2.5rem; }
+  .perf > h2 { margin-bottom: 0.5rem; }
+  .meta, .foot { font: 0.8125rem var(--mono); color: var(--muted); margin: 0 0 1rem; }
+  .sources::before { content: ' · '; }
+  .src + .src::before { content: ', '; color: var(--muted); }
+  .src.down { color: var(--accent); }
+  .empty { margin: 0; padding: 1.25rem; border: 1px dashed var(--lab-border); border-radius: 8px; color: var(--text-2); }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: 1rem; }
+  .tile { border: 1px solid var(--lab-border); border-radius: 8px; padding: 1rem 1.1rem; background: var(--bg); }
+  .label { margin: 0; font: 0.75rem var(--mono); text-transform: uppercase; color: var(--muted); }
+  .value { margin: 0.4rem 0 0; font: 2.2rem/1 var(--serif); }
+
+  .chart { margin: 1.5rem 0; padding: 1.25rem; border: 1px solid var(--lab-border); border-radius: 8px; background: var(--bg); }
+  .plot { display: flex; gap: 0.6rem; height: 11rem; margin-top: 1rem; }
+  .axis { display: flex; flex-direction: column; justify-content: space-between; font: 0.75rem var(--mono); color: var(--muted); text-align: right; min-width: 2.5rem; }
+  .bars { flex: 1; display: flex; align-items: flex-end; gap: 2px; border-bottom: 1px solid var(--lab-border); }
+  .slot { position: relative; flex: 1; height: 100%; display: flex; align-items: flex-end; justify-content: center; outline: none; }
+  .bar { width: 100%; max-width: 24px; background: var(--chart); border-radius: 4px 4px 0 0; }
+  .end-label { position: absolute; bottom: calc(100% + 0.2rem); font: 600 0.75rem var(--mono); color: var(--text); white-space: nowrap; }
+  .slot .end-label { bottom: auto; top: -1.2rem; }
+  .tip {
+    position: absolute; bottom: calc(100% + 0.5rem); left: 50%; transform: translateX(-50%);
+    display: none; padding: 0.4rem 0.6rem; border-radius: 6px; background: var(--ink); color: #fff;
+    font: 0.75rem var(--sans); white-space: nowrap; z-index: 2;
+  }
+  .slot:hover .tip, .slot:focus .tip { display: block; }
+  .slot:hover .bar, .slot:focus .bar { filter: brightness(1.15); }
+  details { margin-top: 1rem; font-size: 0.875rem; }
+  summary { cursor: pointer; color: var(--link); }
+
+  .table-box { overflow-x: auto; border: 1px solid var(--lab-border); border-radius: 8px; margin-top: 1.25rem; }
+  table { width: 100%; min-width: 46rem; border-collapse: collapse; font-size: 0.875rem; }
+  th, td { text-align: left; padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--lab-border); vertical-align: top; }
+  tr:last-child td { border-bottom: 0; }
+  th { font: 0.7rem var(--mono); text-transform: uppercase; color: var(--muted); }
+  td a { color: var(--text); font-weight: 600; }
+  .q { color: var(--text-2); }
+</style>
