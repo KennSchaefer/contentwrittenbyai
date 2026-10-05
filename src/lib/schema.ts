@@ -39,8 +39,9 @@ export const editorPerson = (full = false) => ({
   ...(full && {
     jobTitle: EDITOR_PROFILE.jobTitle,
     image: abs(EDITOR_PROFILE.photo.fallback),
-    sameAs: [EDITOR_PROFILE.linkedin],
+    sameAs: [EDITOR_PROFILE.linkedin, EDITOR_PROFILE.bcmBlog],
     worksFor: { '@type': 'Organization', name: EDITOR_PROFILE.employer.name, url: EDITOR_PROFILE.employer.url },
+    knowsAbout: EDITOR_PROFILE.knowsAbout,
   }),
 });
 
