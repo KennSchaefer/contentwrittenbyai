@@ -32,4 +32,35 @@ const posts = defineCollection({
   }),
 });
 
-export const collections = { posts };
+// Source ledger: one file per post, named after the post's slug.
+// Claims are kept short on purpose. The ledger records only factual claims the article relies on.
+const claim = z.object({
+  id: z.string(),
+  // The claim as a single short statement
+  claim: z.string().max(200),
+  sourceUrl: z.url(),
+  sourceName: z.string().max(80),
+  // official: government, standards body, or the company speaking about itself
+  // primary: original research or data; reputable: established publication; weak: blog, forum, aggregator
+  tier: z.enum(['official', 'primary', 'reputable', 'weak']),
+  // What the independent verifier found when it re-read the source
+  verdict: z.enum(['supported', 'partial', 'contradicted', 'not-found', 'unreachable']),
+  // Short reason for the verdict
+  reason: z.string().max(160),
+  // auto: supported by an official or primary source, so it clears without review
+  // approved / rejected: a human ruled on it; pending: waiting for a human
+  decision: z.enum(['auto', 'approved', 'rejected', 'pending']),
+  // Whether the published text uses this claim
+  used: z.boolean(),
+});
+
+const ledgers = defineCollection({
+  loader: glob({ base: './src/content/ledgers', pattern: '*.json' }),
+  schema: z.object({
+    verifiedAt: z.coerce.date(),
+    verifier: z.string(),
+    claims: z.array(claim),
+  }),
+});
+
+export const collections = { posts, ledgers };
