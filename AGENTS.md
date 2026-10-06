@@ -23,6 +23,8 @@ Every article follows the ten-stage pipeline in `.claude/skills/new-article/SKIL
 
 - **Merge PRs with merge commits, never squash or rebase-merge.** The separate AI-draft and human-edit commits are the public audit trail that each article's "Every edit, on GitHub" link points to.
 - Every PR push deploys to https://preview.contentwrittenbyai.com/ (`preview` job in `deploy.yml`, `PUBLIC_PREVIEW=true`). It includes drafts, uses `preview/.htaccess` (X-Robots-Tag noindex on everything) and `preview/robots.txt` (crawling allowed so the noindex is seen), has no sitemap, and loads no GTM. Never link to the preview site from the live site.
+- Weekly metrics: `.github/workflows/metrics.yml` (Wednesdays 13:00 UTC, or run manually with an optional `week_end`) runs `scripts/collect-metrics.mjs` and auto-commits `src/content/metrics/<sunday>.json`. Sources: Search Console and GA4 through keyless Google auth (GCP project `cwbai-metrics`, service account `site-metrics@`, Workload Identity limited to this repo's main branch), and SEMrush through the `SEMRUSH_API_KEY` secret. Raw numbers publish without review; interpretation (field notes) goes through the normal PR review. Never hand-edit a snapshot.
+- The SEMrush feature code for AI Overview is unverified. Don't show AI Overview data on the site until it's confirmed.
 - Pages with noindex are pruned from the live sitemap after every build (`scripts/prune-sitemap.mjs`).
 
 ## Stack
