@@ -1,0 +1,38 @@
+{
+  "week": {
+    "start": "2026-09-28",
+    "end": "2026-10-04"
+  },
+  "collectedAt": "2026-10-06T01:39:00.004Z",
+  "sources": {
+    "searchConsole": {
+      "ok": true,
+      "property": "sc-domain:contentwrittenbyai.com"
+    },
+    "ga4": {
+      "ok": true
+    },
+    "semrush": {
+      "ok": true,
+      "database": "us"
+    }
+  },
+  "site": {
+    "clicks": 0,
+    "impressions": 0,
+    "ctr": 0,
+    "position": 0,
+    "views": 0,
+    "sessions": 0,
+    "keywords": 0,
+    "top10": 0
+  },
+  "daily": [
+    {
+      "date": "2026-10-03",
+      "clicks": 0,
+      "impressions": 0
+    }
+  ],
+  "pages": []
+}
