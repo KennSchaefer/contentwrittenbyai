@@ -1,5 +1,10 @@
 [
   {
+    "id": "2026-10-06-llms-txt",
+    "date": "2026-10-06",
+    "text": "Added an llms.txt file, a plain-text map of the site for AI models. It starts an experiment: we watch our server logs to see which AI crawlers ever ask for it."
+  },
+  {
     "id": "2026-10-05-first-article",
     "date": "2026-10-05",
     "text": "First article published: a fact-check of the top answers to \"Does Google penalize AI content?\" The editor changed nothing in the AI draft and wrote his own section."
