@@ -10,7 +10,7 @@
 - **Supporting:** llm.txt for seo, llms.txt examples, llms.txt standard, where to place the llms.txt file, how to see the llms.txt file of a website, openai llms.txt, llms.txt vs robots.txt, llms-full.txt
 - **Crawlers:** claudebot (3,600), oai-searchbot (720, KD 16), gptbot (390, KD 28), ai crawlers, perplexitybot
 
-Full set with volumes: `keywords.json`. The URL uses the exact head term. The "generator" queries (2,400/mo) are tool intent and out of scope.
+Full set with volumes: `keywords.json`. The URL uses the exact head term. The "generator" queries (2,400/mo) were out of scope until the editor added the tools section (6a).
 
 ## What currently ranks
 For both "llms.txt" and "what is llms.txt": the proposal itself (llmstxt.org), Chrome's Lighthouse docs (Lighthouse now audits llms.txt), a Reddit r/SEO thread, Semrush, Ahrefs, GitBook, Mintlify, Search Engine Land, Zeo, YouTube, Medium and Neil Patel.
@@ -38,6 +38,7 @@ Both are snapshots from a past window. Neither shows what was asking for the fil
 4. **The experiment:** what we published and when, how we count (daily server logs, user-agent matching, weekly snapshots), and what would count as a result: a named AI crawler fetching the file, repeat fetches, or traffic that follows a fetch. End condition: we close the experiment at six months (April 2027), or earlier if the answer is clear, and publish a final write-up.
 5. **What we've seen so far:** the baseline, then the live tally (see "Build" below). Per crawler: llms.txt, robots.txt, sitemap and page requests. Then the other requesters by name, and human page views for scale.
 6. **What it means, so far:** our reading of the data, compared fairly with the Semrush and Ahrefs findings. Should you publish one? A practical answer: it's cheap and harmless, and no one should expect traffic from it.
+6a. **How to create an llms.txt file** (added by the editor, 2026-10-09, after approving the draft): the main ways to make one, sourced from each tool's own documentation (the spec authors' tooling, CMS plugins, documentation platforms, online generators), whether each keeps the file current, and asking your favorite AI to build it, using how ours was built as the worked example. Targets the "llms.txt generator" queries (2,400/mo), now in scope.
 7. **In real life · by a real human:** the editor's section (questions below), with its own descriptive H2.
 8. **Limits of this experiment:** one small, new site; user agents can be faked; our own link checks and the editor's visits are in the logs; one log source; SiteGround keeps about 30 days of logs, so anything older than the weekly snapshots is gone.
 9. **FAQ:** below.

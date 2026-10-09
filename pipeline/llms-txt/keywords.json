@@ -29,7 +29,7 @@
     { "keyword": "gptbot", "volume": 390, "difficulty": 28, "intent": "informational", "group": "crawlers" },
     { "keyword": "ai crawlers", "volume": 170, "difficulty": 36, "intent": "informational", "group": "crawlers" },
     { "keyword": "perplexitybot", "volume": 70, "difficulty": 19, "intent": "informational", "group": "crawlers" },
-    { "keyword": "llms.txt generator", "volume": 2400, "difficulty": 48, "intent": "informational", "group": "excluded", "reason": "Tool intent. We don't build a generator." },
+    { "keyword": "llms.txt generator", "volume": 2400, "difficulty": 48, "intent": "informational", "group": "supporting", "note": "In scope from 2026-10-09: the editor added a section on tools for creating the file" },
     { "keyword": "llms.txt wordpress", "volume": 30, "difficulty": null, "intent": "informational", "group": "excluded", "reason": "Platform how-to, off topic" }
   ]
 }
