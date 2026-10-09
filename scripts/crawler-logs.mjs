@@ -4,7 +4,7 @@
 //
 // Only aggregate counts leave this script. Raw log lines hold visitor IPs and must never be committed or printed.
 // User agents can be spoofed, so each request claiming to be a known crawler is also checked against the
-// operator's published IP ranges or reverse DNS (verify-bots.mjs) and reported as verified, failed or unknown.
+// operator's published IP ranges (verify-bots.mjs) and reported as verified, failed or unknown.
 //
 // Used by collect-metrics.mjs (LOGS_DIR), or on its own for a date range:
 //   node scripts/crawler-logs.mjs <logs-dir> <start YYYY-MM-DD> <end YYYY-MM-DD>
@@ -20,7 +20,7 @@ const BOTS = [
   'ClaudeBot', 'Claude-User', 'Claude-SearchBot', 'anthropic-ai',
   'PerplexityBot', 'Perplexity-User',
   'Google-CloudVertexBot', 'GoogleOther', 'Googlebot',
-  'bingbot', 'Applebot', 'Amazonbot', 'meta-externalagent', 'meta-externalfetcher',
+  'bingbot', 'Applebot', 'Amazonbot', 'Amzn-SearchBot', 'Amzn-User', 'meta-externalagent', 'meta-externalfetcher',
   'DuckAssistBot', 'MistralAI-User', 'cohere-ai', 'Bytespider', 'CCBot', 'YouBot', 'Diffbot',
 ];
 const botOf = (ua) => BOTS.find((b) => ua.toLowerCase().includes(b.toLowerCase())) ?? null;
@@ -102,13 +102,13 @@ export async function crawlerCounts(dir, { start, end }) {
     }
   }
 
-  // verified: from the operator's published IPs or confirmed reverse DNS. failed: claimed the name but came
+  // verified: from the operator's published IP ranges. failed: claimed the name but came
   // from somewhere else. unknown: no published method, or the operator's list couldn't be fetched.
   for (const { bot, ip, kinds } of claims.values()) {
     const ok = await verifyBot(bot, ip);
     const result = ok === true ? 'verified' : ok === false ? 'failed' : 'unknown';
     const total = Object.values(kinds).reduce((a, b) => a + b, 0);
-    bots[bot] ??= { ...emptyKinds(), verification: VERIFY[bot] ? (VERIFY[bot].dns ? 'reverse-dns' : 'ip-list') : 'none', verified: 0, failed: 0, unknown: 0 };
+    bots[bot] ??= { ...emptyKinds(), verification: VERIFY[bot] ? 'ip-list' : 'none', verified: 0, failed: 0, unknown: 0 };
     for (const k of Object.keys(kinds)) bots[bot][k] += kinds[k];
     bots[bot][result] += total;
     if (kinds.llmsTxt) add(llmsTxt.agents, result === 'failed' ? `${bot} (failed verification)` : result === 'unknown' && VERIFY[bot] ? `${bot} (unverified)` : bot, kinds.llmsTxt);
