@@ -20,7 +20,7 @@
       "sourceName": "llmstxt.org: The /llms.txt file, v2",
       "tier": "official",
       "verdict": "supported",
-      "reason": "Titled \"The /llms.txt file, v2\"; applies to files \"at the root path /llms.txt ... or at any subpath (e.g. /docs/llms.txt). A file covers the URLs under its path.\"",
+      "reason": "Titled \"The /llms.txt file, v2\"; applies to files \"at the root path /llms.txt ... or at any subpath (e.g. /docs/llms.txt).\"",
       "decision": "auto",
       "used": false
     },
@@ -218,7 +218,7 @@
       "sourceName": "Google Search Central: Google's common crawlers",
       "tier": "official",
       "verdict": "supported",
-      "reason": "GoogleOther \"is the generic crawler ... used by various product teams\"; Google-Extended is a product token for Gemini training/grounding with no separate user agent.",
+      "reason": "GoogleOther \"is the generic crawler ... used by various product teams\"; Google-Extended is a product token for Gemini training/grounding, no separate UA.",
       "decision": "auto",
       "used": false
     },
@@ -273,7 +273,7 @@
       "sourceName": "Semrush blog: What is llms.txt",
       "tier": "weak",
       "verdict": "supported",
-      "reason": "Dated Sept 28, 2026: \"From mid-August to late October 2025, the llms.txt page received zero visits from Google-Extended ..., GPTBot ..., PerplexityBot, or ClaudeBot.\"",
+      "reason": "Sept 28, 2026: \"From mid-August to late October 2025, the llms.txt page received zero visits from Google-Extended ..., GPTBot ..., PerplexityBot, or ClaudeBot.\"",
       "decision": "approved",
       "used": false
     },
