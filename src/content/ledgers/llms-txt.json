@@ -120,7 +120,7 @@
       "tier": "reputable",
       "verdict": "supported",
       "reason": "SEJ, Apr 17, 2025, quotes Mueller on Reddit: \"AFAIK none of the AI services have said they're using LLMs.TXT ... comparable to the keywords meta tag.\"",
-      "decision": "pending",
+      "decision": "approved",
       "used": false
     },
     {
@@ -274,7 +274,7 @@
       "tier": "weak",
       "verdict": "supported",
       "reason": "Dated Sept 28, 2026: \"From mid-August to late October 2025, the llms.txt page received zero visits from Google-Extended ..., GPTBot ..., PerplexityBot, or ClaudeBot.\"",
-      "decision": "pending",
+      "decision": "approved",
       "used": false
     },
     {
