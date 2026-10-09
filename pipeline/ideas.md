@@ -8,7 +8,7 @@ Search data: SEMrush, US database, October 6, 2026. Volume is monthly searches; 
 
 ## Shortlist
 
-### 1. EXP-001: We ran our own article through AI detectors
+### 1. EXP-002: We ran our own article through AI detectors
 
 - **Section:** Lab Notebook (experiment)
 - **What it adds:** original data. We know exactly which words on our site were written by AI and which by a human (the "In real life" sections, and the edit diffs). That makes our own pages a labeled test set, which most detector reviews don't have. Run the AI text, the human text and a mixed version through the main detectors and report hit rates, false positives and how scores move between runs.
@@ -49,7 +49,7 @@ Search data: SEMrush, US database, October 6, 2026. Volume is monthly searches; 
 
 ## Later
 
-- **Do AI humanizers make text better or worse?** Run AI text through humanizer tools, then through detectors (ties into EXP-001) and through our fact-checker, to see whether they introduce errors. Head terms are huge but unwinnable (ai humanizer 673,000, KD 89); "how to humanize ai text" is 1,900 at KD 87. Better as a follow-up to EXP-001.
+- **Do AI humanizers make text better or worse?** Run AI text through humanizer tools, then through detectors (ties into EXP-002) and through our fact-checker, to see whether they introduce errors. Head terms are huge but unwinnable (ai humanizer 673,000, KD 89); "how to humanize ai text" is 1,900 at KD 87. Better as a follow-up to EXP-002.
 - **How to show up in AI Overviews.** how to rank in ai overviews (720, KD 35, CPC $6.46). Low difficulty, but every agency has written this one. Only worth it with our own AI Overview data, which waits on confirming the SEMrush AI Overview feature code.
 - **First monthly Lab field note.** Already planned for early November 2026, after a full month of metrics.
 
@@ -57,5 +57,5 @@ Search data: SEMrush, US database, October 6, 2026. Volume is monthly searches; 
 
 When an idea is picked, it moves here with a link to its `pipeline/<slug>/` folder.
 
-- **EXP-002: Does llms.txt do anything?** (idea 4). Picked October 6, 2026. The file (`/llms.txt`, generated from `src/pages/llms.txt.ts`) went up first so the logs can build up. The write-up comes once there's enough data.
-- **EXP-001: AI detectors** (idea 1). Picked October 6, 2026. Next up for keyword research and a brief.
+- **EXP-001: Does llms.txt do anything?** (idea 4). Picked October 6, 2026. The file (`/llms.txt`, generated from `src/pages/llms.txt.ts`) went up first so the logs can build up. Published as a running experiment that updates from the weekly server-log counts. Baseline: [`pipeline/llms-txt-experiment/`](llms-txt-experiment/).
+- **EXP-002: AI detectors** (idea 1). Picked October 6, 2026. Next after EXP-001.

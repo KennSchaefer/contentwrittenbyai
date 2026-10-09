@@ -160,8 +160,8 @@ const snapshot = {
   },
   site: { ...(gsc.site ?? {}), ...(ga.site ?? {}), ...(sem.site ?? {}) },
   daily: gsc.daily ?? [],
-  // Requests by user agent, from the server's access logs (EXP-002). User agents can be spoofed.
-  ...(crawl.ok && { crawlers: { llmsTxt: crawl.llmsTxt, bots: crawl.bots } }),
+  // Requests by user agent, from the server's access logs (EXP-001). User agents can be spoofed.
+  ...(crawl.ok && { crawlers: { llmsTxt: crawl.llmsTxt, bots: crawl.bots, otherBots: crawl.otherBots, visitors: crawl.visitors } }),
   pages: [...paths].sort().map((path) => ({
     path,
     ...(gsc.pages?.[path] && { search: gsc.pages[path] }),

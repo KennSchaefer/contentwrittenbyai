@@ -43,7 +43,7 @@ jobs:
         with:
           workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
           service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
-      # Server access logs for crawler counts (EXP-002). They hold visitor IPs, so they stay in the runner's temp
+      # Server access logs for crawler counts (EXP-001). They hold visitor IPs, so they stay in the runner's temp
       # folder and nothing here prints them: Actions logs are public. A failure is recorded in the snapshot.
       - name: Fetch server logs
         id: logs
