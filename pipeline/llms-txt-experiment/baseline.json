@@ -1,0 +1,98 @@
+{
+  "experiment": "EXP-002",
+  "description": "Requests in the server access logs before /llms.txt existed, counted by user agent. Built from SiteGround daily logs with scripts/crawler-logs.mjs. User agents can be spoofed, so these are what clients claimed to be. Raw logs are not published because they contain visitor IPs.",
+  "source": "SiteGround daily access logs, all files available on 2026-10-09 (2026-09-25 missing)",
+  "periods": {
+    "beforeLaunch": {
+      "start": "2026-09-09",
+      "end": "2026-10-02",
+      "note": "Domain online before the site launched",
+      "files": 24,
+      "llmsTxt": {
+        "requests": 4,
+        "byStatus": {
+          "404": 4
+        },
+        "unlistedAgents": 4
+      },
+      "bots": {
+        "Amazonbot": {
+          "llmsTxt": 0,
+          "robotsTxt": 3,
+          "sitemap": 0,
+          "other": 4
+        },
+        "Applebot": {
+          "llmsTxt": 0,
+          "robotsTxt": 2,
+          "sitemap": 0,
+          "other": 0
+        },
+        "bingbot": {
+          "llmsTxt": 0,
+          "robotsTxt": 3,
+          "sitemap": 1,
+          "other": 3
+        },
+        "Googlebot": {
+          "llmsTxt": 0,
+          "robotsTxt": 64,
+          "sitemap": 0,
+          "other": 8
+        },
+        "OAI-SearchBot": {
+          "llmsTxt": 0,
+          "robotsTxt": 19,
+          "sitemap": 0,
+          "other": 0
+        }
+      }
+    },
+    "afterLaunch": {
+      "start": "2026-10-03",
+      "end": "2026-10-08",
+      "note": "Site live, no llms.txt yet",
+      "files": 8,
+      "llmsTxt": {
+        "requests": 2,
+        "byStatus": {
+          "301": 1,
+          "404": 1
+        },
+        "unlistedAgents": 2
+      },
+      "bots": {
+        "Amazonbot": {
+          "llmsTxt": 0,
+          "robotsTxt": 2,
+          "sitemap": 0,
+          "other": 20
+        },
+        "ChatGPT-User": {
+          "llmsTxt": 0,
+          "robotsTxt": 0,
+          "sitemap": 0,
+          "other": 3
+        },
+        "Googlebot": {
+          "llmsTxt": 0,
+          "robotsTxt": 15,
+          "sitemap": 6,
+          "other": 48
+        },
+        "GoogleOther": {
+          "llmsTxt": 0,
+          "robotsTxt": 0,
+          "sitemap": 0,
+          "other": 16
+        },
+        "OAI-SearchBot": {
+          "llmsTxt": 0,
+          "robotsTxt": 7,
+          "sitemap": 1,
+          "other": 13
+        }
+      }
+    }
+  }
+}
