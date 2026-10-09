@@ -180,5 +180,61 @@
     "sourceUrl": "https://ahrefs.com/blog/llmstxt-study/",
     "sourceName": "Ahrefs: llms.txt study (Louise Linehan, June 15, 2026)",
     "tier": "primary"
+  },
+  {
+    "id": "c27",
+    "claim": "The spec's own llms-txt Python module and llms_txt2ctx CLI read an existing llms.txt and turn it into an XML context document for LLMs; they do not write the file for you.",
+    "sourceUrl": "https://llmstxt.org/intro.html",
+    "sourceName": "llmstxt.org: llms-txt Python module and CLI docs",
+    "tier": "official"
+  },
+  {
+    "id": "c28",
+    "claim": "Yoast announced llms.txt generation on June 10, 2025: the plugin builds the file from recently updated content, the sitemap and your site descriptions, and refreshes it every week.",
+    "sourceUrl": "https://yoast.com/yoast-seo-june-10-2025/",
+    "sourceName": "Yoast: Yoast SEO llms.txt announcement (June 10, 2025)",
+    "tier": "official"
+  },
+  {
+    "id": "c29",
+    "claim": "Rank Math builds llms.txt from the post types and taxonomies you select, listing each item's title, URL and a short description; you can set a limit and add custom content.",
+    "sourceUrl": "https://rankmath.com/kb/llms-txt/",
+    "sourceName": "Rank Math KB: How to Use llms.txt in Rank Math SEO",
+    "tier": "official"
+  },
+  {
+    "id": "c30",
+    "claim": "All in One SEO's LLMs.txt Generator works in the free Lite plugin, which generates llms.txt automatically; llms-full.txt and Markdown settings need a Pro account.",
+    "sourceUrl": "https://aioseo.com/features/llms-txt-generator/",
+    "sourceName": "AIOSEO: LLMs.txt Generator feature page",
+    "tier": "official"
+  },
+  {
+    "id": "c31",
+    "claim": "Mintlify automatically hosts an llms.txt listing every page of a docs site in navigation order and says it is always up to date; a custom llms.txt in the project overrides it.",
+    "sourceUrl": "https://www.mintlify.com/docs/ai/llmstxt",
+    "sourceName": "Mintlify docs: llms.txt",
+    "tier": "official"
+  },
+  {
+    "id": "c32",
+    "claim": "GitBook says it automatically publishes AI-friendly formats for docs sites, including /llms.txt, which lists every published page with a Markdown version, and /llms-full.txt.",
+    "sourceUrl": "https://gitbook.com/docs/publishing-documentation/llm-ready-docs",
+    "sourceName": "GitBook docs: LLM-ready docs",
+    "tier": "official"
+  },
+  {
+    "id": "c33",
+    "claim": "Firecrawl's llms.txt generator crawls a site and writes llms.txt and llms-full.txt, but Firecrawl stopped maintaining that API after June 30, 2025 and offers an example repo instead.",
+    "sourceUrl": "https://docs.firecrawl.dev/features/alpha/llmstxt",
+    "sourceName": "Firecrawl docs: LLMs.txt Generator",
+    "tier": "official"
+  },
+  {
+    "id": "c34",
+    "claim": "vitepress-plugin-llms generates llms.txt and llms-full.txt from a VitePress site's Markdown at build time, with no configuration needed.",
+    "sourceUrl": "https://github.com/okineadev/vitepress-plugin-llms",
+    "sourceName": "GitHub: okineadev/vitepress-plugin-llms README",
+    "tier": "primary"
   }
 ]
