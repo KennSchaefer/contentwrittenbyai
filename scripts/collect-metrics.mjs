@@ -2,10 +2,12 @@
 // and writes src/content/metrics/<week-end>.json. Runs in GitHub Actions (.github/workflows/metrics.yml).
 //
 // A source that isn't configured or fails is recorded as such in the snapshot, never filled with guesses.
-// Env: GA4_PROPERTY_ID, SEMRUSH_API_KEY, GSC_SITE (default sc-domain:contentwrittenbyai.com).
+// Env: GA4_PROPERTY_ID, SEMRUSH_API_KEY, GSC_SITE (default sc-domain:contentwrittenbyai.com),
+// LOGS_DIR (a local copy of the server's access logs, for crawler counts; see crawler-logs.mjs).
 // Google auth comes from Application Default Credentials (keyless GitHub OIDC in CI).
 import { writeFileSync, existsSync } from 'node:fs';
 import { GoogleAuth } from 'google-auth-library';
+import { crawlerCounts } from './crawler-logs.mjs';
 
 const DOMAIN = 'contentwrittenbyai.com';
 const ORIGIN = `https://${DOMAIN}`;
@@ -137,7 +139,14 @@ async function attempt(name, fn) {
   }
 }
 
-const [gsc, ga, sem] = await Promise.all([attempt('gsc', searchConsole), attempt('ga4', ga4), attempt('semrush', semrush)]);
+async function crawlers() {
+  if (!process.env.LOGS_DIR) throw new Error('LOGS_DIR not set');
+  return crawlerCounts(process.env.LOGS_DIR, week);
+}
+
+const [gsc, ga, sem, crawl] = await Promise.all([
+  attempt('gsc', searchConsole), attempt('ga4', ga4), attempt('semrush', semrush), attempt('logs', crawlers),
+]);
 
 const paths = new Set([...Object.keys(gsc.pages ?? {}), ...Object.keys(ga.pages ?? {}), ...Object.keys(sem.pages ?? {})]);
 const snapshot = {
@@ -147,9 +156,12 @@ const snapshot = {
     searchConsole: gsc.ok ? { ok: true, property: GSC_SITE } : { ok: false, error: gsc.error },
     ga4: ga.ok ? { ok: true } : { ok: false, error: ga.error },
     semrush: sem.ok ? { ok: true, database: 'us' } : { ok: false, error: sem.error },
+    serverLogs: crawl.ok ? { ok: true, files: crawl.files } : { ok: false, error: crawl.error },
   },
   site: { ...(gsc.site ?? {}), ...(ga.site ?? {}), ...(sem.site ?? {}) },
   daily: gsc.daily ?? [],
+  // Requests by user agent, from the server's access logs (EXP-002). User agents can be spoofed.
+  ...(crawl.ok && { crawlers: { llmsTxt: crawl.llmsTxt, bots: crawl.bots } }),
   pages: [...paths].sort().map((path) => ({
     path,
     ...(gsc.pages?.[path] && { search: gsc.pages[path] }),

@@ -114,6 +114,13 @@ const metrics = defineCollection({
     sources: z.record(z.string(), z.object({ ok: z.boolean(), error: z.string().optional() }).passthrough()),
     site: z.object({ clicks: num, impressions: num, ctr: num, position: num, views: num, sessions: num, keywords: num, top10: num }),
     daily: z.array(z.object({ date: z.string(), clicks: z.number(), impressions: z.number() })),
+    // Server-log request counts by user agent (EXP-002), when the logs were available
+    crawlers: z
+      .object({
+        llmsTxt: z.object({ requests: z.number(), byStatus: z.record(z.string(), z.number()), unlistedAgents: z.number() }),
+        bots: z.record(z.string(), z.object({ llmsTxt: z.number(), robotsTxt: z.number(), sitemap: z.number(), other: z.number() })),
+      })
+      .optional(),
     pages: z.array(
       z.object({
         path: z.string(),

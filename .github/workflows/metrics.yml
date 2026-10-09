@@ -43,9 +43,24 @@ jobs:
         with:
           workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
           service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+      # Server access logs for crawler counts (EXP-002). They hold visitor IPs, so they stay in the runner's temp
+      # folder and nothing here prints them: Actions logs are public. A failure is recorded in the snapshot.
+      - name: Fetch server logs
+        id: logs
+        continue-on-error: true
+        run: |
+          mkdir -p ~/.ssh "$RUNNER_TEMP/server-logs"
+          echo "${{ secrets.SG_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p "${{ secrets.SG_PORT }}" "${{ secrets.SG_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+          rsync -aq --include='contentwrittenbyai.com-*.gz' --exclude='*' \
+            -e "ssh -p ${{ secrets.SG_PORT }}" \
+            "${{ secrets.SG_USER }}@${{ secrets.SG_HOST }}:www/contentwrittenbyai.com/logs/" "$RUNNER_TEMP/server-logs/"
+          echo "dir=$RUNNER_TEMP/server-logs" >> "$GITHUB_OUTPUT"
       - name: Collect
         run: node scripts/collect-metrics.mjs
         env:
+          LOGS_DIR: ${{ steps.logs.outputs.dir }}
           GA4_PROPERTY_ID: ${{ vars.GA4_PROPERTY_ID }}
           SEMRUSH_API_KEY: ${{ secrets.SEMRUSH_API_KEY }}
           WEEK_END: ${{ inputs.week_end }}
