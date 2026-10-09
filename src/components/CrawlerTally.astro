@@ -52,7 +52,7 @@ for (const c of perBotSource)
   }
 const botRows = Object.entries(perBot).sort(([, a], [, b]) => total(b) - total(a));
 const lastWeek = counted.length ? snapshots.filter((s) => s.data.crawlers).at(-1)!.data.week.end : null;
-const method: Record<string, string> = { 'ip-list': 'Published IPs', 'reverse-dns': 'Reverse DNS', none: 'Not verifiable' };
+const method: Record<string, string> = { 'ip-list': 'Published IPs', none: 'Not verifiable' };
 ---
 
 <section class="tally" aria-labelledby="tally-heading">
@@ -113,8 +113,8 @@ const method: Record<string, string> = { 'ip-list': 'Published IPs', 'reverse-dn
   </div>
 
   <p class="foot">
-    Requests are counted by user agent, then each known crawler is checked against the IP ranges its operator publishes
-    (reverse DNS for Amazonbot). "Search" covers Googlebot, GoogleOther, Bingbot and Applebot; every other known crawler
+    Requests are counted by user agent, then each known crawler is checked against the IP ranges its operator
+    publishes. "Search" covers Googlebot, GoogleOther, Bingbot and Applebot; every other known crawler
     counts as AI. "Human page views" are page loads from agents that didn't identify as bots, which includes the editor
     and some tools posing as browsers. Raw logs aren't published because they contain visitor IPs. The counts are in
     the <a href={`${REPO_URL}/tree/main/src/content/metrics`}>weekly snapshots</a> and the
