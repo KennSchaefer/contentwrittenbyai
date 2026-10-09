@@ -22,7 +22,10 @@ const ledger = await getEntry('ledgers', post.id.split('/').pop()!);
 const minutes = readingMinutes(post);
 const section = SECTIONS[category];
 const irl = await getEntry('irl', post.id.split('/').pop()!);
-const irlWords = irl ? (irl.body ?? '').split(/\s+/).filter(Boolean).length : 0;
+// Human-written words only: quoted lines are the AI's interview questions
+const irlWords = irl
+  ? (irl.body ?? '').split('\n').filter((l) => !l.trimStart().startsWith('>')).join(' ').split(/\s+/).filter(Boolean).length
+  : 0;
 // Markdown posts render through linkClaims so claim marks become tagged links; MDX renders as-is.
 // Placeholder lines put components inside the text: <div data-irl></div> places the editor's section (without
 // it, the section follows the body) and <div data-crawler-tally></div> places the EXP-001 live tally.
