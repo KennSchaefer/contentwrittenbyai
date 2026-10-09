@@ -25,7 +25,7 @@ const irlWords = irl ? (irl.body ?? '').split(/\s+/).filter(Boolean).length : 0;
 // Markdown posts render through linkClaims so claim marks become tagged links; MDX renders as-is.
 // A <div data-irl></div> line in the post places the editor's section; without it the section follows the body.
 const html = post.rendered?.html ? linkClaims(post.rendered.html) : null;
-const [beforeIrl, afterIrl] = html ? html.split(/<div data-irl=""?><\/div>/) : [null, undefined];
+const [beforeIrl, afterIrl] = html ? html.split(/<div data-irl(?:="")?><\/div>/) : [null, undefined];
 
 const url = abs(Astro.url.pathname);
 const ogImage = abs(`/og/${ogKey(Astro.url.pathname)}.png`);
