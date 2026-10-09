@@ -11,7 +11,7 @@
       "verdict": "supported",
       "reason": "Byline Jeremy Howard, Sept 3, 2024: \"We propose that those interested in providing LLM-friendly content add a /llms.txt file to their site.\"",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c2",
@@ -22,7 +22,7 @@
       "verdict": "supported",
       "reason": "Titled \"The /llms.txt file, v2\"; applies to files \"at the root path /llms.txt ... or at any subpath (e.g. /docs/llms.txt).\"",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c3",
@@ -33,7 +33,7 @@
       "verdict": "supported",
       "reason": "Spec: H1 is the only required section, then a blockquote summary, optional detail paragraphs, and H2-delimited file lists of markdown links.",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c4",
@@ -44,7 +44,7 @@
       "verdict": "supported",
       "reason": "\"The 'Optional' section is used, by convention, for secondary information: links an agent can skip when a shorter context is needed.\"",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c5",
@@ -55,7 +55,7 @@
       "verdict": "supported",
       "reason": "\"robots.txt lets automated tools know what access ... is considered acceptable\"; llms.txt \"is instead used on demand, when an agent needs information ...\"",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c6",
@@ -66,7 +66,7 @@
       "verdict": "supported",
       "reason": "sitemap.xml \"Often won't have the LLM-readable versions of pages listed\" and covers documents \"too large to fit in an LLM context window.\"",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c7",
@@ -77,7 +77,7 @@
       "verdict": "supported",
       "reason": "RFC 9309 dated September 2022; text: \"These rules are not a form of access authorization.\"",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c8",
@@ -99,7 +99,7 @@
       "verdict": "supported",
       "reason": "\"When Mintlify shipped llms.txt support across every site on the platform in 2024...\"; \"The two teams then developed llms-full.txt together.\"",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c10",
@@ -110,7 +110,7 @@
       "verdict": "supported",
       "reason": "Updated July 10, 2026: no need for \"AI text files, markup, or Markdown\"; fine to create LLMS.txt files for other services, but \"Google Search ignores them.\"",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c11",
@@ -121,7 +121,7 @@
       "verdict": "supported",
       "reason": "SEJ, Apr 17, 2025, quotes Mueller on Reddit: \"AFAIK none of the AI services have said they're using LLMs.TXT ... comparable to the keywords meta tag.\"",
       "decision": "approved",
-      "used": false
+      "used": true
     },
     {
       "id": "c12",
@@ -132,7 +132,7 @@
       "verdict": "supported",
       "reason": "\"Lighthouse flags the pages if a server error occurs\"; a 404 is \"marked as Not Applicable (N/A), as providing the file is optional.\" Updated 2026-05-05.",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c13",
@@ -143,7 +143,7 @@
       "verdict": "supported",
       "reason": "GPTBot crawls \"content that may be used in training\"; OAI-SearchBot \"surface[s] websites in search results in ChatGPT\"; ChatGPT-User for \"certain user actions.\"",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c14",
@@ -154,7 +154,7 @@
       "verdict": "supported",
       "reason": "Page lists IP range files openai.com/gptbot.json, openai.com/searchbot.json and openai.com/chatgpt-user.json.",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c15",
@@ -165,7 +165,7 @@
       "verdict": "supported",
       "reason": "Only mention: \"For the complete documentation index, see llms.txt\" (its own). No statement that its crawlers read other sites' llms.txt.",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c16",
@@ -176,7 +176,7 @@
       "verdict": "supported",
       "reason": "File loads at platform.claude.com/llms.txt with H1 \"# Anthropic Developer Documentation\" and an overview of the API docs.",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c17",
@@ -187,7 +187,7 @@
       "verdict": "supported",
       "reason": "Updated Apr 7, 2026; lists all three bots; \"Anthropic's Bots respect 'do not crawl' signals by honoring ... robots.txt\"; IPs at claude.com/crawling/bots.json.",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c18",
@@ -198,7 +198,7 @@
       "verdict": "supported",
       "reason": "\"surface and link websites in search results on Perplexity. It is not used to crawl content for AI foundation models.\" IPs: perplexity.com/perplexitybot.json.",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c19",
@@ -209,7 +209,7 @@
       "verdict": "supported",
       "reason": "Reverse DNS: domain \"either googlebot.com, google.com, or googleusercontent.com\"; or match IPs to JSON lists incl. common-crawlers.json.",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c20",
@@ -220,7 +220,7 @@
       "verdict": "supported",
       "reason": "GoogleOther \"is the generic crawler ... used by various product teams\"; Google-Extended is a product token for Gemini training/grounding, no separate UA.",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c21",
@@ -264,7 +264,7 @@
       "verdict": "supported",
       "reason": "\"Amazonbot is used to improve our products and services ... and may be used to train Amazon AI models.\" IPs at developer.amazon.com/amazonbot/ip-addresses/.",
       "decision": "auto",
-      "used": false
+      "used": true
     },
     {
       "id": "c25",
@@ -275,7 +275,7 @@
       "verdict": "supported",
       "reason": "Sept 28, 2026: \"From mid-August to late October 2025, the llms.txt page received zero visits from Google-Extended ..., GPTBot ..., PerplexityBot, or ClaudeBot.\"",
       "decision": "approved",
-      "used": false
+      "used": true
     },
     {
       "id": "c26",
@@ -286,7 +286,7 @@
       "verdict": "supported",
       "reason": "137,210 domains with May 2026 traffic; 28% publish; \"Of the ~38,000 domains with a valid file, 97% saw no requests\"; SEO audit tools top at 21.7%.",
       "decision": "auto",
-      "used": false
+      "used": true
     }
   ]
 }
