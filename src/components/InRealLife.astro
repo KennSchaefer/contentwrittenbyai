@@ -47,5 +47,11 @@ const { author, heading, sample } = entry.data;
   }
   h2 { margin: 0.6rem 0 1rem; font: 600 1.75rem/1.2 var(--serif); }
   .body :global(p) { margin: 0 0 1.1rem; }
+  /* Interview questions are quoted lines in the entry. They're the AI's words, so they're labeled as such and
+     left out of the human word count. */
+  .body :global(blockquote) { margin: 1.5rem 0 0.5rem; padding: 0; border: 0; font: 600 0.9375rem/1.45 var(--sans); color: var(--muted); }
+  .body :global(blockquote:first-child) { margin-top: 0; }
+  .body :global(blockquote p) { margin: 0; }
+  .body :global(blockquote)::before { content: 'Our question'; display: block; font: 600 0.6875rem var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
   .sig { margin: 0.5rem 0 0; font: 600 1.5rem var(--hand); color: var(--accent); }
 </style>

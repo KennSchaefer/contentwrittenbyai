@@ -57,5 +57,5 @@ Search data: SEMrush, US database, October 6, 2026. Volume is monthly searches; 
 
 When an idea is picked, it moves here with a link to its `pipeline/<slug>/` folder.
 
-- **EXP-001: Does llms.txt do anything?** (idea 4). Picked October 6, 2026. The file (`/llms.txt`, generated from `src/pages/llms.txt.ts`) went up first so the logs can build up. Published as a running experiment that updates from the weekly server-log counts. Baseline: [`pipeline/llms-txt-experiment/`](llms-txt-experiment/).
+- **EXP-001: Does llms.txt do anything?** (idea 4). Picked October 6, 2026. The file (`/llms.txt`, generated from `src/pages/llms.txt.ts`) went up first so the logs can build up. Published as a running experiment that updates from the weekly server-log counts. Baseline: [`pipeline/llms-txt/`](llms-txt/).
 - **EXP-002: AI detectors** (idea 1). Picked October 6, 2026. Next after EXP-001.

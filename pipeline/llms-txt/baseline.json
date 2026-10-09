@@ -1,6 +1,6 @@
 {
   "experiment": "EXP-001",
-  "description": "Requests in the server access logs before /llms.txt existed, counted by user agent. Built from SiteGround daily logs with scripts/crawler-logs.mjs. User agents can be spoofed, so these are what clients claimed to be. \"visitors\" are agents that did not identify as bots, which includes the editor and some automated tools posing as browsers. Raw logs are not published because they contain visitor IPs.",
+  "description": "Requests in the server access logs before /llms.txt existed, counted by user agent. Built from SiteGround daily logs with scripts/crawler-logs.mjs. User agents can be spoofed, so each request claiming to be a known crawler was checked against that operator's published IP ranges, using the lists as published on 2026-10-09; see each bot's verified, failed and unknown counts. \"visitors\" are agents that did not identify as bots, which includes the editor and some automated tools posing as browsers. Raw logs are not published because they contain visitor IPs.",
   "source": "SiteGround daily access logs, all files available on 2026-10-09 (2026-09-25 missing)",
   "periods": {
     "beforeLaunch": {
@@ -23,31 +23,51 @@
           "llmsTxt": 0,
           "robotsTxt": 3,
           "sitemap": 0,
-          "other": 4
+          "other": 4,
+          "verification": "ip-list",
+          "verified": 6,
+          "failed": 1,
+          "unknown": 0
         },
         "Applebot": {
           "llmsTxt": 0,
           "robotsTxt": 2,
           "sitemap": 0,
-          "other": 0
+          "other": 0,
+          "verification": "ip-list",
+          "verified": 2,
+          "failed": 0,
+          "unknown": 0
         },
         "bingbot": {
           "llmsTxt": 0,
           "robotsTxt": 3,
           "sitemap": 1,
-          "other": 3
+          "other": 3,
+          "verification": "ip-list",
+          "verified": 6,
+          "failed": 1,
+          "unknown": 0
         },
         "Googlebot": {
           "llmsTxt": 0,
           "robotsTxt": 64,
           "sitemap": 0,
-          "other": 8
+          "other": 8,
+          "verification": "ip-list",
+          "verified": 72,
+          "failed": 0,
+          "unknown": 0
         },
         "OAI-SearchBot": {
           "llmsTxt": 0,
           "robotsTxt": 19,
           "sitemap": 0,
-          "other": 0
+          "other": 0,
+          "verification": "ip-list",
+          "verified": 19,
+          "failed": 0,
+          "unknown": 0
         }
       },
       "otherBots": {
@@ -132,31 +152,51 @@
           "llmsTxt": 0,
           "robotsTxt": 2,
           "sitemap": 0,
-          "other": 20
+          "other": 20,
+          "verification": "ip-list",
+          "verified": 22,
+          "failed": 0,
+          "unknown": 0
         },
         "ChatGPT-User": {
           "llmsTxt": 0,
           "robotsTxt": 0,
           "sitemap": 0,
-          "other": 3
+          "other": 3,
+          "verification": "ip-list",
+          "verified": 3,
+          "failed": 0,
+          "unknown": 0
         },
         "Googlebot": {
           "llmsTxt": 0,
           "robotsTxt": 15,
           "sitemap": 6,
-          "other": 48
+          "other": 48,
+          "verification": "ip-list",
+          "verified": 69,
+          "failed": 0,
+          "unknown": 0
         },
         "GoogleOther": {
           "llmsTxt": 0,
           "robotsTxt": 0,
           "sitemap": 0,
-          "other": 16
+          "other": 16,
+          "verification": "ip-list",
+          "verified": 16,
+          "failed": 0,
+          "unknown": 0
         },
         "OAI-SearchBot": {
           "llmsTxt": 0,
           "robotsTxt": 7,
           "sitemap": 1,
-          "other": 13
+          "other": 13,
+          "verification": "ip-list",
+          "verified": 21,
+          "failed": 0,
+          "unknown": 0
         }
       },
       "otherBots": {
