@@ -154,7 +154,7 @@
       "verdict": "supported",
       "reason": "Page lists IP range files openai.com/gptbot.json, openai.com/searchbot.json and openai.com/chatgpt-user.json.",
       "decision": "auto",
-      "used": true
+      "used": false
     },
     {
       "id": "c15",
@@ -209,7 +209,7 @@
       "verdict": "supported",
       "reason": "Reverse DNS: domain \"either googlebot.com, google.com, or googleusercontent.com\"; or match IPs to JSON lists incl. common-crawlers.json.",
       "decision": "auto",
-      "used": true
+      "used": false
     },
     {
       "id": "c20",
@@ -264,7 +264,7 @@
       "verdict": "supported",
       "reason": "\"Amazonbot is used to improve our products and services ... and may be used to train Amazon AI models.\" IPs at developer.amazon.com/amazonbot/ip-addresses/.",
       "decision": "auto",
-      "used": true
+      "used": false
     },
     {
       "id": "c25",
@@ -285,6 +285,72 @@
       "tier": "primary",
       "verdict": "supported",
       "reason": "137,210 domains with May 2026 traffic; 28% publish; \"Of the ~38,000 domains with a valid file, 97% saw no requests\"; SEO audit tools top at 21.7%.",
+      "decision": "auto",
+      "used": true
+    },
+    {
+      "id": "c28",
+      "claim": "Yoast announced llms.txt generation on June 10, 2025: the plugin builds the file from recently updated content, the sitemap and your site descriptions, and refreshes it every week.",
+      "sourceUrl": "https://yoast.com/yoast-seo-june-10-2025/",
+      "sourceName": "Yoast: Yoast SEO llms.txt announcement (June 10, 2025)",
+      "tier": "official",
+      "verdict": "supported",
+      "reason": "June 10, 2025: file uses \"most recently updated content,\" \"your sitemap for context\" and site descriptions; plugin maintains it, \"refreshing every week.\"",
+      "decision": "auto",
+      "used": true
+    },
+    {
+      "id": "c29",
+      "claim": "Rank Math builds llms.txt from the post types and taxonomies you select, listing each item's title, URL and a short description; you can set a limit and add custom content.",
+      "sourceUrl": "https://rankmath.com/kb/llms-txt/",
+      "sourceName": "Rank Math KB: How to Use llms.txt in Rank Math SEO",
+      "tier": "official",
+      "verdict": "supported",
+      "reason": "Pick post types and taxonomies; it lists \"each item's title, URL, and a short description\"; max items setting (default 100) and a custom content field.",
+      "decision": "auto",
+      "used": true
+    },
+    {
+      "id": "c30",
+      "claim": "All in One SEO's LLMs.txt Generator works in the free Lite plugin, which generates llms.txt automatically; llms-full.txt and Markdown settings need a Pro account.",
+      "sourceUrl": "https://aioseo.com/features/llms-txt-generator/",
+      "sourceName": "AIOSEO: LLMs.txt Generator feature page",
+      "tier": "official",
+      "verdict": "supported",
+      "reason": "FAQ: available to Lite and Pro; \"Lite users can generate llms.txt files automatically\"; llms-full.txt and markdown settings need a Pro account.",
+      "decision": "auto",
+      "used": true
+    },
+    {
+      "id": "c31",
+      "claim": "Mintlify automatically hosts an llms.txt listing every page of a docs site in navigation order and says it is always up to date; a custom llms.txt in the project overrides it.",
+      "sourceUrl": "https://www.mintlify.com/docs/ai/llmstxt",
+      "sourceName": "Mintlify docs: llms.txt",
+      "tier": "official",
+      "verdict": "supported",
+      "reason": "Auto-hosted llms.txt \"lists all available pages\" in docs.json navigation order, \"always up to date\"; a custom file overrides the generated one.",
+      "decision": "auto",
+      "used": true
+    },
+    {
+      "id": "c32",
+      "claim": "GitBook says it automatically publishes AI-friendly formats for docs sites, including /llms.txt, which lists every published page with a Markdown version, and /llms-full.txt.",
+      "sourceUrl": "https://gitbook.com/docs/publishing-documentation/llm-ready-docs",
+      "sourceName": "GitBook docs: LLM-ready docs",
+      "tier": "official",
+      "verdict": "supported",
+      "reason": "GitBook auto-publishes AI-friendly formats; /llms.txt \"lists every published page with a Markdown version\"; /llms-full.txt is the full single file.",
+      "decision": "auto",
+      "used": true
+    },
+    {
+      "id": "c33",
+      "claim": "Firecrawl's llms.txt generator crawls a site and writes llms.txt and llms-full.txt, but Firecrawl stopped maintaining that API after June 30, 2025 and offers an example repo instead.",
+      "sourceUrl": "https://docs.firecrawl.dev/features/alpha/llmstxt",
+      "sourceName": "Firecrawl docs: LLMs.txt Generator",
+      "tier": "official",
+      "verdict": "supported",
+      "reason": "Crawls a site, outputs llms.txt and llms-full.txt; endpoint stays active but \"no longer maintaining it after June 30, 2025\"; points to an example repo.",
       "decision": "auto",
       "used": true
     }

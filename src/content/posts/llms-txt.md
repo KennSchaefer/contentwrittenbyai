@@ -85,7 +85,7 @@ Another Google team checks for the file, though. <mark data-claim="c12">Chrome's
 We published our llms.txt on October 9, 2026, and we're logging every request for it. Here's how the counting works:
 
 - **Logs.** Our host writes a daily access log. Every week, a scheduled job downloads the logs and counts requests by user agent: for /llms.txt, for robots.txt, for the sitemaps, and for everything else. Only the totals are kept. The raw logs contain visitor IP addresses, so they're never published.
-- **Identity checks.** A user agent is just a label, and anyone can claim to be GPTBot. So each request from a known crawler is checked against the IP addresses its operator publishes. <mark data-claim="c14">OpenAI publishes lists for [all three of its bots](https://developers.openai.com/api/docs/bots)</mark>, <mark data-claim="c17">Anthropic publishes one at claude.com/crawling/bots.json</mark>, and <mark data-claim="c18">Perplexity publishes one for PerplexityBot</mark>. <mark data-claim="c19">Google lets you [verify its crawlers](https://developers.google.com/search/docs/crawling-indexing/verifying-googlebot) by reverse DNS or against its published IP lists.</mark> <mark data-claim="c24">Amazon publishes [Amazonbot's](https://developer.amazon.com/amazonbot)</mark>. Bingbot, Applebot and CCBot are checked the same way, and every list we use is linked in [our verification code](https://github.com/KennSchaefer/contentwrittenbyai/blob/main/scripts/verify-bots.mjs). Requests that pass are counted as verified. Requests that fail are counted separately.
+- **Identity checks.** A user agent is just a label, and anyone can claim to be GPTBot. So each request from a known crawler is checked against the IP addresses its operator publishes. <mark data-claim="c17">Anthropic publishes its list at claude.com/crawling/bots.json</mark>, <mark data-claim="c18">Perplexity publishes one for PerplexityBot</mark>, and OpenAI, Google, Microsoft, Apple, Common Crawl and Amazon publish theirs too. Every list we use is linked in [our verification code](https://github.com/KennSchaefer/contentwrittenbyai/blob/main/scripts/verify-bots.mjs). Requests that pass are counted as verified. Requests that fail are counted separately.
 - **Everything else.** Requesters that aren't on our known-crawler list are still counted by name: SEO tools, scripts, smaller bots and browsers.
 
 **What would count as a result:** a verified AI crawler fetching the file, fetching it repeatedly, or traffic from an AI product that follows a fetch. **When it ends:** we'll close the experiment after six months, in April 2027, or sooner if the answer becomes clear, and publish a final write-up.
@@ -110,6 +110,40 @@ What we add is the before-and-after view, verified identities, and a count that 
 
 **Should you publish one?** It's cheap and harmless. Ours is generated from our list of articles, so it updates itself. But don't expect search traffic or AI citations from it. Google has said Search ignores it, and no AI company we checked says it reads it. If that changes, it should show up in the tally above before it shows up anywhere else.
 
+## How to create an llms.txt file
+
+There are four common routes, depending on how your site is built. Whichever you pick, the thing to get right is keeping the file current. A file written once by hand goes stale the first time you publish something new.
+
+**WordPress plugins.** Three of the big SEO plugins can generate the file for you:
+
+- <mark data-claim="c28">[Yoast SEO](https://yoast.com/yoast-seo-june-10-2025/) added llms.txt generation on June 10, 2025. It builds the file from your recently updated content, your sitemap and your site descriptions, and refreshes it every week.</mark>
+- <mark data-claim="c29">[Rank Math](https://rankmath.com/kb/llms-txt/) builds it from the post types and taxonomies you choose, listing each item's title, URL and a short description. You can cap the number of items and add your own content.</mark>
+- <mark data-claim="c30">[All in One SEO](https://aioseo.com/features/llms-txt-generator/) generates it automatically in its free Lite version. The llms-full.txt and Markdown options need Pro.</mark>
+
+**Documentation platforms.** If your docs run on one of these, you may already have a file without having done anything:
+
+- <mark data-claim="c31">[Mintlify](https://www.mintlify.com/docs/ai/llmstxt) hosts an llms.txt automatically, lists pages in navigation order, and says the file is "always up to date." A custom llms.txt in your project replaces it.</mark>
+- <mark data-claim="c32">[GitBook](https://gitbook.com/docs/publishing-documentation/llm-ready-docs) automatically publishes /llms.txt, listing every published page with a Markdown version, along with /llms-full.txt.</mark>
+
+**Online generators.** These crawl your site and hand you a file. <mark data-claim="c33">Firecrawl's [llms.txt generator](https://docs.firecrawl.dev/features/alpha/llmstxt) crawls a site and writes both llms.txt and llms-full.txt, but Firecrawl stopped maintaining it after June 30, 2025. The service still runs, and Firecrawl points to an example repository instead.</mark> Whatever generator you use, the output is a snapshot, so you'll need to run it again when your site changes.
+
+**Ask your favorite AI to build it.** This is how we made ours. We asked Claude to add an llms.txt to the site, and it wrote [a short script](https://github.com/KennSchaefer/contentwrittenbyai/blob/main/src/pages/llms.txt.ts) that rebuilds the file from our list of published articles every time the site deploys, leaving drafts out. That took one request and a review. If you go this way, a prompt like this one is a good start:
+
+```
+Create an llms.txt file for [your site] that follows the spec at
+https://llmstxt.org/. Use only URLs that appear in [your sitemap URL].
+Start with an H1 of the site name and a one-sentence summary in a
+blockquote. Group the most useful pages under H2 headings, one link
+per line with a short description. Put less important pages under
+an H2 called "Optional".
+```
+
+Then check what comes back:
+
+- **Open every link.** An AI can write a plausible URL that doesn't exist. Limiting it to your sitemap helps, but check anyway.
+- **Read the summary.** Make sure it describes what your site actually does, in words you'd use.
+- **Plan the updates.** If your site changes often, ask for something that regenerates the file from your content (a build step, a plugin setting or a scheduled job) rather than a one-time file.
+
 <div data-irl></div>
 
 ## Limits of this experiment
@@ -125,6 +159,10 @@ What we add is the before-and-after view, verified identities, and a count that 
 ### What is an llms.txt file?
 
 A Markdown file at the root of a website (/llms.txt) that summarizes the site and links to its most useful pages, so large language models can find them quickly. Jeremy Howard of Answer.AI proposed it in September 2024.
+
+### How do I create an llms.txt file?
+
+Use a plugin or platform that generates it (Yoast SEO, Rank Math and All in One SEO on WordPress; Mintlify and GitBook for documentation sites), run an online generator, or ask an AI assistant to write one from your sitemap. Then check every link, and set it up so the file is regenerated when your content changes.
 
 ### Where do you put an llms.txt file?
 
