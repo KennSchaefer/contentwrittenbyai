@@ -1,0 +1,184 @@
+[
+  {
+    "id": "c1",
+    "claim": "Jeremy Howard of Answer.AI proposed the /llms.txt file in a post dated September 3, 2024, suggesting sites add it to provide LLM-friendly content.",
+    "sourceUrl": "https://www.answer.ai/posts/2024-09-03-llmstxt.html",
+    "sourceName": "Answer.AI: /llms.txt, a proposal (Jeremy Howard)",
+    "tier": "primary"
+  },
+  {
+    "id": "c2",
+    "claim": "The llms.txt spec, now published as v2 at llmstxt.org, places the file at the root path /llms.txt, or at a subpath such as /docs/llms.txt that covers the URLs under it.",
+    "sourceUrl": "https://llmstxt.org/",
+    "sourceName": "llmstxt.org: The /llms.txt file, v2",
+    "tier": "official"
+  },
+  {
+    "id": "c3",
+    "claim": "An H1 with the site or project name is the only required section; it is followed by a blockquote summary, optional detail, and H2 sections holding markdown lists of links.",
+    "sourceUrl": "https://llmstxt.org/",
+    "sourceName": "llmstxt.org: The /llms.txt file, v2",
+    "tier": "official"
+  },
+  {
+    "id": "c4",
+    "claim": "By convention, an H2 section titled \"Optional\" holds secondary information: links an agent can skip when a shorter context is needed.",
+    "sourceUrl": "https://llmstxt.org/",
+    "sourceName": "llmstxt.org: The /llms.txt file, v2",
+    "tier": "official"
+  },
+  {
+    "id": "c5",
+    "claim": "The proposal says robots.txt tells automated tools what access is acceptable, while llms.txt is used on demand, when an agent needs information while assisting a user.",
+    "sourceUrl": "https://llmstxt.org/",
+    "sourceName": "llmstxt.org: The /llms.txt file, v2",
+    "tier": "official"
+  },
+  {
+    "id": "c6",
+    "claim": "The proposal says sitemap.xml is no substitute: it often lacks LLM-readable page versions and covers more content than fits in an LLM context window.",
+    "sourceUrl": "https://llmstxt.org/",
+    "sourceName": "llmstxt.org: The /llms.txt file, v2",
+    "tier": "official"
+  },
+  {
+    "id": "c7",
+    "claim": "robots.txt is standardized as the Robots Exclusion Protocol in RFC 9309 (September 2022), which states its rules \"are not a form of access authorization.\"",
+    "sourceUrl": "https://www.rfc-editor.org/rfc/rfc9309.html",
+    "sourceName": "IETF RFC 9309: Robots Exclusion Protocol",
+    "tier": "official"
+  },
+  {
+    "id": "c8",
+    "claim": "A sitemap is an XML file listing a site's URLs with metadata for each: when it was last updated, how often it changes, and its relative importance.",
+    "sourceUrl": "https://www.sitemaps.org/",
+    "sourceName": "sitemaps.org",
+    "tier": "official"
+  },
+  {
+    "id": "c9",
+    "claim": "Mintlify says it shipped llms.txt support across every site on its platform in 2024, and that it and Anthropic then developed llms-full.txt together.",
+    "sourceUrl": "https://mintlify.com/customers/anthropic",
+    "sourceName": "Mintlify customer story: Anthropic",
+    "tier": "primary"
+  },
+  {
+    "id": "c10",
+    "claim": "Google's AI optimization guide (updated July 10, 2026) says you don't need AI text files or Markdown to appear in Google Search, and that Google Search ignores llms.txt files.",
+    "sourceUrl": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+    "sourceName": "Google Search Central: AI optimization guide",
+    "tier": "official"
+  },
+  {
+    "id": "c11",
+    "claim": "In April 2025 Google's John Mueller wrote on Reddit that no AI services had said they use llms.txt, comparing it to the keywords meta tag.",
+    "sourceUrl": "https://www.searchenginejournal.com/google-says-llms-txt-comparable-to-keywords-meta-tag/544804/",
+    "sourceName": "Search Engine Journal (April 17, 2025)",
+    "tier": "reputable"
+  },
+  {
+    "id": "c12",
+    "claim": "Chrome's Lighthouse llms.txt audit flags a page if a server error occurs fetching llms.txt; a 404 marks it Not Applicable, since the file is optional. Doc last updated 2026-05-05.",
+    "sourceUrl": "https://developer.chrome.com/docs/lighthouse/agentic-browsing/llms-txt",
+    "sourceName": "Chrome for Developers: Lighthouse llms.txt audit",
+    "tier": "official"
+  },
+  {
+    "id": "c13",
+    "claim": "OpenAI says GPTBot crawls content that may train its foundation models, OAI-SearchBot surfaces sites in ChatGPT search, and ChatGPT-User visits pages for user actions.",
+    "sourceUrl": "https://developers.openai.com/api/docs/bots",
+    "sourceName": "OpenAI: Overview of OpenAI crawlers",
+    "tier": "official"
+  },
+  {
+    "id": "c14",
+    "claim": "OpenAI publishes IP ranges for its three bots at openai.com/gptbot.json, openai.com/searchbot.json and openai.com/chatgpt-user.json.",
+    "sourceUrl": "https://developers.openai.com/api/docs/bots",
+    "sourceName": "OpenAI: Overview of OpenAI crawlers",
+    "tier": "official"
+  },
+  {
+    "id": "c15",
+    "claim": "OpenAI's crawler documentation page links to OpenAI's own llms.txt documentation index; it does not say its crawlers read other sites' llms.txt files.",
+    "sourceUrl": "https://developers.openai.com/api/docs/bots",
+    "sourceName": "OpenAI: Overview of OpenAI crawlers",
+    "tier": "official"
+  },
+  {
+    "id": "c16",
+    "claim": "Anthropic publishes its own llms.txt for its developer docs, titled \"Anthropic Developer Documentation\", at platform.claude.com/llms.txt.",
+    "sourceUrl": "https://platform.claude.com/llms.txt",
+    "sourceName": "Anthropic developer docs llms.txt",
+    "tier": "official"
+  },
+  {
+    "id": "c17",
+    "claim": "Anthropic's crawler page (April 7, 2026) lists ClaudeBot, Claude-User and Claude-SearchBot, says they honor robots.txt, and publishes IPs at claude.com/crawling/bots.json.",
+    "sourceUrl": "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler",
+    "sourceName": "Claude Help Center: Does Anthropic crawl data from the web",
+    "tier": "official"
+  },
+  {
+    "id": "c18",
+    "claim": "Perplexity says PerplexityBot surfaces and links sites in Perplexity search and is not used to train AI foundation models; its IPs are at perplexity.com/perplexitybot.json.",
+    "sourceUrl": "https://docs.perplexity.ai/guides/bots",
+    "sourceName": "Perplexity docs: Perplexity Crawlers",
+    "tier": "official"
+  },
+  {
+    "id": "c19",
+    "claim": "Google verifies its crawlers by reverse DNS (googlebot.com, google.com, googleusercontent.com) or by matching IPs to published JSON lists such as common-crawlers.json.",
+    "sourceUrl": "https://developers.google.com/search/docs/crawling-indexing/verifying-googlebot",
+    "sourceName": "Google Search Central: Verifying Googlebot and other Google crawlers",
+    "tier": "official"
+  },
+  {
+    "id": "c20",
+    "claim": "Google says GoogleOther is a generic crawler used by product teams, and Google-Extended is a robots.txt token for Gemini training and grounding, not a separate crawler.",
+    "sourceUrl": "https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers",
+    "sourceName": "Google Search Central: Google's common crawlers",
+    "tier": "official"
+  },
+  {
+    "id": "c21",
+    "claim": "Microsoft publishes Bingbot's IP prefixes as a JSON file at bing.com/toolbox/bingbot.json.",
+    "sourceUrl": "https://www.bing.com/toolbox/bingbot.json",
+    "sourceName": "Microsoft Bing: bingbot.json",
+    "tier": "official"
+  },
+  {
+    "id": "c22",
+    "claim": "Apple says Applebot can be verified by reverse DNS in the applebot.apple.com domain or by matching its IP to CIDRs in applebot.json.",
+    "sourceUrl": "https://support.apple.com/en-us/119829",
+    "sourceName": "Apple Support: About Applebot",
+    "tier": "official"
+  },
+  {
+    "id": "c23",
+    "claim": "Common Crawl says CCBot runs on dedicated IP ranges with reverse DNS, and publishes the ranges at index.commoncrawl.org/ccbot.json.",
+    "sourceUrl": "https://commoncrawl.org/ccbot",
+    "sourceName": "Common Crawl: CCBot",
+    "tier": "official"
+  },
+  {
+    "id": "c24",
+    "claim": "Amazon says Amazonbot improves its products and services and may be used to train Amazon AI models; it publishes Amazonbot IP addresses at developer.amazon.com/amazonbot/ip-addresses/.",
+    "sourceUrl": "https://developer.amazon.com/amazonbot",
+    "sourceName": "Amazon Developer: Amazonbot",
+    "tier": "official"
+  },
+  {
+    "id": "c25",
+    "claim": "Semrush (September 28, 2026) reports that from mid-August to late October 2025, Search Engine Land's llms.txt got zero visits from Google-Extended, GPTBot, PerplexityBot or ClaudeBot.",
+    "sourceUrl": "https://www.semrush.com/blog/llms-txt/",
+    "sourceName": "Semrush blog: What is llms.txt",
+    "tier": "reputable"
+  },
+  {
+    "id": "c26",
+    "claim": "Ahrefs studied 137,210 domains with traffic in May 2026: 28% publish llms.txt, and 97% of the ~38,000 valid files got no requests in May. SEO audit tools were the top requester.",
+    "sourceUrl": "https://ahrefs.com/blog/llmstxt-study/",
+    "sourceName": "Ahrefs: llms.txt study (Louise Linehan, June 15, 2026)",
+    "tier": "primary"
+  }
+]
