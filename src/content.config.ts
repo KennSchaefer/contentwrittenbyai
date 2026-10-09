@@ -107,6 +107,10 @@ const irl = defineCollection({
 // Weekly search and analytics snapshots, written by scripts/collect-metrics.mjs (one file per week, named by its Sunday)
 const num = z.number().optional();
 const requestKinds = z.object({ llmsTxt: z.number(), robotsTxt: z.number(), sitemap: z.number(), other: z.number() });
+// Known crawlers also carry how they were checked and how many requests passed (see scripts/verify-bots.mjs)
+const botRequests = requestKinds.extend({
+  verification: z.enum(['ip-list', 'reverse-dns', 'none']), verified: z.number(), failed: z.number(), unknown: z.number(),
+});
 const metrics = defineCollection({
   loader: glob({ base: './src/content/metrics', pattern: '*.json' }),
   schema: z.object({
@@ -119,7 +123,7 @@ const metrics = defineCollection({
     crawlers: z
       .object({
         llmsTxt: z.object({ requests: z.number(), byStatus: z.record(z.string(), z.number()), agents: z.record(z.string(), z.number()) }),
-        bots: z.record(z.string(), requestKinds),
+        bots: z.record(z.string(), botRequests),
         otherBots: z.record(z.string(), requestKinds),
         visitors: z.object({ requests: z.number(), pageViews: z.number(), llmsTxt: z.number() }),
       })
