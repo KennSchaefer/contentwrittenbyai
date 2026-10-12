@@ -1,0 +1,143 @@
+---
+// EXP-001 live tally: who requests /llms.txt, from the pre-launch baseline (pipeline/llms-txt/baseline.json)
+// and every weekly metrics snapshot's server-log counts (scripts/crawler-logs.mjs). Real data only: a week
+// whose logs couldn't be read is shown as missing, never as zero.
+import { getCollection } from 'astro:content';
+import baseline from '../../pipeline/llms-txt/baseline.json';
+import { REPO_URL } from '../consts';
+
+type Counts = {
+  llmsTxt: { requests: number; byStatus: Record<string, number>; agents: Record<string, number> };
+  bots: Record<string, { llmsTxt: number; robotsTxt: number; sitemap: number; other: number; verification: string; verified: number; failed: number; unknown: number }>;
+  otherBots: Record<string, { llmsTxt: number; robotsTxt: number; sitemap: number; other: number }>;
+  visitors: { requests: number; pageViews: number; llmsTxt: number };
+};
+
+// Crawlers that mainly feed web search indexes. Everything else on the known-crawler list is counted as an AI crawler.
+const SEARCH = new Set(['Googlebot', 'bingbot', 'Applebot', 'GoogleOther']);
+const LIVE = '2026-10-09'; // the day /llms.txt went up
+
+const day = (iso: string) => new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' });
+const fmt = (n: number) => n.toLocaleString('en-US');
+const total = (b: Counts['bots'][string]) => b.llmsTxt + b.robotsTxt + b.sitemap + b.other;
+const sum = (c: Counts, search: boolean) =>
+  Object.entries(c.bots).filter(([n]) => SEARCH.has(n) === search).reduce((a, [, b]) => a + total(b), 0);
+// A verified AI crawler's llms.txt request is listed under its bare name; failed or unverifiable ones carry a suffix
+const verifiedAi = (c: Counts) =>
+  Object.entries(c.llmsTxt.agents).filter(([n]) => c.bots[n] && !SEARCH.has(n) && c.bots[n].verification !== 'none').reduce((a, [, k]) => a + k, 0);
+const who = (c: Counts) => Object.entries(c.llmsTxt.agents).map(([n, k]) => `${n} (${k})`).join(', ') || 'nobody';
+
+const snapshots = (await getCollection('metrics'))
+  .filter((s) => s.data.week.end >= LIVE && (s.data.crawlers || s.data.sources.serverLogs))
+  .sort((a, b) => a.data.week.end.localeCompare(b.data.week.end));
+
+const rows: { label: string; note?: string; c: Counts | null }[] = [
+  { label: `${day(baseline.periods.beforeLaunch.start)} to ${day(baseline.periods.beforeLaunch.end)}`, note: 'before the site launched, no llms.txt', c: baseline.periods.beforeLaunch as Counts },
+  { label: `${day(baseline.periods.afterLaunch.start)} to ${day(baseline.periods.afterLaunch.end)}`, note: 'site live, no llms.txt yet', c: baseline.periods.afterLaunch as Counts },
+  ...snapshots.map((s) => ({
+    label: `${day(s.data.week.start)} to ${day(s.data.week.end)}`,
+    note: s.data.week.start < LIVE && s.data.week.end >= LIVE ? `llms.txt went up ${day(LIVE)}` : undefined,
+    c: (s.data.crawlers as Counts | undefined) ?? null,
+  })),
+];
+
+// Per-crawler totals: every weekly snapshot since the file went up, or the baseline until the first one arrives
+const counted = snapshots.filter((s) => s.data.crawlers).map((s) => s.data.crawlers as Counts);
+const perBotSource = counted.length ? counted : [baseline.periods.afterLaunch as Counts];
+const perBot: Record<string, Counts['bots'][string]> = {};
+for (const c of perBotSource)
+  for (const [n, b] of Object.entries(c.bots)) {
+    const t = (perBot[n] ??= { llmsTxt: 0, robotsTxt: 0, sitemap: 0, other: 0, verification: b.verification, verified: 0, failed: 0, unknown: 0 });
+    for (const k of ['llmsTxt', 'robotsTxt', 'sitemap', 'other', 'verified', 'failed', 'unknown'] as const) t[k] += b[k];
+  }
+const botRows = Object.entries(perBot).sort(([, a], [, b]) => total(b) - total(a));
+const lastWeek = counted.length ? snapshots.filter((s) => s.data.crawlers).at(-1)!.data.week.end : null;
+const method: Record<string, string> = { 'ip-list': 'Published IPs', none: 'Not verifiable' };
+---
+
+<section class="tally" aria-labelledby="tally-heading">
+  <h2 id="tally-heading" class="lab-mono">Live tally: who asks for /llms.txt</h2>
+  <p class="meta">
+    Updated every week from our server logs.{lastWeek ? ` Latest week ends ${day(lastWeek)}.` : ' The first weekly count follows the next metrics snapshot.'}
+  </p>
+
+  <div class="table-box">
+    <table>
+      <thead>
+        <tr><th>Period</th><th>llms.txt requests</th><th>From verified AI crawlers</th><th>Who asked</th><th>AI crawler requests</th><th>Search crawler requests</th><th>Human page views</th></tr>
+      </thead>
+      <tbody>
+        {rows.map(({ label, note, c }) => (
+          <tr>
+            <td>{label}{note && <span class="note">{note}</span>}</td>
+            {c ? (
+              <>
+                <td>{fmt(c.llmsTxt.requests)}{c.llmsTxt.requests > 0 && <span class="note">{Object.entries(c.llmsTxt.byStatus).map(([s, k]) => `${k} × ${s}`).join(', ')}</span>}</td>
+                <td>{fmt(verifiedAi(c))}</td>
+                <td class="who">{who(c)}</td>
+                <td>{fmt(sum(c, false))}</td>
+                <td>{fmt(sum(c, true))}</td>
+                <td>{fmt(c.visitors.pageViews)}</td>
+              </>
+            ) : (
+              <td colspan="6" class="missing">Logs unavailable this week. Not counted.</td>
+            )}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="lab-mono sub">By crawler{counted.length ? ', since llms.txt went up' : `, ${day(baseline.periods.afterLaunch.start)} to ${day(baseline.periods.afterLaunch.end)}`}</h3>
+  <div class="table-box">
+    <table>
+      <thead>
+        <tr><th>Crawler</th><th>Type</th><th>llms.txt</th><th>robots.txt</th><th>Sitemap</th><th>Other pages</th><th>Identity check</th><th>Verified</th><th>Failed</th></tr>
+      </thead>
+      <tbody>
+        {botRows.map(([n, b]) => (
+          <tr>
+            <td class="name">{n}</td>
+            <td>{SEARCH.has(n) ? 'Search' : 'AI'}</td>
+            <td>{fmt(b.llmsTxt)}</td>
+            <td>{fmt(b.robotsTxt)}</td>
+            <td>{fmt(b.sitemap)}</td>
+            <td>{fmt(b.other)}</td>
+            <td>{method[b.verification] ?? b.verification}</td>
+            <td>{b.verification === 'none' ? 'n/a' : fmt(b.verified)}</td>
+            <td>{b.verification === 'none' ? 'n/a' : fmt(b.failed)}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="foot">
+    Requests are counted by user agent, then each known crawler is checked against the IP ranges its operator
+    publishes. "Search" covers Googlebot, GoogleOther, Bingbot and Applebot; every other known crawler
+    counts as AI. "Human page views" are page loads from agents that didn't identify as bots, which includes the editor
+    and some tools posing as browsers. Raw logs aren't published because they contain visitor IPs. The counts are in
+    the <a href={`${REPO_URL}/tree/main/src/content/metrics`}>weekly snapshots</a> and the
+    <a href={`${REPO_URL}/blob/main/pipeline/llms-txt/baseline.json`}>baseline file</a>, and the counting code is
+    <a href={`${REPO_URL}/blob/main/scripts/crawler-logs.mjs`}>in the repo</a>.
+  </p>
+</section>
+
+<style>
+  .tally { margin: 2.5rem 0; padding: 1.5rem; border: 1px solid var(--lab-border); border-radius: 10px; background: var(--lab-bg); }
+  .tally > h2 { margin: 0 0 0.4rem; color: var(--lab); }
+  .sub { margin: 1.75rem 0 0; font-size: 1rem; }
+  .meta, .foot { font: 0.8125rem/1.55 var(--mono); color: var(--muted); margin: 0 0 1rem; }
+  .foot { margin: 1.25rem 0 0; }
+  .foot a { color: var(--lab); }
+  .table-box { overflow-x: auto; border: 1px solid var(--lab-border); border-radius: 8px; margin-top: 0.75rem; background: var(--bg); }
+  table { width: 100%; min-width: 46rem; border-collapse: collapse; font-size: 0.875rem; margin: 0; }
+  th, td { text-align: left; padding: 0.65rem 0.8rem; border-bottom: 1px solid var(--lab-border); vertical-align: top; }
+  tr:last-child td { border-bottom: 0; }
+  th { font: 0.7rem var(--mono); text-transform: uppercase; color: var(--muted); }
+  td { font-variant-numeric: tabular-nums; }
+  .note { display: block; font: 0.75rem var(--mono); color: var(--muted); margin-top: 0.15rem; }
+  .who { min-width: 12rem; }
+  .name { font: 600 0.8125rem var(--mono); }
+  .missing { color: var(--accent); font-style: italic; }
+</style>

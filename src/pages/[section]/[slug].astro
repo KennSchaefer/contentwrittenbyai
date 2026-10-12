@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import ContentFacts from '../../components/ContentFacts.astro';
 import Ledger from '../../components/Ledger.astro';
 import InRealLife from '../../components/InRealLife.astro';
+import CrawlerTally from '../../components/CrawlerTally.astro';
 import { getPosts, formatDate, readingMinutes, linkClaims } from '../../lib/posts';
 import { SITE_TITLE, SECTIONS, EDITOR_PROFILE, REPO_URL, DATA_LICENSE } from '../../consts';
 import { abs, ids, organization, editorPerson, faqFromHtml } from '../../lib/schema';
@@ -21,11 +22,16 @@ const ledger = await getEntry('ledgers', post.id.split('/').pop()!);
 const minutes = readingMinutes(post);
 const section = SECTIONS[category];
 const irl = await getEntry('irl', post.id.split('/').pop()!);
-const irlWords = irl ? (irl.body ?? '').split(/\s+/).filter(Boolean).length : 0;
+// Human-written words only: quoted lines are the AI's interview questions
+const irlWords = irl
+  ? (irl.body ?? '').split('\n').filter((l) => !l.trimStart().startsWith('>')).join(' ').split(/\s+/).filter(Boolean).length
+  : 0;
 // Markdown posts render through linkClaims so claim marks become tagged links; MDX renders as-is.
-// A <div data-irl></div> line in the post places the editor's section; without it the section follows the body.
+// Placeholder lines put components inside the text: <div data-irl></div> places the editor's section (without
+// it, the section follows the body) and <div data-crawler-tally></div> places the EXP-001 live tally.
 const html = post.rendered?.html ? linkClaims(post.rendered.html) : null;
-const [beforeIrl, afterIrl] = html ? html.split(/<div data-irl(?:="")?><\/div>/) : [null, undefined];
+const parts = html ? html.split(/<div data-(irl|crawler-tally)(?:="")?><\/div>/) : null;
+const hasIrlSlot = parts?.includes('irl') ?? false;
 
 const url = abs(Astro.url.pathname);
 const ogImage = abs(`/og/${ogKey(Astro.url.pathname)}.png`);
@@ -112,9 +118,12 @@ const schema = [article, ...(faq ? [{ ...faq, '@id': `${url}#faq` }] : []), ...(
           </blockquote>
         )}
         <div class="prose">
-          {beforeIrl !== null ? <Fragment set:html={beforeIrl} /> : <Content />}
-          {irl && <InRealLife entry={irl} />}
-          {afterIrl && <Fragment set:html={afterIrl} />}
+          {parts
+            ? parts.map((part, i) =>
+                i % 2 === 0 ? <Fragment set:html={part} /> : part === 'irl' ? irl && <InRealLife entry={irl} /> : <CrawlerTally />,
+              )
+            : <Content />}
+          {irl && !hasIrlSlot && <InRealLife entry={irl} />}
         </div>
         {ledger && <Ledger ledger={ledger} />}
       </div>
