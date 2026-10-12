@@ -30,6 +30,13 @@
     { "keyword": "ai crawlers", "volume": 170, "difficulty": 36, "intent": "informational", "group": "crawlers" },
     { "keyword": "perplexitybot", "volume": 70, "difficulty": 19, "intent": "informational", "group": "crawlers" },
     { "keyword": "llms.txt generator", "volume": 2400, "difficulty": 48, "intent": "informational", "group": "supporting", "note": "In scope from 2026-10-09: the editor added a section on tools for creating the file" },
+    { "keyword": "how to get indexed by llm through llms.txt file", "volume": 260, "difficulty": 35, "intent": "informational", "group": "faq", "note": "From SEMrush's question report, pulled 2026-10-12; the editor asked for FAQs from it" },
+    { "keyword": "how to see the llms.txt file of a website", "volume": 170, "difficulty": 50, "intent": "informational", "group": "faq" },
+    { "keyword": "will llms.txt file help your seo", "volume": 110, "difficulty": 54, "intent": "informational", "group": "faq" },
+    { "keyword": "is llms.txt used", "volume": 20, "difficulty": null, "intent": "informational", "group": "faq" },
+    { "keyword": "should i add llms.txt to my website", "volume": 10, "difficulty": null, "intent": "informational", "group": "faq" },
+    { "keyword": "does perplexity use llms.txt", "volume": 0, "difficulty": null, "intent": "informational", "group": "faq", "note": "No measured volume yet; the editor wants it covered ahead of demand" },
+    { "keyword": "does claude use llms.txt", "volume": 0, "difficulty": null, "intent": "informational", "group": "faq", "note": "No measured volume yet; the editor wants it covered ahead of demand" },
     { "keyword": "llms.txt wordpress", "volume": 30, "difficulty": null, "intent": "informational", "group": "excluded", "reason": "Platform how-to, off topic" }
   ]
 }

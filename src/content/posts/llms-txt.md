@@ -168,6 +168,10 @@ Use a plugin or platform that generates it (Yoast SEO, Rank Math and All in One 
 
 At the root of your domain, so it loads at yoursite.com/llms.txt. The spec also allows a subpath, such as /docs/llms.txt, for a file that covers just that section.
 
+### How can I see a website's llms.txt file?
+
+Add /llms.txt to the domain, as in example.com/llms.txt, and open it in a browser. If you get a 404, the site doesn't publish one at its root, though it may have one for a section, such as /docs/llms.txt. Ours is at [contentwrittenbyai.com/llms.txt](/llms.txt).
+
 ### Does Google use llms.txt?
 
 Google Search doesn't. Google's AI optimization guide says you don't need AI text files to appear in Google Search and that Google Search ignores llms.txt files. Chrome's Lighthouse does check whether a site's llms.txt causes a server error.
@@ -175,6 +179,26 @@ Google Search doesn't. Google's AI optimization guide says you don't need AI tex
 ### Does ChatGPT read llms.txt?
 
 OpenAI hasn't said that its crawlers read other sites' llms.txt files. Its crawler documentation covers GPTBot, OAI-SearchBot and ChatGPT-User without mentioning llms.txt beyond OpenAI's own. In our logs, OpenAI's crawlers haven't requested ours.
+
+### Does Perplexity use llms.txt?
+
+Perplexity hasn't said it does. Its documentation describes PerplexityBot as the crawler that surfaces and links sites in Perplexity search, and we found no public statement from Perplexity about reading llms.txt. Semrush reported that PerplexityBot made no visits to Search Engine Land's llms.txt over two months in 2025, and it hasn't requested ours.
+
+### Does Claude use llms.txt?
+
+Anthropic publishes its own llms.txt for its developer documentation, but we found no statement that its crawlers read other sites' files. Its crawler page lists ClaudeBot, Claude-User and Claude-SearchBot and says they honor robots.txt. Semrush reported no ClaudeBot visits to Search Engine Land's llms.txt over two months in 2025, and none of Anthropic's crawlers has requested ours.
+
+### Will llms.txt get my site into ChatGPT or other AI answers?
+
+There's no evidence it will. None of the AI companies we checked says its crawlers read other sites' llms.txt files, and Google Search ignores them. If you want to appear in AI search, the more useful check is that your robots.txt doesn't block the search crawlers those companies name, such as OAI-SearchBot, Claude-SearchBot and PerplexityBot.
+
+### Does llms.txt help SEO?
+
+Not in Google Search. Google's AI optimization guide says you don't need AI text files to appear in Search and that Google Search ignores llms.txt files. The one place Google looks at it is Chrome's Lighthouse, which flags a site whose llms.txt causes a server error.
+
+### Is llms.txt worth adding?
+
+It's cheap and harmless, especially if a plugin or build step keeps it current. But so far there's no sign it brings traffic or AI citations. Ahrefs found that 97% of about 38,000 valid llms.txt files got no requests in a month, and SEO audit tools were the top requester. The tally above shows whether that changes for us.
 
 ### Is llms.txt the same as robots.txt?
 
