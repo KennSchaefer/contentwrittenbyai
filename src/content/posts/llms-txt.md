@@ -2,7 +2,7 @@
 title: "We published an llms.txt. Here's everything that asks for it."
 seoTitle: "Does llms.txt Work? We're Logging Every Request to Ours"
 description: "What llms.txt is, what Google, OpenAI and Anthropic say about it, and a live, verified tally of every crawler that requests ours."
-pubDate: 2026-10-09
+pubDate: 2026-10-12
 category: lab
 experiment: EXP-001
 status: running
@@ -13,7 +13,7 @@ dataset:
   description: "Aggregate counts from this site's server access logs from September 9 to October 8, 2026, before /llms.txt was published: requests for /llms.txt by status and requester, and requests by each known crawler for llms.txt, robots.txt, sitemaps and other pages, with each crawler's identity checked against its operator's published IP ranges. No IP addresses are included."
   file: pipeline/llms-txt/baseline.json
   temporalCoverage: "2026-09-09/2026-10-08"
-draft: true
+draft: false
 provenance:
   models: ["Claude Opus 5.5"]
   brief: "Explain llms.txt and test whether it works: publish one, log every request to it with verified crawler identities, and keep a live tally."
