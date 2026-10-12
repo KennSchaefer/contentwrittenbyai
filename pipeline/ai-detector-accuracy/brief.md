@@ -2,7 +2,7 @@
 
 **Section:** Lab Notebook (`experiment: EXP-002`) · **URL:** `/lab/ai-detector-accuracy/` · **Target length:** 2,200 to 3,000 words plus the results tables
 
-*An experiment with a fixed protocol. The protocol and the sample list are committed before any detector is run, so the method can't be adjusted to fit the results. The first round is published as one piece; a repeat each quarter is optional (see "Decisions for the editor").*
+*An experiment with a fixed protocol. The protocol and the sample list are committed before any detector is run, so the method can't be adjusted to fit the results. It runs once and is published as one piece.*
 
 ## Keywords
 - **Primary:** are ai detectors accurate (3,600/mo, KD 71)
@@ -111,12 +111,12 @@ Answer in your own words, any length or format. This section is published as wri
 2. Do clients or publishers you work with run content through AI detectors? What decisions hang on the score?
 3. How do you use Grammarly in your own writing? Do you accept its rewrite suggestions, or only corrections?
 
-## Decisions for the editor
-1. **Approve the experiment design above**, especially the 50% rule, the passage-picking rule and the two Grammarly levels.
-2. **Samples (done, 2026-10-12):** the editor supplied the nine pieces above, confirmed authorship, and approved linking to Beeby Clark+Meyler and naming Laura Schaefer. Still open: if either writer remembers which parts of an AI-assisted piece were AI, note it, and we'll report it beside the detector scores.
-3. **Paid tools:** Originality.ai has no free tier we know of (research will confirm). Include it at its lowest paid price, or leave it out?
-4. **One-off or repeating:** publish once as `status: complete`, or rerun quarterly as `status: running` with dated rounds?
-5. **Who runs the tests:** I can run the free web tools through the browser. Grammarly needs your account. Do you want to run it, or let me use it in your logged-in Chrome?
+## Editor's decisions (2026-10-12)
+1. **Design approved** as written above, including the 50% rule, the passage-picking rule and the two Grammarly levels.
+2. **Samples:** the editor supplied the nine pieces above, confirmed authorship, and approved linking to Beeby Clark+Meyler and naming Laura Schaefer. Which parts of the AI-assisted pieces were AI isn't recorded and can't be reconstructed, so that group is reported against the writers' overall labels only.
+3. **Originality.ai is in.** The editor is buying one month at its lowest paid tier.
+4. **One round, not repeating.** The article publishes with `status: complete`.
+5. **Who runs the tests:** the editor runs Grammarly (the detector and the editing for group G) in his own account. Claude runs the other tools through the browser, within each tool's terms.
 
 ## Notes
 - Tone: fair to the vendors. Every detector says it isn't perfect, so the useful question is how imperfect, on what kind of text. Report misses in both directions.
