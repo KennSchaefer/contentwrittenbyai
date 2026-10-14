@@ -1,0 +1,207 @@
+{
+  "week": {
+    "start": "2026-10-05",
+    "end": "2026-10-11"
+  },
+  "collectedAt": "2026-10-14T17:41:57.125Z",
+  "sources": {
+    "searchConsole": {
+      "ok": true,
+      "property": "sc-domain:contentwrittenbyai.com"
+    },
+    "ga4": {
+      "ok": true
+    },
+    "semrush": {
+      "ok": true,
+      "database": "us"
+    },
+    "serverLogs": {
+      "ok": true,
+      "files": 10
+    }
+  },
+  "site": {
+    "clicks": 0,
+    "impressions": 48,
+    "ctr": 0,
+    "position": 49.104166666666664,
+    "views": 0,
+    "sessions": 0,
+    "keywords": 0,
+    "top10": 0
+  },
+  "daily": [
+    {
+      "date": "2026-10-05",
+      "clicks": 0,
+      "impressions": 1
+    },
+    {
+      "date": "2026-10-06",
+      "clicks": 0,
+      "impressions": 9
+    },
+    {
+      "date": "2026-10-07",
+      "clicks": 0,
+      "impressions": 11
+    },
+    {
+      "date": "2026-10-08",
+      "clicks": 0,
+      "impressions": 8
+    },
+    {
+      "date": "2026-10-09",
+      "clicks": 0,
+      "impressions": 10
+    },
+    {
+      "date": "2026-10-10",
+      "clicks": 0,
+      "impressions": 4
+    },
+    {
+      "date": "2026-10-11",
+      "clicks": 0,
+      "impressions": 5
+    }
+  ],
+  "crawlers": {
+    "llmsTxt": {
+      "requests": 3,
+      "byStatus": {
+        "200": 3
+      },
+      "agents": {
+        "Browser": 1,
+        "curl": 2
+      }
+    },
+    "bots": {
+      "Amazonbot": {
+        "llmsTxt": 0,
+        "robotsTxt": 2,
+        "sitemap": 0,
+        "other": 22,
+        "verification": "ip-list",
+        "verified": 24,
+        "failed": 0,
+        "unknown": 0
+      },
+      "ChatGPT-User": {
+        "llmsTxt": 0,
+        "robotsTxt": 0,
+        "sitemap": 0,
+        "other": 4,
+        "verification": "ip-list",
+        "verified": 4,
+        "failed": 0,
+        "unknown": 0
+      },
+      "Googlebot": {
+        "llmsTxt": 0,
+        "robotsTxt": 15,
+        "sitemap": 6,
+        "other": 52,
+        "verification": "ip-list",
+        "verified": 73,
+        "failed": 0,
+        "unknown": 0
+      },
+      "GoogleOther": {
+        "llmsTxt": 0,
+        "robotsTxt": 0,
+        "sitemap": 0,
+        "other": 19,
+        "verification": "ip-list",
+        "verified": 19,
+        "failed": 0,
+        "unknown": 0
+      },
+      "OAI-SearchBot": {
+        "llmsTxt": 0,
+        "robotsTxt": 13,
+        "sitemap": 1,
+        "other": 13,
+        "verification": "ip-list",
+        "verified": 27,
+        "failed": 0,
+        "unknown": 0
+      }
+    },
+    "otherBots": {
+      "AhrefsBot": {
+        "llmsTxt": 0,
+        "robotsTxt": 6,
+        "sitemap": 2,
+        "other": 27
+      },
+      "curl": {
+        "llmsTxt": 2,
+        "robotsTxt": 2,
+        "sitemap": 4,
+        "other": 40
+      },
+      "python-requests": {
+        "llmsTxt": 0,
+        "robotsTxt": 0,
+        "sitemap": 0,
+        "other": 6
+      },
+      "Python-urllib": {
+        "llmsTxt": 0,
+        "robotsTxt": 0,
+        "sitemap": 0,
+        "other": 1
+      }
+    },
+    "visitors": {
+      "requests": 292,
+      "pageViews": 132,
+      "llmsTxt": 1
+    }
+  },
+  "pages": [
+    {
+      "path": "/",
+      "search": {
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 1
+      }
+    },
+    {
+      "path": "/about/ken-schaefer/",
+      "search": {
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 7.5,
+        "topQuery": {
+          "query": "ken schaefer",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 9
+        }
+      }
+    },
+    {
+      "path": "/research/does-google-penalize-ai-content/",
+      "search": {
+        "clicks": 0,
+        "impressions": 44,
+        "ctr": 0,
+        "position": 52.90909090909091,
+        "topQuery": {
+          "query": "does google penalize ai content",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 88
+        }
+      }
+    }
+  ]
+}
