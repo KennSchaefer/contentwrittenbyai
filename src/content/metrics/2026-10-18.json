@@ -1,0 +1,316 @@
+{
+  "week": {
+    "start": "2026-10-12",
+    "end": "2026-10-18"
+  },
+  "collectedAt": "2026-10-21T17:47:52.129Z",
+  "sources": {
+    "searchConsole": {
+      "ok": true,
+      "property": "sc-domain:contentwrittenbyai.com"
+    },
+    "ga4": {
+      "ok": true
+    },
+    "semrush": {
+      "ok": true,
+      "database": "us"
+    },
+    "serverLogs": {
+      "ok": true,
+      "files": 10
+    }
+  },
+  "site": {
+    "clicks": 0,
+    "impressions": 37,
+    "ctr": 0,
+    "position": 59.86486486486486,
+    "views": 0,
+    "sessions": 0,
+    "keywords": 1,
+    "top10": 0
+  },
+  "daily": [
+    {
+      "date": "2026-10-12",
+      "clicks": 0,
+      "impressions": 7
+    },
+    {
+      "date": "2026-10-13",
+      "clicks": 0,
+      "impressions": 9
+    },
+    {
+      "date": "2026-10-14",
+      "clicks": 0,
+      "impressions": 5
+    },
+    {
+      "date": "2026-10-15",
+      "clicks": 0,
+      "impressions": 10
+    },
+    {
+      "date": "2026-10-16",
+      "clicks": 0,
+      "impressions": 3
+    },
+    {
+      "date": "2026-10-17",
+      "clicks": 0,
+      "impressions": 2
+    },
+    {
+      "date": "2026-10-18",
+      "clicks": 0,
+      "impressions": 1
+    }
+  ],
+  "crawlers": {
+    "llmsTxt": {
+      "requests": 10,
+      "byStatus": {
+        "200": 10
+      },
+      "agents": {
+        "AhrefsBot": 1,
+        "Amazonbot": 1,
+        "Browser": 3,
+        "curl": 1,
+        "GoogleOther": 1,
+        "GPTBot": 1,
+        "OAI-SearchBot": 1,
+        "Reflectionbot": 1
+      }
+    },
+    "bots": {
+      "Amazonbot": {
+        "llmsTxt": 1,
+        "robotsTxt": 2,
+        "sitemap": 0,
+        "other": 21,
+        "verification": "ip-list",
+        "verified": 24,
+        "failed": 0,
+        "unknown": 0
+      },
+      "Applebot": {
+        "llmsTxt": 0,
+        "robotsTxt": 2,
+        "sitemap": 0,
+        "other": 0,
+        "verification": "ip-list",
+        "verified": 2,
+        "failed": 0,
+        "unknown": 0
+      },
+      "bingbot": {
+        "llmsTxt": 0,
+        "robotsTxt": 1,
+        "sitemap": 0,
+        "other": 1,
+        "verification": "ip-list",
+        "verified": 2,
+        "failed": 0,
+        "unknown": 0
+      },
+      "ChatGPT-User": {
+        "llmsTxt": 0,
+        "robotsTxt": 0,
+        "sitemap": 0,
+        "other": 2,
+        "verification": "ip-list",
+        "verified": 2,
+        "failed": 0,
+        "unknown": 0
+      },
+      "Googlebot": {
+        "llmsTxt": 0,
+        "robotsTxt": 9,
+        "sitemap": 3,
+        "other": 27,
+        "verification": "ip-list",
+        "verified": 37,
+        "failed": 2,
+        "unknown": 0
+      },
+      "GoogleOther": {
+        "llmsTxt": 1,
+        "robotsTxt": 0,
+        "sitemap": 0,
+        "other": 4,
+        "verification": "ip-list",
+        "verified": 5,
+        "failed": 0,
+        "unknown": 0
+      },
+      "GPTBot": {
+        "llmsTxt": 1,
+        "robotsTxt": 0,
+        "sitemap": 4,
+        "other": 6,
+        "verification": "ip-list",
+        "verified": 11,
+        "failed": 0,
+        "unknown": 0
+      },
+      "OAI-SearchBot": {
+        "llmsTxt": 1,
+        "robotsTxt": 22,
+        "sitemap": 0,
+        "other": 10,
+        "verification": "ip-list",
+        "verified": 33,
+        "failed": 0,
+        "unknown": 0
+      }
+    },
+    "otherBots": {
+      "AhrefsBot": {
+        "llmsTxt": 1,
+        "robotsTxt": 5,
+        "sitemap": 2,
+        "other": 9
+      },
+      "ArnorBot": {
+        "llmsTxt": 0,
+        "robotsTxt": 1,
+        "sitemap": 0,
+        "other": 1
+      },
+      "curl": {
+        "llmsTxt": 1,
+        "robotsTxt": 0,
+        "sitemap": 0,
+        "other": 5
+      },
+      "Java": {
+        "llmsTxt": 0,
+        "robotsTxt": 0,
+        "sitemap": 0,
+        "other": 1
+      },
+      "No user agent": {
+        "llmsTxt": 0,
+        "robotsTxt": 0,
+        "sitemap": 0,
+        "other": 1
+      },
+      "python-requests": {
+        "llmsTxt": 0,
+        "robotsTxt": 0,
+        "sitemap": 0,
+        "other": 2
+      },
+      "Reflectionbot": {
+        "llmsTxt": 1,
+        "robotsTxt": 3,
+        "sitemap": 0,
+        "other": 6
+      }
+    },
+    "visitors": {
+      "requests": 206,
+      "pageViews": 90,
+      "llmsTxt": 3
+    }
+  },
+  "pages": [
+    {
+      "path": "/",
+      "search": {
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 3
+      }
+    },
+    {
+      "path": "/about/",
+      "search": {
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 4.333333333333334
+      }
+    },
+    {
+      "path": "/about/ken-schaefer/",
+      "search": {
+        "clicks": 0,
+        "impressions": 4,
+        "ctr": 0,
+        "position": 7,
+        "topQuery": {
+          "query": "ken schaefer",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 7
+        }
+      }
+    },
+    {
+      "path": "/articles/",
+      "search": {
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 6
+      }
+    },
+    {
+      "path": "/lab/",
+      "search": {
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 9
+      }
+    },
+    {
+      "path": "/methodology/",
+      "search": {
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 4.5
+      }
+    },
+    {
+      "path": "/research/",
+      "search": {
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 8
+      }
+    },
+    {
+      "path": "/research/does-google-penalize-ai-content/",
+      "search": {
+        "clicks": 0,
+        "impressions": 32,
+        "ctr": 0,
+        "position": 68.28125,
+        "topQuery": {
+          "query": "google ai content penalty",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 83
+        }
+      },
+      "rankings": {
+        "keywords": 1,
+        "top10": 0,
+        "best": {
+          "keyword": "does google penalize ai content",
+          "position": 82,
+          "volume": 140
+        },
+        "serpFeatures": []
+      }
+    }
+  ]
+}
