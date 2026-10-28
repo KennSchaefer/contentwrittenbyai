@@ -1,0 +1,252 @@
+{
+  "week": {
+    "start": "2026-10-19",
+    "end": "2026-10-25"
+  },
+  "collectedAt": "2026-10-28T18:35:31.277Z",
+  "sources": {
+    "searchConsole": {
+      "ok": true,
+      "property": "sc-domain:contentwrittenbyai.com"
+    },
+    "ga4": {
+      "ok": true
+    },
+    "semrush": {
+      "ok": true,
+      "database": "us"
+    },
+    "serverLogs": {
+      "ok": true,
+      "files": 10
+    }
+  },
+  "site": {
+    "clicks": 0,
+    "impressions": 34,
+    "ctr": 0,
+    "position": 79.47058823529412,
+    "views": 0,
+    "sessions": 0,
+    "keywords": 1,
+    "top10": 0
+  },
+  "daily": [
+    {
+      "date": "2026-10-19",
+      "clicks": 0,
+      "impressions": 5
+    },
+    {
+      "date": "2026-10-20",
+      "clicks": 0,
+      "impressions": 1
+    },
+    {
+      "date": "2026-10-21",
+      "clicks": 0,
+      "impressions": 3
+    },
+    {
+      "date": "2026-10-22",
+      "clicks": 0,
+      "impressions": 4
+    },
+    {
+      "date": "2026-10-23",
+      "clicks": 0,
+      "impressions": 13
+    },
+    {
+      "date": "2026-10-24",
+      "clicks": 0,
+      "impressions": 4
+    },
+    {
+      "date": "2026-10-25",
+      "clicks": 0,
+      "impressions": 4
+    }
+  ],
+  "crawlers": {
+    "llmsTxt": {
+      "requests": 4,
+      "byStatus": {
+        "200": 4
+      },
+      "agents": {
+        "Amazonbot": 1,
+        "Browser": 3
+      }
+    },
+    "bots": {
+      "Amazonbot": {
+        "llmsTxt": 1,
+        "robotsTxt": 0,
+        "sitemap": 0,
+        "other": 11,
+        "verification": "ip-list",
+        "verified": 12,
+        "failed": 0,
+        "unknown": 0
+      },
+      "bingbot": {
+        "llmsTxt": 0,
+        "robotsTxt": 2,
+        "sitemap": 0,
+        "other": 2,
+        "verification": "ip-list",
+        "verified": 4,
+        "failed": 0,
+        "unknown": 0
+      },
+      "ChatGPT-User": {
+        "llmsTxt": 0,
+        "robotsTxt": 0,
+        "sitemap": 0,
+        "other": 2,
+        "verification": "ip-list",
+        "verified": 2,
+        "failed": 0,
+        "unknown": 0
+      },
+      "Googlebot": {
+        "llmsTxt": 0,
+        "robotsTxt": 16,
+        "sitemap": 2,
+        "other": 18,
+        "verification": "ip-list",
+        "verified": 36,
+        "failed": 0,
+        "unknown": 0
+      },
+      "GoogleOther": {
+        "llmsTxt": 0,
+        "robotsTxt": 0,
+        "sitemap": 0,
+        "other": 4,
+        "verification": "ip-list",
+        "verified": 4,
+        "failed": 0,
+        "unknown": 0
+      },
+      "GPTBot": {
+        "llmsTxt": 0,
+        "robotsTxt": 0,
+        "sitemap": 7,
+        "other": 0,
+        "verification": "ip-list",
+        "verified": 7,
+        "failed": 0,
+        "unknown": 0
+      },
+      "OAI-SearchBot": {
+        "llmsTxt": 0,
+        "robotsTxt": 20,
+        "sitemap": 1,
+        "other": 3,
+        "verification": "ip-list",
+        "verified": 24,
+        "failed": 0,
+        "unknown": 0
+      }
+    },
+    "otherBots": {
+      "AhrefsBot": {
+        "llmsTxt": 0,
+        "robotsTxt": 6,
+        "sitemap": 4,
+        "other": 10
+      },
+      "axios": {
+        "llmsTxt": 0,
+        "robotsTxt": 0,
+        "sitemap": 0,
+        "other": 1
+      },
+      "curl": {
+        "llmsTxt": 0,
+        "robotsTxt": 1,
+        "sitemap": 0,
+        "other": 2
+      },
+      "Go-http-client": {
+        "llmsTxt": 0,
+        "robotsTxt": 0,
+        "sitemap": 0,
+        "other": 4
+      },
+      "MochiImageCrawler": {
+        "llmsTxt": 0,
+        "robotsTxt": 3,
+        "sitemap": 0,
+        "other": 6
+      },
+      "python-requests": {
+        "llmsTxt": 0,
+        "robotsTxt": 0,
+        "sitemap": 0,
+        "other": 4
+      },
+      "Reflectionbot": {
+        "llmsTxt": 0,
+        "robotsTxt": 4,
+        "sitemap": 0,
+        "other": 8
+      },
+      "ucp-crawler": {
+        "llmsTxt": 0,
+        "robotsTxt": 0,
+        "sitemap": 0,
+        "other": 1
+      }
+    },
+    "visitors": {
+      "requests": 155,
+      "pageViews": 83,
+      "llmsTxt": 3
+    }
+  },
+  "pages": [
+    {
+      "path": "/about/ken-schaefer/",
+      "search": {
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 12,
+        "topQuery": {
+          "query": "ken schaefer",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 15
+        }
+      }
+    },
+    {
+      "path": "/research/does-google-penalize-ai-content/",
+      "search": {
+        "clicks": 0,
+        "impressions": 32,
+        "ctr": 0,
+        "position": 83.6875,
+        "topQuery": {
+          "query": "does google penalize ai content",
+          "clicks": 0,
+          "impressions": 9,
+          "position": 87.44444444444444
+        }
+      },
+      "rankings": {
+        "keywords": 1,
+        "top10": 0,
+        "best": {
+          "keyword": "does google penalize ai content",
+          "position": 82,
+          "volume": 140
+        },
+        "serpFeatures": []
+      }
+    }
+  ]
+}
