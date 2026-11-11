@@ -1,0 +1,734 @@
+{
+ "experiment": "EXP-002",
+ "built": "2026-10-18",
+ "rules": "build_passages.py docstring and passages.md",
+ "passages": [
+  {
+   "id": "H-SB-TBDATE-1",
+   "group": "H",
+   "words": 582,
+   "first_words": "They Both Die at the End follows the",
+   "last_words": "voice in the contemporary young adult fiction genre.",
+   "sha256": "429125febf64419f864c83567a1ff3ea3c09b66dad2656f2a2bfcb4291764810",
+   "source": {
+    "writer": "Laura Schaefer",
+    "published": "2023-08-26",
+    "url": "https://scatteredbooks.com/book-reviews/they-both-die-at-the-end-book-summary-a-heartbreaking-tale-by-adam-silvera/",
+    "text_from": "https://web.archive.org/web/20250119140404/https://scatteredbooks.com/book-reviews/they-both-die-at-the-end-book-summary-a-heartbreaking-tale-by-adam-silvera/",
+    "part": "1 of 1"
+   }
+  },
+  {
+   "id": "H-SB-F451-1",
+   "group": "H",
+   "words": 334,
+   "first_words": "“Fahrenheit 451” by Ray Bradbury is a classic",
+   "last_words": "to maintain power and control over the population.",
+   "sha256": "68c1c14bea3907c3e48fbdb16b4b26b070cc6c748f2040c7300342f0b21ac969",
+   "source": {
+    "writer": "Ken Schaefer",
+    "published": "2023-02-18",
+    "url": "https://scatteredbooks.com/book-reviews/fahrenheit-451-ray-bradbury/",
+    "text_from": "https://web.archive.org/web/20250420025335/https://scatteredbooks.com/book-reviews/fahrenheit-451-ray-bradbury/",
+    "part": "1 of 2"
+   }
+  },
+  {
+   "id": "H-SB-F451-2",
+   "group": "H",
+   "words": 313,
+   "first_words": "The importance of intellectual freedom: “Fahrenheit 451” emphasizes",
+   "last_words": "including his use of language, tone, and pacing.",
+   "sha256": "78c59e86dad950c6e14e84ab56f0cdf5e4dfa3588df8638bb2ca50d6d2dd7f46",
+   "source": {
+    "writer": "Ken Schaefer",
+    "published": "2023-02-18",
+    "url": "https://scatteredbooks.com/book-reviews/fahrenheit-451-ray-bradbury/",
+    "text_from": "https://web.archive.org/web/20250420025335/https://scatteredbooks.com/book-reviews/fahrenheit-451-ray-bradbury/",
+    "part": "2 of 2"
+   }
+  },
+  {
+   "id": "H-BCM-ROI-1",
+   "group": "H",
+   "words": 329,
+   "first_words": "In its simplest form, ROI (Return On Investment)",
+   "last_words": "method chosen to review an increase in revenue.",
+   "sha256": "42eb64b47b5b23cfed7a36de986baa49661038e9bcd94a93b7b843d28c41c6d8",
+   "source": {
+    "writer": "Ken Schaefer",
+    "published": "2019-10-03",
+    "url": "https://www.beebyclarkmeyler.com/what-we-think/roi-of-content-marketing",
+    "text_from": "https://web.archive.org/web/20260711232029/https://www.beebyclarkmeyler.com/what-we-think/roi-of-content-marketing",
+    "part": "1 of 2"
+   }
+  },
+  {
+   "id": "H-BCM-ROI-2",
+   "group": "H",
+   "words": 423,
+   "first_words": "Measuring ROI on content marketing provides substantial evidence",
+   "last_words": "your business, contact Beeby Clark + Meyler today!",
+   "sha256": "9c2d4dc1bd086ee014afd34c66e6c26f8d731ad3bc6ca634154e30b5d3f7cc6f",
+   "source": {
+    "writer": "Ken Schaefer",
+    "published": "2019-10-03",
+    "url": "https://www.beebyclarkmeyler.com/what-we-think/roi-of-content-marketing",
+    "text_from": "https://web.archive.org/web/20260711232029/https://www.beebyclarkmeyler.com/what-we-think/roi-of-content-marketing",
+    "part": "2 of 2"
+   }
+  },
+  {
+   "id": "R-SB-ANNE-1",
+   "group": "R-mixed",
+   "words": 319,
+   "first_words": "The Diary of Anne Frank or “The Diary",
+   "last_words": "adulthood, marked by her introspective and philosophical musings.",
+   "sha256": "8e23b245ccf3898d5b2e33307b53b16b394823488efa9e089cc6e87ba1bd16bc",
+   "source": {
+    "writer": "Laura Schaefer",
+    "published": "2023-11-30",
+    "url": "https://scatteredbooks.com/book-reviews/summary-of-the-diary-of-anne-frank/",
+    "text_from": "https://web.archive.org/web/20241112202713/https://scatteredbooks.com/book-reviews/summary-of-the-diary-of-anne-frank/",
+    "part": "1 of 3"
+   }
+  },
+  {
+   "id": "R-SB-ANNE-2",
+   "group": "R-mixed",
+   "words": 311,
+   "first_words": "“The Diary of Anne Frank” (1959): Directed by",
+   "last_words": "faced increasing persecution due to their Jewish heritage.",
+   "sha256": "137052d782a7e1613c5408b3f1647e044232f1b35b98f8881d6999a757acb5ca",
+   "source": {
+    "writer": "Laura Schaefer",
+    "published": "2023-11-30",
+    "url": "https://scatteredbooks.com/book-reviews/summary-of-the-diary-of-anne-frank/",
+    "text_from": "https://web.archive.org/web/20241112202713/https://scatteredbooks.com/book-reviews/summary-of-the-diary-of-anne-frank/",
+    "part": "2 of 3"
+   }
+  },
+  {
+   "id": "R-SB-ANNE-3",
+   "group": "R-mixed",
+   "words": 329,
+   "first_words": "1934: The Frank family moved to Amsterdam, Netherlands,",
+   "last_words": "to inspire and educate people of all ages.",
+   "sha256": "500782233ef0e91db6665e10d01f7538410e788eaaf130350d083f6c97d90c86",
+   "source": {
+    "writer": "Laura Schaefer",
+    "published": "2023-11-30",
+    "url": "https://scatteredbooks.com/book-reviews/summary-of-the-diary-of-anne-frank/",
+    "text_from": "https://web.archive.org/web/20241112202713/https://scatteredbooks.com/book-reviews/summary-of-the-diary-of-anne-frank/",
+    "part": "3 of 3"
+   }
+  },
+  {
+   "id": "R-BCM-AEO-1",
+   "group": "R-mixed",
+   "words": 322,
+   "first_words": "If you haven't yet, pause and check out",
+   "last_words": "terms, these are the nouns of the internet.",
+   "sha256": "b034002ab215d7689032ab5fc69c2f7805d82a99fc033b29be6953f57007c1ff",
+   "source": {
+    "writer": "Ken Schaefer",
+    "published": "2025-07-30",
+    "url": "https://www.beebyclarkmeyler.com/what-we-think/the-complete-guide-to-off-page-aeo-seo-ai-visibility",
+    "text_from": "https://web.archive.org/web/20260510112623/https://www.beebyclarkmeyler.com/what-we-think/the-complete-guide-to-off-page-aeo-seo-ai-visibility",
+    "part": "1 of 3"
+   }
+  },
+  {
+   "id": "R-BCM-AEO-2",
+   "group": "R-mixed",
+   "words": 318,
+   "first_words": "Backlink audits – Use tools like Ahrefs or",
+   "last_words": "contribute to your entity authority in that location.",
+   "sha256": "2de03d9fe540b004b9408019462f5cfbcf5ccbc0fc202025170903558689a94f",
+   "source": {
+    "writer": "Ken Schaefer",
+    "published": "2025-07-30",
+    "url": "https://www.beebyclarkmeyler.com/what-we-think/the-complete-guide-to-off-page-aeo-seo-ai-visibility",
+    "text_from": "https://web.archive.org/web/20260510112623/https://www.beebyclarkmeyler.com/what-we-think/the-complete-guide-to-off-page-aeo-seo-ai-visibility",
+    "part": "2 of 3"
+   }
+  },
+  {
+   "id": "R-BCM-AEO-3",
+   "group": "R-mixed",
+   "words": 567,
+   "first_words": "Are podcast appearances good for AEO? Yes. Podcast",
+   "last_words": "databases. Do the AI Engines like this post?",
+   "sha256": "4aced73de8d0c6f66ea36d8b7bc31e3431a79e2643d0b96a3b7411d7675ddb47",
+   "source": {
+    "writer": "Ken Schaefer",
+    "published": "2025-07-30",
+    "url": "https://www.beebyclarkmeyler.com/what-we-think/the-complete-guide-to-off-page-aeo-seo-ai-visibility",
+    "text_from": "https://web.archive.org/web/20260510112623/https://www.beebyclarkmeyler.com/what-we-think/the-complete-guide-to-off-page-aeo-seo-ai-visibility",
+    "part": "3 of 3"
+   }
+  },
+  {
+   "id": "R-BCM-OPT-1",
+   "group": "R-mixed",
+   "words": 364,
+   "first_words": "Creating content that thrives in an AI-driven search",
+   "last_words": "diverse search platforms, not just traditional search rankings.",
+   "sha256": "01e74aea9e5b1ee73c3b1ad50fedf0d74fc1efcd8f4ca0e77e91362bd70e2077",
+   "source": {
+    "writer": "Ken Schaefer",
+    "published": "2025-06-26",
+    "url": "https://www.beebyclarkmeyler.com/what-we-think/guide-to-content-optimization-for-ai-search",
+    "text_from": "https://web.archive.org/web/20260510111556/https://www.beebyclarkmeyler.com/what-we-think/guide-to-content-optimization-for-ai-search",
+    "part": "1 of 3"
+   }
+  },
+  {
+   "id": "R-BCM-OPT-2",
+   "group": "R-mixed",
+   "words": 310,
+   "first_words": "Finally, freshness ties back to user trust. A",
+   "last_words": "it’s private to users, it’s invisible to AI.",
+   "sha256": "6ae7d1974ec2d71daa4e9170318b6990f8b8401dd5f0629602a00678a5c9d288",
+   "source": {
+    "writer": "Ken Schaefer",
+    "published": "2025-06-26",
+    "url": "https://www.beebyclarkmeyler.com/what-we-think/guide-to-content-optimization-for-ai-search",
+    "text_from": "https://web.archive.org/web/20260510111556/https://www.beebyclarkmeyler.com/what-we-think/guide-to-content-optimization-for-ai-search",
+    "part": "2 of 3"
+   }
+  },
+  {
+   "id": "R-BCM-OPT-3",
+   "group": "R-mixed",
+   "words": 510,
+   "first_words": "How do I balance writing for humans with",
+   "last_words": "explanation: Do the AI Engines like this post?",
+   "sha256": "759aa851b64bb7a3203e2cdaa3f09f4991ee83262288a06b24035ae1d45171bd",
+   "source": {
+    "writer": "Ken Schaefer",
+    "published": "2025-06-26",
+    "url": "https://www.beebyclarkmeyler.com/what-we-think/guide-to-content-optimization-for-ai-search",
+    "text_from": "https://web.archive.org/web/20260510111556/https://www.beebyclarkmeyler.com/what-we-think/guide-to-content-optimization-for-ai-search",
+    "part": "3 of 3"
+   }
+  },
+  {
+   "id": "R-SB-DUNE-1",
+   "group": "R-90",
+   "words": 328,
+   "first_words": "When it comes to science fiction that has",
+   "last_words": "contrasts, embodying the myriad facets of Herbert’s vision.",
+   "sha256": "d27fe43a12d9d4eb1e4801d09186125b71591367b77919d2f90af9288de02a49",
+   "source": {
+    "writer": "Laura Schaefer",
+    "published": "2023-11-09",
+    "url": "https://scatteredbooks.com/book-reviews/dune-summary-review/",
+    "text_from": "https://web.archive.org/web/20250209210853/https://scatteredbooks.com/book-reviews/dune-summary-review/",
+    "part": "1 of 3"
+   }
+  },
+  {
+   "id": "R-SB-DUNE-2",
+   "group": "R-90",
+   "words": 319,
+   "first_words": "It’s impossible to discuss “Dune” without acknowledging its",
+   "last_words": "some may find the dense political intricacies overwhelming.",
+   "sha256": "a6c11c2ff1d6ba143d0a662aca32c5afc84791bcf8b186b52cb1e0aff16fa881",
+   "source": {
+    "writer": "Laura Schaefer",
+    "published": "2023-11-09",
+    "url": "https://scatteredbooks.com/book-reviews/dune-summary-review/",
+    "text_from": "https://web.archive.org/web/20250209210853/https://scatteredbooks.com/book-reviews/dune-summary-review/",
+    "part": "2 of 3"
+   }
+  },
+  {
+   "id": "R-SB-DUNE-3",
+   "group": "R-90",
+   "words": 393,
+   "first_words": "Uniqueness: “Dune” stands out for its detailed world-building",
+   "last_words": "the same depth and complexity as the original.",
+   "sha256": "de5c9274d2da6c4719898291c2dc07ae8e995e54d367cde1745f0bc3cc45e869",
+   "source": {
+    "writer": "Laura Schaefer",
+    "published": "2023-11-09",
+    "url": "https://scatteredbooks.com/book-reviews/dune-summary-review/",
+    "text_from": "https://web.archive.org/web/20250209210853/https://scatteredbooks.com/book-reviews/dune-summary-review/",
+    "part": "3 of 3"
+   }
+  },
+  {
+   "id": "R-BCM-AIS-1",
+   "group": "R-90",
+   "words": 341,
+   "first_words": "What We Learned in 2025 and How To",
+   "last_words": "the trusted answer wherever the question is asked.",
+   "sha256": "f1fffab1561faa9d8b0c5728c62685640eb5c14bbca67b9b00fa182f87c8e996",
+   "source": {
+    "writer": "Ken Schaefer",
+    "published": "2026-03-13",
+    "url": "https://www.beebyclarkmeyler.com/what-we-think/what-weve-learned-about-ai-search-and-how-to-move-forward",
+    "text_from": "https://web.archive.org/web/20260420024836/https://www.beebyclarkmeyler.com/what-we-think/what-weve-learned-about-ai-search-and-how-to-move-forward",
+    "part": "1 of 3"
+   }
+  },
+  {
+   "id": "R-BCM-AIS-2",
+   "group": "R-90",
+   "words": 321,
+   "first_words": "If your organization isn't willing to invest in",
+   "last_words": "you and helps LLMs extract key points accurately.",
+   "sha256": "6fb99d8b40ce55c1ebf626f40ecf1b2692b491c65413b202e60286c8e882e3ba",
+   "source": {
+    "writer": "Ken Schaefer",
+    "published": "2026-03-13",
+    "url": "https://www.beebyclarkmeyler.com/what-we-think/what-weve-learned-about-ai-search-and-how-to-move-forward",
+    "text_from": "https://web.archive.org/web/20260420024836/https://www.beebyclarkmeyler.com/what-we-think/what-weve-learned-about-ai-search-and-how-to-move-forward",
+    "part": "2 of 3"
+   }
+  },
+  {
+   "id": "R-BCM-AIS-3",
+   "group": "R-90",
+   "words": 369,
+   "first_words": "Fifth, look at impressions in Google Search Console,",
+   "last_words": "the age of AI search. They'll dominate it.",
+   "sha256": "fee7734535d6755d7ab993c3c1a4a1915fb262f128b6bbd50a33cf4f694a6026",
+   "source": {
+    "writer": "Ken Schaefer",
+    "published": "2026-03-13",
+    "url": "https://www.beebyclarkmeyler.com/what-we-think/what-weve-learned-about-ai-search-and-how-to-move-forward",
+    "text_from": "https://web.archive.org/web/20260420024836/https://www.beebyclarkmeyler.com/what-we-think/what-weve-learned-about-ai-search-and-how-to-move-forward",
+    "part": "3 of 3"
+   }
+  },
+  {
+   "id": "WH-1181",
+   "group": "WH",
+   "words": 419,
+   "first_words": "Briarcliff’s zip code is 10510 and the namesake",
+   "last_words": "the street where you can park as well.",
+   "sha256": "a94c4e7ae5213c240f6b86a849efadb5bf17d8560ef12a42794740b969f6e3bb",
+   "source": {
+    "writer": "Ken Schaefer, Laura Schaefer or a Scattered Books employee",
+    "published": "2022-01-11",
+    "url": "https://westchesterbars.com/reviews/105-ten-in-briarcliff-manor/",
+    "text_from": "https://web.archive.org/web/20221201052026/https://westchesterbars.com/reviews/105-ten-in-briarcliff-manor/",
+    "part": "1 of 1"
+   }
+  },
+  {
+   "id": "WH-1216",
+   "group": "WH",
+   "words": 317,
+   "first_words": "Now this is a bar! Christmas ornaments hanging",
+   "last_words": "throw from the Hawthorne Metro North Train Station.",
+   "sha256": "4c1dc7be03a216a84ab515d39b37c1f293f0c99625a73c3aaf4158132fa959d6",
+   "source": {
+    "writer": "Ken Schaefer, Laura Schaefer or a Scattered Books employee",
+    "published": "2022-01-16",
+    "url": "https://westchesterbars.com/reviews/unionville-tavern-hawthorne/",
+    "text_from": "https://web.archive.org/web/20221129074331/https://westchesterbars.com/reviews/unionville-tavern-hawthorne/",
+    "part": "1 of 1"
+   }
+  },
+  {
+   "id": "WH-1270",
+   "group": "WH",
+   "words": 401,
+   "first_words": "We all started our underage drinking somewhere! Shhh…",
+   "last_words": "burger is outstanding if I hadn’t mentioned that.",
+   "sha256": "2a1c64808b925bc832896c2ead7faad0aa7d96fc13955500457281ad01dba49f",
+   "source": {
+    "writer": "Ken Schaefer, Laura Schaefer or a Scattered Books employee",
+    "published": "2022-01-19",
+    "url": "https://westchesterbars.com/reviews/pipers-kilt-in-eastchester-ny/",
+    "text_from": "https://web.archive.org/web/20221130080913/https://westchesterbars.com/reviews/pipers-kilt-in-eastchester-ny/",
+    "part": "1 of 1"
+   }
+  },
+  {
+   "id": "WH-1347",
+   "group": "WH",
+   "words": 571,
+   "first_words": "Tucked away (See what I did there? )",
+   "last_words": "The wings had me stuffed. Saturday Happy Hour!",
+   "sha256": "d04caa95293bbca6dd10c0258ea14bfb601766ec7259135221b15c1ef8aa848d",
+   "source": {
+    "writer": "Ken Schaefer, Laura Schaefer or a Scattered Books employee",
+    "published": "2022-02-05",
+    "url": "https://westchesterbars.com/reviews/tuckd-away-in-tuckahoe-ny/",
+    "text_from": "https://web.archive.org/web/20221201092345/https://westchesterbars.com/reviews/tuckd-away-in-tuckahoe-ny/",
+    "part": "1 of 1"
+   }
+  },
+  {
+   "id": "WH-1417",
+   "group": "WH",
+   "words": 494,
+   "first_words": "Pizza and beer are one of the greatest",
+   "last_words": "list and is worth the trip. Excellent eats!",
+   "sha256": "d56261d1531ee587dc8a2f1f20dda0f622075f0ccafc9d546562b0f68e1678a9",
+   "source": {
+    "writer": "Ken Schaefer, Laura Schaefer or a Scattered Books employee",
+    "published": "2022-02-21",
+    "url": "https://westchesterbars.com/reviews/craft-beer-pizza-pleasantville-ny/",
+    "text_from": "https://web.archive.org/web/20221130080914/https://westchesterbars.com/reviews/craft-beer-pizza-pleasantville-ny/",
+    "part": "1 of 1"
+   }
+  },
+  {
+   "id": "WH-1469",
+   "group": "WH",
+   "words": 367,
+   "first_words": "What do you get when you cross wolves,",
+   "last_words": "on busy days. Hoefully I’ll bump into you!",
+   "sha256": "b0a0a3fb2dc3b323f573737f74f4e8303b74e03292c1c56646334c783baa0b6e",
+   "source": {
+    "writer": "Ken Schaefer, Laura Schaefer or a Scattered Books employee",
+    "published": "2022-03-20",
+    "url": "https://westchesterbars.com/reviews/wolf-warrior-brewing/",
+    "text_from": "https://web.archive.org/web/20221203082502/https://westchesterbars.com/reviews/wolf-warrior-brewing/",
+    "part": "1 of 1"
+   }
+  },
+  {
+   "id": "WH-1478",
+   "group": "WH",
+   "words": 376,
+   "first_words": "Foley’s in Pleasantville is a mainstay with the",
+   "last_words": "the rest of the crawlable spots in Pville.",
+   "sha256": "5caa7ff87a33325d89dd179f87fc330bede952047c0444b1fb0070afa511a84c",
+   "source": {
+    "writer": "Ken Schaefer, Laura Schaefer or a Scattered Books employee",
+    "published": "2022-11-26",
+    "url": "https://westchesterbars.com/reviews/foleys-club-lounge-pleasantville-ny/",
+    "text_from": "https://web.archive.org/web/20221126145330/https://westchesterbars.com/reviews/foleys-club-lounge-pleasantville-ny/",
+    "part": "1 of 1"
+   }
+  },
+  {
+   "id": "WA-3033",
+   "group": "WA",
+   "words": 350,
+   "first_words": "Order the Meatloaf Stack. You walk in through",
+   "last_words": "lesson and it only costs you one question.",
+   "sha256": "ddfdd1a4a599e6abf1d228236bf30317abd379c346f7e2d83e5c3cf287a195e8",
+   "source": {
+    "writer": "Claude (AI draft from the editor's visit notes)",
+    "published": "2026-09-05",
+    "url": "https://westchesterbars.com/reviews/table-9-cortlandt-manor-ny/",
+    "text_from": "frozen draft content/table9-3033-original.html (Westchester Bars project, not public)",
+    "part": "1 of 3"
+   }
+  },
+  {
+   "id": "WA-3056",
+   "group": "WA",
+   "words": 331,
+   "first_words": "I got to Horsefeathers a little after 5",
+   "last_words": "board is $8. I only had the one.",
+   "sha256": "2c233d6a0592404a029f6d4310c4fe139d344eb5948515cf1137a37a218ad381",
+   "source": {
+    "writer": "Claude (AI draft from the editor's visit notes)",
+    "published": "2026-09-27",
+    "url": "https://westchesterbars.com/reviews/horsefeathers-tarrytown-ny/",
+    "text_from": "frozen draft content/horsefeathers-3056-original.html (Westchester Bars project, not public)",
+    "part": "1 of 2"
+   }
+  },
+  {
+   "id": "WA-3074",
+   "group": "WA",
+   "words": 335,
+   "first_words": "My wife and I stopped into Riko’s on",
+   "last_words": "line with what wings cost in Westchester now.",
+   "sha256": "ecafbd9b68844819e7333333405794dd53b2861da55c9fbff55b67b1b8803ab4",
+   "source": {
+    "writer": "Claude (AI draft from the editor's visit notes)",
+    "published": "2026-09-27",
+    "url": "https://westchesterbars.com/reviews/rikos-pizza-white-plains-ny/",
+    "text_from": "frozen draft content/rikos-3074-original.html (Westchester Bars project, not public)",
+    "part": "1 of 2"
+   }
+  },
+  {
+   "id": "WA-3411",
+   "group": "WA",
+   "words": 314,
+   "first_words": "The name Fat Sal’s had me picturing stale",
+   "last_words": "and the service was excellent. “A” for service.",
+   "sha256": "8837e59fda683215a50e8b27a2bb3a433601a0eaa07fe42ff9d88a471a8e47a2",
+   "source": {
+    "writer": "Claude (AI draft from the editor's visit notes)",
+    "published": "2026-10-04",
+    "url": "https://westchesterbars.com/reviews/fat-sals-bar-grill-buchanan-ny/",
+    "text_from": "frozen draft content/fat-sals-bar-grill-buchanan-ny-3411-original.html (Westchester Bars project, not public)",
+    "part": "1 of 2"
+   }
+  },
+  {
+   "id": "WA-3531",
+   "group": "WA",
+   "words": 312,
+   "first_words": "I was a little stir crazy after spending",
+   "last_words": "knew that one. It was a good call.",
+   "sha256": "5552f93b70ff4b9e03a95678ed01f360b110effdc2ae14ebc139ab39b210a40e",
+   "source": {
+    "writer": "Claude (AI draft from the editor's visit notes)",
+    "published": "2026-10-13",
+    "url": "https://westchesterbars.com/reviews/maracas-bar-grill-ossining-ny/",
+    "text_from": "frozen draft content/maracas-3531-original.html (Westchester Bars project, not public)",
+    "part": "1 of 2"
+   }
+  },
+  {
+   "id": "WA-3552",
+   "group": "WA",
+   "words": 597,
+   "first_words": "On Columbus Day I went looking for something",
+   "last_words": "in Ossining, Sing-Sing Kill Brewery is close by.",
+   "sha256": "0b3d356245cc6a54d50ceccf4cc67be70b16ba3b236d3d4353ff504ff0ea1ee9",
+   "source": {
+    "writer": "Claude (AI draft from the editor's visit notes)",
+    "published": "2026-10-13",
+    "url": "https://westchesterbars.com/reviews/here-coffee-beer-ossining-ny/",
+    "text_from": "frozen draft content/here-coffee-beer-3552-original.html (Westchester Bars project, not public)",
+    "part": "1 of 1"
+   }
+  },
+  {
+   "id": "WA-3580",
+   "group": "WA",
+   "words": 304,
+   "first_words": "My wife and I had a night out",
+   "last_words": "Ruben’s could be our favorite Mexican so far.",
+   "sha256": "5e49ea034a321a8d0fd5062998c73da4bed280d6233d1bada23ff99a19415e8c",
+   "source": {
+    "writer": "Claude (AI draft from the editor's visit notes)",
+    "published": "2026-10-17",
+    "url": "https://westchesterbars.com/reviews/rubens-mexican-cafe-peekskill-ny/",
+    "text_from": "frozen draft content/rubens-mexican-cafe-3580-original.html (Westchester Bars project, not public)",
+    "part": "1 of 2"
+   }
+  },
+  {
+   "id": "A-GOOG-1",
+   "group": "A",
+   "words": 318,
+   "first_words": "No. Google doesn't penalize content for being written",
+   "last_words": "leaves out the one thing Google just added.",
+   "sha256": "f2b59f8441c4bc5b8175f718fa73ceacd3890574f93251911e1f6f8568c0878b",
+   "source": {
+    "writer": "Claude Opus 5.5",
+    "commit": "d3cd2be",
+    "path": "src/content/posts/does-google-penalize-ai-content.md",
+    "part": "1 of 3"
+   },
+   "text": "No. Google doesn't penalize content for being written by AI. Its ranking systems aim to reward original, high-quality content, and it focuses on the quality of content rather than how it was produced. What it acts on is spam, scaled low-value pages, and content that doesn't help anyone. As of October 1, 2026, it also has something new to say about accuracy, which none of the top-ranking answers mention yet.\n\nThat's the answer you'll find on every page that ranks for this question. So we checked whether those pages hold up.\n\nOn October 4, 2026, we took the top 10 organic results for \"does google penalize ai content\" (SEMrush, US). One URL appeared twice, which left nine pages. From each page we extracted up to five specific, checkable claims about how Google treats AI content, then re-checked every one against primary sources: Google's own documentation, blog posts, spam policies and rater guidelines, or the original study behind a statistic.\n\nThe extraction and the checking were done by separate AI agents, so the checker had no stake in the extractor's work. A human editor ruled on anything borderline. Every claim, source and ruling is in the published dataset, and the process is the same one we use for our own articles, described in our methodology.\n\nThree pages blocked automated reading (Reddit, eMarketer and Quora). We list them as not checked rather than guess at their content.\n\nThe top answers are mostly right. Of 22 claims, 17 held up against primary sources. The basic answer, that Google judges quality rather than production method, is accurate everywhere we looked.\n\nThey're also all missing the newest part. None of the six pages we could read mentions Google's October 1, 2026 update. For pages published in 2023 or 2024, that's simply timing. It still means a reader searching this question today gets an answer that leaves out the one thing Google just added."
+  },
+  {
+   "id": "A-GOOG-2",
+   "group": "A",
+   "words": 323,
+   "first_words": "In plain English: Google now says it's critical",
+   "last_words": "comes from automation, human effort, or a combination.",
+   "sha256": "24e3818c4b48ca36c2d166e47cb7a3d0f846bf063eb6bc2d1a3fe1dd05c2003a",
+   "source": {
+    "writer": "Claude Opus 5.5",
+    "commit": "d3cd2be",
+    "path": "src/content/posts/does-google-penalize-ai-content.md",
+    "part": "2 of 3"
+   },
+   "text": "In plain English: Google now says it's critical to manually fact-check and review all AI-generated content before publishing. And that review explicitly covers title elements, meta descriptions, structured data and image alt text. In other words, the parts of a page that are easiest to let a machine write unsupervised.\n\nThe second page is Google's guide to creating helpful, reliable, people-first content, which gained a new section on how quality raters assess main content. These describe what raters are trained to evaluate, not ranking rules, but they show where Google's thinking is:\n\nEffort. Using generative AI to produce large amounts of text without manual oversight or curation represents \"little to no effort.\" And attribution, or giving credit to other sources, \"doesn't replace the need for original effort.\"\n\nAccuracy. Informational content \"should be factually accurate,\" and content on topics that affect people's lives or well-being must be \"highly accurate and consistent with established expert consensus.\"\n\nFake authors. Fabricated creator profiles, such as AI-generated headshots, made-up names or false credentials, are called \"a form of deception\" and a signal of a low-quality page.\n\nThat last one is worth a moment if your \"editorial team\" is a stock photo and a first name.\n\nThe rule hasn't changed since 2023. Google's FAQ says appropriate use of AI or automation is not against its guidelines; using it primarily to manipulate search rankings is against its spam policies. Using AI doesn't give content any special gains either. In Google's words, \"It's just content.\"\n\nThe policy that matters most for AI content is scaled content abuse. Google defines it as many pages generated primarily to manipulate search rankings rather than help users, typically unoriginal and low-value, no matter how it's created. Its examples include using generative AI tools to generate many pages without adding value for users. When Google announced the policy on March 5, 2024, it said it applies whether content comes from automation, human effort, or a combination."
+  },
+  {
+   "id": "A-GOOG-3",
+   "group": "A",
+   "words": 461,
+   "first_words": "The rater guidelines say the same thing from",
+   "last_words": "See Google's spam policies for the full definition.",
+   "sha256": "6c6449c3cfef76b30d0266f6dfe4efb3549ccfad2b048e4b0d3dc9417170adc6",
+   "source": {
+    "writer": "Claude Opus 5.5",
+    "commit": "d3cd2be",
+    "path": "src/content/posts/does-google-penalize-ai-content.md",
+    "part": "3 of 3"
+   },
+   "text": "The rater guidelines say the same thing from the evaluation side. Section 4.6.5 tells raters that scaled content abuse pages get the Lowest rating no matter how they're created, and if they're unsure whether AI was used, to rate Lowest when they strongly suspect abuse. Section 4.6.6 applies Lowest when all or almost all of the main content is copied, paraphrased or AI generated with little to no effort, originality, and added value. That's all three conditions, not any one of them. Our own first draft of that sentence said \"or\" instead of \"and.\" The checker caught it.\n\nWhat about the August 2026 spam update? Several SEO blogs say it targeted scaled AI content. Google's Search Status Dashboard says only that it was released August 18, 2026, applies globally and to all languages, and finished rolling out August 21. According to Search Engine Journal, Google announced no new spam policies and published no blog post with it. The \"it targeted AI content\" story comes from secondary coverage, not from Google. We repeated it ourselves in our own planning notes before our checker caught it, which is roughly why this site exists.\n\nGoogle hasn't said it can, and it hasn't said it can't. Its position is that it doesn't need to. Google's John Mueller has said what matters is the overall quality of what you publish; using AI tools to get started isn't a problem on its own, nor a sign the content is automatically good. Any page claiming to know the details of Google's detection is telling you more than Google has.\n\nNo, not for being AI. It acts on spam, scaled low-value content and pages that don't help users, regardless of how they were made. The October 2026 update adds that AI content should be manually fact-checked before publishing, including its metadata.\n\nYes. Google's position is that AI content is judged like any other content. Pages that are useful, original and accurate can rank. Pages generated in bulk with little effort or added value are what its spam policies and rater guidelines target.\n\nGoogle hasn't said. It says its systems identify spam however it's produced, and that it focuses on quality rather than production method. Treat any confident claim about Google's AI detection with suspicion.\n\nNot for web content in Search. Google says disclosures are useful where readers might wonder \"How was this created?\" and to consider adding them when it would be reasonably expected. Shopping is different: Merchant Center requires AI-generated images to carry IPTC metadata and AI-generated product titles and descriptions to be labeled.\n\nProducing many pages mainly to manipulate rankings rather than help people, typically unoriginal and low-value. It applies whether the pages come from AI, people or both. See Google's spam policies for the full definition."
+  },
+  {
+   "id": "A-LLMS-1",
+   "group": "A",
+   "words": 307,
+   "first_words": "Not in any way we can measure yet.",
+   "last_words": "an agent needs information while helping a user.",
+   "sha256": "25e46e827702c9e1bee19e1b05c882f0c9a8925a568725c0f4fda434e4dd95d2",
+   "source": {
+    "writer": "Claude Opus 5.5",
+    "commit": "7ddbec4",
+    "path": "src/content/posts/llms-txt.md",
+    "part": "1 of 3"
+   },
+   "text": "Not in any way we can measure yet. Google's own guidance says Google Search ignores llms.txt files, and none of the AI companies we checked says its crawlers read other sites' llms.txt. Our logs agree so far. In the month before our file existed, six requests asked for it, and none came from a known AI crawler. We published ours on October 9, 2026, and the tally below updates every week.\n\nllms.txt was proposed by Jeremy Howard of Answer.AI on September 3, 2024, as a way for sites to offer content that's easy for large language models to use. It's a plain Markdown file. The current version of the spec, v2 at llmstxt.org, puts it at the root path, /llms.txt, or at a subpath such as /docs/llms.txt that covers the pages under it. To see any site's file, add /llms.txt to its domain. (It's often searched as \"llm.txt\", but the name is plural.)\n\nThe format is short. An H1 with the site or project name is the only required part. After it come a blockquote summary, optional detail, and H2 sections that each hold a Markdown list of links. By convention, a section titled \"Optional\" holds secondary links an agent can skip when it needs a shorter context.\n\nHere's the top of ours. It's built automatically from our published articles, so it stays current without anyone editing it:\n\nPeople often file llms.txt next to robots.txt, but the two do different jobs. robots.txt is standardized as the Robots Exclusion Protocol in RFC 9309 (September 2022), which says its rules \"are not a form of access authorization.\" It's a set of crawl rules that well-behaved bots choose to follow. The llms.txt proposal draws the line itself: robots.txt tells automated tools what access is acceptable, while llms.txt is used on demand, when an agent needs information while helping a user."
+  },
+  {
+   "id": "A-LLMS-2",
+   "group": "A",
+   "words": 318,
+   "first_words": "Anthropic. Anthropic publishes its own llms.txt for its",
+   "last_words": "answer becomes clear, and publish a final write-up.",
+   "sha256": "12fad6333268396f1b5deeb7c798fc8de30852ac6456e7b7e72379f41b208711",
+   "source": {
+    "writer": "Claude Opus 5.5",
+    "commit": "7ddbec4",
+    "path": "src/content/posts/llms-txt.md",
+    "part": "2 of 3"
+   },
+   "text": "Anthropic. Anthropic publishes its own llms.txt for its developer documentation. Its crawler page, updated April 7, 2026, lists ClaudeBot, Claude-User and Claude-SearchBot and says they honor robots.txt. We found no statement from Anthropic that its crawlers read llms.txt.\n\nPerplexity and Microsoft. Perplexity says PerplexityBot surfaces and links sites in Perplexity search and \"is not used to crawl content for AI foundation models.\" We found no public statement from Perplexity or Microsoft about reading llms.txt.\n\nWe published our llms.txt on October 9, 2026, and we're logging every request for it. Here's how the counting works:\n\nLogs. Our host writes a daily access log. Every week, a scheduled job downloads the logs and counts requests by user agent: for /llms.txt, for robots.txt, for the sitemaps, and for everything else. Only the totals are kept. The raw logs contain visitor IP addresses, so they're never published.\n\nIdentity checks. A user agent is just a label, and anyone can claim to be GPTBot. So each request from a known crawler is checked against the IP addresses its operator publishes. OpenAI publishes lists for all three of its bots, Anthropic publishes one at claude.com/crawling/bots.json, and Perplexity publishes one for PerplexityBot. Google lets you verify its crawlers by reverse DNS or against its published IP lists. Amazon publishes Amazonbot's. Bingbot, Applebot and CCBot are checked the same way, and every list we use is linked in our verification code. Requests that pass are counted as verified. Requests that fail are counted separately.\n\nEverything else. Requesters that aren't on our known-crawler list are still counted by name: SEO tools, scripts, smaller bots and browsers.\n\nWhat would count as a result: a verified AI crawler fetching the file, fetching it repeatedly, or traffic from an AI product that follows a fetch. When it ends: we'll close the experiment after six months, in April 2027, or sooner if the answer becomes clear, and publish a final write-up."
+  },
+  {
+   "id": "A-LLMS-3",
+   "group": "A",
+   "words": 444,
+   "first_words": "What we add is the before-and-after view, verified",
+   "last_words": "Mintlify says it developed the format with Anthropic.",
+   "sha256": "8a6dc9ffd9cfa3e4f3e40c6c633b2010edc6363878581bdc6a44deb477d14beb",
+   "source": {
+    "writer": "Claude Opus 5.5",
+    "commit": "7ddbec4",
+    "path": "src/content/posts/llms-txt.md",
+    "part": "3 of 3"
+   },
+   "text": "What we add is the before-and-after view, verified identities, and a count that keeps going. One month in, our data says the same thing as theirs: the main readers of llms.txt are tools checking for llms.txt.\n\nShould you publish one? It's cheap and harmless. Ours is generated from our list of articles, so it updates itself. But don't expect search traffic or AI citations from it. Google has said Search ignores it, and no AI company we checked says it reads it. If that changes, it should show up in the tally above before it shows up anywhere else.\n\nOne small, new site. A few hundred requests a week isn't a sample that proves anything on its own. It's one site's record, published as it happens.\n\nUser agents can be faked. The identity checks catch crawlers that claim a name they don't own. They can't catch a real AI crawler that hides behind a browser user agent.\n\nWe're in the data. Our own link checks and the editor's visits show up in the logs, mostly as scripts and browser page views.\n\nIP lists change. The pre-launch baseline was checked against the lists as published on October 9, 2026, and operators update their ranges over time.\n\nShort log retention. Our host keeps about 30 days of logs, so the weekly counts are the permanent record. A week where the logs can't be read shows as missing in the tally, not as zero.\n\nA Markdown file at the root of a website (/llms.txt) that summarizes the site and links to its most useful pages, so large language models can find them quickly. Jeremy Howard of Answer.AI proposed it in September 2024.\n\nAt the root of your domain, so it loads at yoursite.com/llms.txt. The spec also allows a subpath, such as /docs/llms.txt, for a file that covers just that section.\n\nGoogle Search doesn't. Google's AI optimization guide says you don't need AI text files to appear in Google Search and that Google Search ignores llms.txt files. Chrome's Lighthouse does check whether a site's llms.txt causes a server error.\n\nOpenAI hasn't said that its crawlers read other sites' llms.txt files. Its crawler documentation covers GPTBot, OAI-SearchBot and ChatGPT-User without mentioning llms.txt beyond OpenAI's own. In our logs, OpenAI's crawlers haven't requested ours.\n\nNo. robots.txt holds crawl rules that bots are asked to follow, under the Robots Exclusion Protocol. llms.txt doesn't allow or block anything. It's a guide to a site's content, meant to be read when an AI agent needs it.\n\nllms.txt is a short list of links. llms-full.txt puts the full text of a site's documentation in one file. Mintlify says it developed the format with Anthropic."
+  },
+  {
+   "id": "A-LLMS2-1",
+   "group": "A",
+   "words": 535,
+   "first_words": "Identity checks. A user agent is just a",
+   "last_words": "the file is regenerated when your content changes.",
+   "sha256": "f630685e4c8b0a59c9bb6b00ce4be795938811a2f23fd337661f147d700817a3",
+   "source": {
+    "writer": "Claude Opus 5.5",
+    "commit": "648b82e",
+    "path": "src/content/posts/llms-txt.md",
+    "part": "1 of 1"
+   },
+   "text": "Identity checks. A user agent is just a label, and anyone can claim to be GPTBot. So each request from a known crawler is checked against the IP addresses its operator publishes. Anthropic publishes its list at claude.com/crawling/bots.json, Perplexity publishes one for PerplexityBot, and OpenAI, Google, Microsoft, Apple, Common Crawl and Amazon publish theirs too. Every list we use is linked in our verification code. Requests that pass are counted as verified. Requests that fail are counted separately.\n\nThere are four common routes, depending on how your site is built. Whichever you pick, the thing to get right is keeping the file current. A file written once by hand goes stale the first time you publish something new.\n\nWordPress plugins. Three of the big SEO plugins can generate the file for you:\n\nYoast SEO added llms.txt generation on June 10, 2025. It builds the file from your recently updated content, your sitemap and your site descriptions, and refreshes it every week.\n\nRank Math builds it from the post types and taxonomies you choose, listing each item's title, URL and a short description. You can cap the number of items and add your own content.\n\nAll in One SEO generates it automatically in its free Lite version. The llms-full.txt and Markdown options need Pro.\n\nDocumentation platforms. If your docs run on one of these, you may already have a file without having done anything:\n\nMintlify hosts an llms.txt automatically, lists pages in navigation order, and says the file is \"always up to date.\" A custom llms.txt in your project replaces it.\n\nGitBook automatically publishes /llms.txt, listing every published page with a Markdown version, along with /llms-full.txt.\n\nOnline generators. These crawl your site and hand you a file. Firecrawl's llms.txt generator crawls a site and writes both llms.txt and llms-full.txt, but Firecrawl stopped maintaining it after June 30, 2025. The service still runs, and Firecrawl points to an example repository instead. Whatever generator you use, the output is a snapshot, so you'll need to run it again when your site changes.\n\nAsk your favorite AI to build it. This is how we made ours. We asked Claude to add an llms.txt to the site, and it wrote a short script that rebuilds the file from our list of published articles every time the site deploys, leaving drafts out. That took one request and a review. If you go this way, a prompt like this one is a good start:\n\nOpen every link. An AI can write a plausible URL that doesn't exist. Limiting it to your sitemap helps, but check anyway.\n\nRead the summary. Make sure it describes what your site actually does, in words you'd use.\n\nPlan the updates. If your site changes often, ask for something that regenerates the file from your content (a build step, a plugin setting or a scheduled job) rather than a one-time file.\n\nUse a plugin or platform that generates it (Yoast SEO, Rank Math and All in One SEO on WordPress; Mintlify and GitBook for documentation sites), run an online generator, or ask an AI assistant to write one from your sitemap. Then check every link, and set it up so the file is regenerated when your content changes."
+  },
+  {
+   "id": "M-25a",
+   "group": "M",
+   "words": 385,
+   "first_words": "They Both Die at the End follows the",
+   "last_words": "So we checked whether those pages hold up.",
+   "sha256": "12b8e374a7ba2de884269c36663c80524de9ae87bb545259a8cb25f45cb24a22",
+   "source": {
+    "human_from": "H-SB-TBDATE-1",
+    "ai_from": "A-GOOG-1",
+    "target_ai_share": 0.25,
+    "actual_ai_share": 0.236,
+    "order": "human first"
+   }
+  },
+  {
+   "id": "M-25b",
+   "group": "M",
+   "words": 400,
+   "first_words": "Not in any way we can measure yet.",
+   "last_words": "method chosen to review an increase in revenue.",
+   "sha256": "4ff70fa83e6f179a4fb0d505bdced0ced56525483472301e2b7c6ec7e9a1ec3e",
+   "source": {
+    "human_from": "H-BCM-ROI-1",
+    "ai_from": "A-LLMS-1",
+    "target_ai_share": 0.25,
+    "actual_ai_share": 0.177,
+    "order": "ai first"
+   }
+  },
+  {
+   "id": "M-50a",
+   "group": "M",
+   "words": 417,
+   "first_words": "“Fahrenheit 451” by Ray Bradbury is a classic",
+   "last_words": "is a stock photo and a first name.",
+   "sha256": "e312df0c6180d649f44d4e7686576ee35bbd92d4b93bc3071579be41c07f10eb",
+   "source": {
+    "human_from": "H-SB-F451-1",
+    "ai_from": "A-GOOG-2",
+    "target_ai_share": 0.5,
+    "actual_ai_share": 0.48,
+    "order": "human first"
+   }
+  },
+  {
+   "id": "M-50b",
+   "group": "M",
+   "words": 450,
+   "first_words": "Anthropic. Anthropic publishes its own llms.txt for its",
+   "last_words": "enough, and he’ll take care of you, right.",
+   "sha256": "c96e6c28d18aeb2437a50759969050d16ce7a1037d3fc76e3f53a48aa78782b5",
+   "source": {
+    "human_from": "WH-1478",
+    "ai_from": "A-LLMS-2",
+    "target_ai_share": 0.5,
+    "actual_ai_share": 0.547,
+    "order": "ai first"
+   }
+  },
+  {
+   "id": "M-75a",
+   "group": "M",
+   "words": 406,
+   "first_words": "Measuring ROI on content marketing provides substantial evidence",
+   "last_words": "be manually fact-checked before publishing, including its metadata.",
+   "sha256": "285d1306649c02bb899e45a02cab3cb8a529b4312eee4bd968ca0b9574031c0c",
+   "source": {
+    "human_from": "H-BCM-ROI-2",
+    "ai_from": "A-GOOG-3",
+    "target_ai_share": 0.75,
+    "actual_ai_share": 0.746,
+    "order": "human first"
+   }
+  },
+  {
+   "id": "M-75b",
+   "group": "M",
+   "words": 414,
+   "first_words": "What we add is the before-and-after view, verified",
+   "last_words": "think for themselves and challenge the status quo.",
+   "sha256": "331911248bfaaa2640f3392908c3a83861409596883ad93be9d2e2ea24570e35",
+   "source": {
+    "human_from": "H-SB-F451-2",
+    "ai_from": "A-LLMS-3",
+    "target_ai_share": 0.75,
+    "actual_ai_share": 0.742,
+    "order": "ai first"
+   }
+  }
+ ],
+ "excluded": [
+  {
+   "id": "H-SB-BSOG",
+   "url": "https://scatteredbooks.com/book-reviews/between-shades-of-gray/",
+   "reason": "under 300 words after cleaning"
+  },
+  {
+   "id": "WH-937",
+   "url": "https://westchesterbars.com/reviews/salsa-verde-taqueria-somers/",
+   "reason": "under 300 words after cleaning"
+  },
+  {
+   "id": "WH-1280",
+   "url": "https://westchesterbars.com/reviews/green-growler-in-croton-ny/",
+   "reason": "under 300 words after cleaning"
+  },
+  {
+   "id": "WH-1325",
+   "url": "https://westchesterbars.com/reviews/growlers-beer-bistro-tuckahoe-ny/",
+   "reason": "under 300 words after cleaning"
+  }
+ ]
+}
