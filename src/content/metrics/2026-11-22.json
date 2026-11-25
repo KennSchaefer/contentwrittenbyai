@@ -1,0 +1,227 @@
+{
+  "week": {
+    "start": "2026-11-16",
+    "end": "2026-11-22"
+  },
+  "collectedAt": "2026-11-25T22:04:05.047Z",
+  "sources": {
+    "searchConsole": {
+      "ok": true,
+      "property": "sc-domain:contentwrittenbyai.com"
+    },
+    "ga4": {
+      "ok": true
+    },
+    "semrush": {
+      "ok": true,
+      "database": "us"
+    },
+    "serverLogs": {
+      "ok": true,
+      "files": 10
+    }
+  },
+  "site": {
+    "clicks": 0,
+    "impressions": 40,
+    "ctr": 0,
+    "position": 77.95,
+    "views": 0,
+    "sessions": 0,
+    "keywords": 1,
+    "top10": 0
+  },
+  "daily": [
+    {
+      "date": "2026-11-16",
+      "clicks": 0,
+      "impressions": 0
+    },
+    {
+      "date": "2026-11-17",
+      "clicks": 0,
+      "impressions": 1
+    },
+    {
+      "date": "2026-11-18",
+      "clicks": 0,
+      "impressions": 6
+    },
+    {
+      "date": "2026-11-19",
+      "clicks": 0,
+      "impressions": 5
+    },
+    {
+      "date": "2026-11-20",
+      "clicks": 0,
+      "impressions": 15
+    },
+    {
+      "date": "2026-11-21",
+      "clicks": 0,
+      "impressions": 8
+    },
+    {
+      "date": "2026-11-22",
+      "clicks": 0,
+      "impressions": 5
+    }
+  ],
+  "crawlers": {
+    "llmsTxt": {
+      "requests": 4,
+      "byStatus": {
+        "200": 4
+      },
+      "agents": {
+        "Browser": 3,
+        "hexidebot": 1
+      }
+    },
+    "bots": {
+      "Applebot": {
+        "llmsTxt": 0,
+        "robotsTxt": 4,
+        "sitemap": 2,
+        "other": 2,
+        "verification": "ip-list",
+        "verified": 8,
+        "failed": 0,
+        "unknown": 0
+      },
+      "bingbot": {
+        "llmsTxt": 0,
+        "robotsTxt": 4,
+        "sitemap": 0,
+        "other": 8,
+        "verification": "ip-list",
+        "verified": 12,
+        "failed": 0,
+        "unknown": 0
+      },
+      "Googlebot": {
+        "llmsTxt": 0,
+        "robotsTxt": 5,
+        "sitemap": 2,
+        "other": 12,
+        "verification": "ip-list",
+        "verified": 19,
+        "failed": 0,
+        "unknown": 0
+      },
+      "GPTBot": {
+        "llmsTxt": 0,
+        "robotsTxt": 0,
+        "sitemap": 4,
+        "other": 2,
+        "verification": "ip-list",
+        "verified": 6,
+        "failed": 0,
+        "unknown": 0
+      },
+      "OAI-SearchBot": {
+        "llmsTxt": 0,
+        "robotsTxt": 16,
+        "sitemap": 0,
+        "other": 0,
+        "verification": "ip-list",
+        "verified": 16,
+        "failed": 0,
+        "unknown": 0
+      },
+      "PerplexityBot": {
+        "llmsTxt": 0,
+        "robotsTxt": 2,
+        "sitemap": 0,
+        "other": 2,
+        "verification": "ip-list",
+        "verified": 4,
+        "failed": 0,
+        "unknown": 0
+      }
+    },
+    "otherBots": {
+      "AhrefsBot": {
+        "llmsTxt": 0,
+        "robotsTxt": 4,
+        "sitemap": 2,
+        "other": 11
+      },
+      "hexidebot": {
+        "llmsTxt": 1,
+        "robotsTxt": 1,
+        "sitemap": 1,
+        "other": 10
+      },
+      "python-requests": {
+        "llmsTxt": 0,
+        "robotsTxt": 0,
+        "sitemap": 0,
+        "other": 2
+      },
+      "WebsiteContactCrawler": {
+        "llmsTxt": 0,
+        "robotsTxt": 1,
+        "sitemap": 0,
+        "other": 11
+      }
+    },
+    "visitors": {
+      "requests": 115,
+      "pageViews": 53,
+      "llmsTxt": 3
+    }
+  },
+  "pages": [
+    {
+      "path": "/",
+      "search": {
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 8
+      }
+    },
+    {
+      "path": "/about/ken-schaefer/",
+      "search": {
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 8,
+        "topQuery": {
+          "query": "ken schaefer",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 8
+        }
+      }
+    },
+    {
+      "path": "/research/does-google-penalize-ai-content/",
+      "search": {
+        "clicks": 0,
+        "impressions": 36,
+        "ctr": 0,
+        "position": 85.72222222222223,
+        "topQuery": {
+          "query": "does google penalize ai content",
+          "clicks": 0,
+          "impressions": 12,
+          "position": 84.66666666666667
+        }
+      },
+      "rankings": {
+        "keywords": 1,
+        "top10": 0,
+        "best": {
+          "keyword": "does google penalize ai content",
+          "position": 82,
+          "volume": 140
+        },
+        "serpFeatures": []
+      }
+    }
+  ]
+}
